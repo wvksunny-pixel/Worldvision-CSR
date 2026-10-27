@@ -1307,6 +1307,122 @@ p,li,dd,dt,blockquote,figcaption,td,th,cite,.tdesc{text-wrap:pretty}
 
 .jen,.builder-badge,.proposal-statement span,.fgroup h3,#builderProgress,.trel-h small,.need-r h3 small,.result-status,.result-new,.b-card span{font-size:12.5px}
 .b-card span{font-size:13.5px}
+
+/* ================= v8 · 메모 반영 ================= */
+/* HOME 히어로: 사진 안 작은 캡션 */
+.h-figs figure{position:relative;overflow:hidden}
+.h-figs figure:after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(180deg,rgba(10,12,16,0),rgba(10,12,16,.62));pointer-events:none}
+.h-figs figcaption{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;margin:0;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.01em;line-height:1.5}
+.h-figs figcaption b{display:block;color:#ffb27a;font-size:11.5px;letter-spacing:.16em;margin:0 0 2px;font-weight:800}
+
+/* HOME 수치: 어둡게 처리한 사진 위에 숫자 */
+.bg-stats{gap:16px}
+.bg-stats figure{position:relative;overflow:hidden;text-align:left;aspect-ratio:3/4;background:var(--char)}
+.bg-stats img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;transition:transform .6s}
+.bg-stats figure:hover img{transform:scale(1.04)}
+.bg-stats figure:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,16,.18) 0%,rgba(10,12,16,.45) 45%,rgba(10,12,16,.86) 100%)}
+.bg-stats dd,.bg-stats dt{position:relative;z-index:1}
+.bg-stats figure{display:flex;flex-direction:column;justify-content:flex-end;padding:24px 22px}
+.bg-stats dd{margin:0;color:#fff;font-size:clamp(34px,3.4vw,52px)}
+.bg-stats dd small{color:#ffb27a;font-size:.4em}
+.bg-stats dt{color:rgba(255,255,255,.88);font-size:14.5px;margin-top:10px;line-height:1.6;max-width:16em}
+@media (max-width:1100px){.bg-stats figure{aspect-ratio:4/5}}
+@media (max-width:760px){.bg-stats{gap:12px}.bg-stats figure{aspect-ratio:16/11;padding:20px}}
+
+/* 강점: 수치 블록 간격 균등 */
+.bb-nums.five{gap:24px}
+.bb-nums.five div,.bb-nums.five div+div{padding:18px 0 4px}
+@media (max-width:1100px){.bb-nums.five div:nth-child(4){padding-left:0}}
+
+/* 강점: 핵심 역량 헤드 — 메인 카피 → 서브 카피 → 6개 항목 */
+.asset-head h2{font-size:clamp(32px,4.4vw,58px);line-height:1.28}
+.asset-head{margin-bottom:64px}
+.asset-head p{font-size:16.5px;color:#444;line-height:1.75}
+.rlinks{gap:8px;margin-top:16px}
+.rlinks a{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--rule);padding:8px 12px;font-size:14px;font-weight:700;color:var(--navy);transition:border-color .15s,background .15s}
+.rlinks a span{font-size:12.5px;font-weight:800;color:var(--orange-ink)}
+.rlinks a i{font-style:normal;color:var(--brand);transition:transform .15s}
+.rlinks a:hover{border-color:var(--brand);background:var(--peach-bg);text-decoration:none}
+.rlinks a:hover i{transform:translateX(3px)}
+.assets li{transition:background .2s}
+
+/* 하이라이트 */
+mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:inherit;padding:0 .08em;font-weight:700}
+.fhl{margin-top:18px;font-size:15px;color:var(--navy)}
+
+/* 에티오피아: 길게 뻗은 밴드 */
+.wideband{background:var(--stone);padding-block:clamp(72px,9vw,120px)}
+.wideband .fnums div{border-top-color:var(--navy)}
+
+/* 맞춤형 제안: 테스트 · 제안 구성 · 요약을 한 파트로 */
+.subnav{border-bottom:1px solid var(--rule);background:#fff}
+.subnav .wrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{display:flex;align-items:center;gap:10px;padding:16px 24px 16px 0;margin-right:24px;font-size:15px;font-weight:700;color:#777;white-space:nowrap;box-shadow:inset 0 -3px 0 transparent}
+.subnav a span{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:#aaa}
+.subnav a em{font-style:normal;font-size:12px;font-weight:800;background:var(--rule);color:var(--mute);border-radius:10px;padding:1px 7px}
+.subnav a[aria-current="page"]{color:var(--navy);box-shadow:inset 0 -3px 0 var(--brand)}
+.subnav a[aria-current="page"] span{color:var(--brand)}
+.subnav a:hover{color:var(--navy)}
+
+/* 파트너십 사례 */
+.pc-lead{font-size:clamp(20px,2vw,26px)!important;font-weight:700;color:var(--navy)!important;margin-bottom:12px}
+.pc-count{display:flex;gap:40px;margin:32px 0 0}
+.pc-count dd{margin:0;font-size:clamp(40px,4.6vw,64px);font-weight:800;color:var(--brand);letter-spacing:-.04em;line-height:1}
+.pc-count dd small{font-size:16px;color:var(--navy);margin-left:6px;letter-spacing:0;font-weight:700}
+.pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}
+.pcard{display:flex;flex-direction:column;min-width:0}
+.pc-ph{display:block;width:100%;aspect-ratio:16/10;max-width:100%;overflow:hidden;background:var(--stone);padding:0}
+.pc-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pcard:hover .pc-ph img{transform:scale(1.04)}
+.pc-b{display:flex;flex-direction:column;gap:8px;padding-top:20px;flex:1}
+.pc-co{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.pc-cat{font-size:13px;font-weight:700;color:var(--orange-ink);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.pc-cat span{font-size:12.5px;font-weight:600;color:var(--mute);background:var(--stone);padding:2px 8px}
+.pcard h3{font-size:18px;font-weight:800;line-height:1.45;color:var(--ink);margin-top:4px}
+.pcard p{font-size:14.5px;color:#4a4a4a;line-height:1.7}
+.pc-f{margin-top:auto;padding-top:14px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pc-f span{font-size:13px;color:var(--mute);font-weight:700}
+.cs-ph{margin:-35px -35px 28px;aspect-ratio:21/9;max-width:calc(100% + 70px);overflow:hidden;background:var(--stone)}
+.cs-ph img{width:100%;height:100%;object-fit:cover}
+.cs h2{font-size:clamp(26px,3vw,36px);color:var(--navy)}
+.cs-t{font-size:18px;font-weight:700;color:#333;margin:8px 0 22px}
+.cs-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0 0 8px;border-top:2px solid var(--navy)}
+.cs-meta div{padding:12px 16px 12px 0;border-bottom:1px solid var(--rule)}
+.cs-meta dt{font-size:12.5px;font-weight:800;color:var(--mute)}
+.cs-meta dd{margin:2px 0 0;font-size:14.5px;line-height:1.6}
+.cs section{margin-top:28px}
+.cs h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:10px}
+.cs section>p{font-size:15.5px;line-height:1.8;color:#333}
+.cs-sum{margin-top:10px;font-size:14.5px!important;color:var(--mute)!important}
+.cs-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--navy)}
+.cs-stats div{padding:14px 14px 14px 0;border-bottom:1px solid var(--rule)}
+.cs-stats b{display:block;font-size:24px;font-weight:800;color:var(--brand);letter-spacing:-.02em}
+.cs-stats span{font-size:13px;color:var(--mute)}
+.cs-note{font-size:13px;color:var(--mute);margin-top:10px}
+.cs-tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--rule)}
+.cs-tl li{display:grid;grid-template-columns:140px minmax(0,1fr);gap:14px;padding:10px 0 10px 18px;position:relative}
+.cs-tl li:before{content:"";position:absolute;left:-6px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--brand)}
+.cs-tl b{font-size:13.5px;color:var(--orange-ink)}
+.cs-tl strong{display:block;font-size:15px;color:var(--navy)}
+.cs-tl span{font-size:14px;color:#4a4a4a}
+.cs-gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cs-gal figure{margin:0}
+.cs-gal img{width:100%;aspect-ratio:4/3;max-width:100%;object-fit:cover}
+.cs-gal figcaption{font-size:13px;color:var(--mute);margin-top:6px}
+.cs-p{display:flex;flex-wrap:wrap;gap:8px}
+.cs-p a{border:1.5px solid var(--rule);padding:8px 12px;font-size:14px;font-weight:700;color:var(--navy)}
+.cs-p a:hover{border-color:var(--brand)}
+@media (max-width:1100px){.pcards{grid-template-columns:repeat(2,minmax(0,1fr))}.cs-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .pcards{grid-template-columns:1fr;gap:36px}
+  .pc-count{gap:28px}
+  .cs-ph{margin:-20px -20px 20px;max-width:calc(100% + 40px)}
+  .cs-meta,.cs-gal{grid-template-columns:1fr}
+  .cs-tl li{grid-template-columns:1fr;gap:2px}
+  .subnav a{padding:14px 0;margin-right:20px;font-size:14px}
+}
+
 </style>
 </head>
 <body>
@@ -1316,13 +1432,12 @@ p,li,dd,dt,blockquote,figcaption,td,th,cite,.tdesc{text-wrap:pretty}
     <a class="logo" href="#home" aria-label="홈으로"><img src="img/wv-logo.png" alt="World Vision"><span>월드비전 기업파트너십</span></a>
     <nav class="tabs" aria-label="주요 화면">
       <a href="#home" data-tab="home">HOME</a>
+      <a href="#test" data-tab="proposal">맞춤형 제안 <span class="badge lat" id="pcount" data-n="0">0</span></a>
       <a href="#strengths" data-tab="strengths">WHY WV CSR</a>
       <a href="#explore" data-tab="explore">월드비전 사업소개</a>
       <a href="#collab" data-tab="collab">협업제안</a>
-      <a href="#test" data-tab="test">맞춤형 파트너십 테스트</a>
-      <a href="#partners" data-tab="partners">함께하는 기업</a>
+      <a href="#partners" data-tab="partners">파트너십 사례</a>
       <a href="#library" data-tab="library">참고자료</a>
-      <a href="#proposal" data-tab="proposal">맞춤형 제안 <span class="badge lat" id="pcount" data-n="0">0</span></a>
     </nav>
     <button class="pswitch" id="pswitch" aria-pressed="false" title="발표자 모드 (단축키 P)"><i></i><span class="t">발표자 모드</span></button>
   </div>
@@ -1777,7 +1892,7 @@ const STR={
  ],
  trust:[["국제월드비전 네트워크","국제월드비전은 전 세계 100여개국, 4만여명이 함께 일하는 세계 최대 글로벌NGO"],["사업의 전문성","사업별 전문가를 배치하여 월드비전만의 노하우를 통해 전문적인 사업 실행"],["75년의 역사","지역개발/인도적사업의 전문성을 인정받아 UN산하기구들의 공식협력기관 선정"],["검증 받은 투명성","BBB, Charity Navigator 등 투명성 평가 단체로부터 가장 신뢰할 수 있는 기관 선정"]],
  awards:[["2026 대한민국 NGO 브랜드신뢰도 1위, 월드비전","한국능률협회컨설팅 선정"],["제3회 삼일투명경영 대상 수상","삼일회계법인 삼일미래재단"],["비영리 투명성 우수사례","한국회계학회 보고서"],["월드비전은 믿을 수 있는 기관","2024 후원자 만족도조사, 5,569명 응답자"]],
- effects:[["기업의 사회적 영향력 극대화","글로벌 파트너십 46개국 421개 사업장에서 약 40만명 아동들을 대상으로 기업 맞춤형 사업모델을 개발하고 진행합니다."],["브랜드 이미지 강화","75년 이상의 역사를 이어온 월드비전은 신뢰성 있고 차별화된 기업의 이미지를 함께 만들어 갑니다."],["임직원 참여 강화","임직원들이 기업 사회 공헌의 가치를 느끼고, 자부심 속에서 즐겁게 일할 수 있도록 함께 프로그램을 만들어 갑니다."],["고객 가치 창출","기업의 고객이 나눔의 가치를 실현할 수 있는 문화를 선도해 갑니다."],["사업의 효과성","월드비전 자체 임팩트 평가프로그램인 EPICS*를 통해 사업성과를 측정합니다. *Empathy · Preference · Impact · Communication · Suggestion"],["ESG 경영 성과 강화","정량화된 사회적 가치 측정 결과를 ESG 보고서·평가 대응 자료로 활용해 지속가능경영 성과를 뒷받침합니다."]]
+ effects:[["기업의 사회적 영향력 극대화","글로벌 파트너십 46개국 421개 사업장에서 <mark>약 40만명 아동</mark>들을 대상으로 기업 맞춤형 사업모델을 개발하고 진행합니다."],["브랜드 이미지 강화","75년 이상의 역사를 이어온 월드비전은 신뢰성 있고 차별화된 기업의 이미지를 함께 만들어 갑니다."],["임직원 참여 강화","임직원들이 기업 사회 공헌의 가치를 느끼고, 자부심 속에서 즐겁게 일할 수 있도록 함께 프로그램을 만들어 갑니다."],["고객 가치 창출","기업의 고객이 나눔의 가치를 실현할 수 있는 문화를 선도해 갑니다."],["사업의 효과성","월드비전 자체 임팩트 평가프로그램인 EPICS*를 통해 사업성과를 측정합니다. *Empathy · Preference · Impact · Communication · Suggestion"],["ESG 경영 성과 강화","정량화된 사회적 가치 측정 결과를 ESG 보고서·평가 대응 자료로 활용해 지속가능경영 성과를 뒷받침합니다."]]
 };
 const caseArea=c=>[...new Set(c.p.map(id=>byId[id].area))];
 
@@ -1794,8 +1909,8 @@ function vHome(){
           <div class="h-cta"><a class="btn brand" href="#strengths">월드비전의 강점 알아보기 <span aria-hidden="true">→</span></a><a class="btn" href="#test">우리 기업에 맞는 사업 찾기</a></div>
         </div>
         <div class="h-figs">
-          <figure><img src="img/dream.jpg" alt="트로피와 메달을 든 꿈디자이너 참여 청소년"><figcaption><b>국내</b> 꿈지원사업 · 꿈디자이너</figcaption></figure>
-          <figure><img src="img/water.jpg" alt="식수대에서 물을 마시는 아이들"><figcaption><b>국제</b> 식수위생사업</figcaption></figure>
+          <figure><img src="img/dream.jpg" alt="트로피와 메달을 든 꿈디자이너 참여 청소년"><figcaption><b>국내</b>꿈지원사업 · 꿈디자이너</figcaption></figure>
+          <figure><img src="img/water.jpg" alt="식수대에서 물을 마시는 아이들"><figcaption><b>국제</b>식수위생사업</figcaption></figure>
         </div>
       </div>
     </div>
@@ -1803,27 +1918,26 @@ function vHome(){
 
   <nav class="wrap paths2" aria-label="탐색 경로">
     <a href="#explore"><span class="n">01</span><b>월드비전 사업소개</b><span>관심 분야·협력 방식으로 16개 사업 찾기</span></a>
-    <a href="#partners"><span class="n">02</span><b>함께하는 기업</b><span>월드비전과 기업이 만든 협력 사례</span></a>
-    <a href="#proposal"><span class="n">03</span><b>맞춤형 제안</b><span>담은 사업으로 제안 초안 구성·출력</span></a>
+    <a href="#partners"><span class="n">02</span><b>파트너십 사례</b><span>월드비전과 기업이 만든 협력 사례</span></a>
+    <a href="#test"><span class="n">03</span><b>맞춤형 제안</b><span>파트너십 테스트부터 제안 초안 구성·출력까지</span></a>
   </nav>
 
   <section class="bg1" aria-label="2025 주요 성과">
     <div class="wrap">
       <h2 class="bg-tit">아동과 가족, 지역사회가 스스로 일어서도록<br>기업과 함께 <em>지속가능한 변화</em>를 만듭니다</h2>
-      <p class="bg-txt">2025년, 월드비전 사업으로 달라진 사람들의 숫자입니다.</p>
+      <p class="bg-txt">2025년 월드비전과 함께 변화를 경험한 수혜자들</p>
       <dl class="bg-stats">
         <figure><img src="img/foodaid.jpg" alt="식량지원사업 현장" loading="lazy"><dd data-count="1,096,881">1,096,881<small>명</small></dd><dt>식료품 지원과 영양 지원으로<br>식량위기에 대응한 사람 수</dt></figure>
         <figure><img src="img/emergency.jpg" alt="긴급구호 물품 지원" loading="lazy"><dd data-count="759,302">759,302<small>명</small></dd><dt>분쟁과 자연재난 속에서<br>긴급구호를 받은 사람 수</dt></figure>
         <figure><img src="img/meal.jpg" alt="사랑의도시락" loading="lazy"><dd data-count="642,567">642,567<small>명</small></dd><dt>아침·저녁·주말 식사를 지원받은<br>국내 식생활취약아동 사업 수혜자 수</dt></figure>
         <figure><img src="img/water.jpg" alt="식수시설을 이용하는 아이들" loading="lazy"><dd data-count="579,021">579,021<small>명</small></dd><dt>식수·위생 환경 개선으로<br>질병으로부터 보호받은 사람 수</dt></figure>
       </dl>
-      <p class="bb-src">* 2025년도 사업기준 · 2026 통합제안서</p>
     </div>
   </section>
 
   <section class="bg2" id="areas">
     <div class="wrap">
-      <h2 class="bg-tit">아동과 지역사회의 필요에 맞춘<br>4개 영역 16개 세부사업을 제공합니다</h2>
+      <h2 class="bg-tit">아동과 지역사회의 필요에 맞춘<br>맞춤형 사업을 제공합니다</h2>
       <p class="bg-txt">사업을 클릭하시면 상세 정보를 확인하실 수 있습니다.</p>
       <div class="bg-areas">${Object.entries(AREAS).map(([k,a])=>`
         <div class="bg-area">
@@ -1843,7 +1957,7 @@ function vHome(){
 
   <section class="sec" id="kw">
     <div class="wrap">
-      <div class="sec-head"><div class="label">Keyword explore</div><h2>내부 분류를 몰라도<br>키워드로 찾을 수 있습니다</h2><p>하나의 사업은 여러 키워드에 연결되어 있습니다. 키워드를 누르면 관련 사업만 표시됩니다.</p></div>
+      <div class="sec-head"><div class="label">Keyword explore</div><h2>키워드를 통해<br>다양한 사업을 알아보세요</h2><p>하나의 사업은 여러 키워드에 연결되어 있습니다. 키워드를 누르면 관련 사업만 표시됩니다.</p></div>
       <div class="kw">
         <div><h3>관심 분야</h3><div class="chips">${INTERESTS.map(i=>`<button class="chip" data-go-int="${i.k}">${i.t}<em>${cnt("int",i.k)}</em></button>`).join("")}</div></div>
         <div><h3>협력 방식</h3><div class="chips">${MODES.map(m=>`<button class="chip" data-go-mode="${m.k}">${m.t}<em>${cnt("mode",m.k)}</em></button>`).join("")}</div></div>
@@ -1866,7 +1980,7 @@ function vHome(){
       <div class="sec-head"><div class="label">Partners</div><h2>이미 검증된 협력</h2><p>월드비전과 기업이 함께 만든 협력 사례 가운데 일부입니다.</p></div>
       <div class="cases">${CASES.slice(0,3).map(c=>`
         <a class="case" href="#p-${c.p[0]}"><span class="co">${c.co}</span><b>${c.t}</b><span>${c.d}</span><span class="pg">→ ${c.p.map(id=>byId[id].t).join(" · ")}</span></a>`).join("")}</div>
-      <p style="margin-top:28px"><a class="btn" href="#partners">함께하는 기업 전체 보기 (${CASES.length}건) →</a></p>
+      <p style="margin-top:28px"><a class="btn" href="#partners">파트너십 사례 전체 보기 (${CASES.length}건) →</a></p>
     </div>
   </section>
 
@@ -1878,9 +1992,9 @@ function vHome(){
     </div>
   </section>
 
-  <section class="sec closing"><div class="wrap">
+  <section class="sec closing memo-only" aria-label="발표자용 안내"><div class="wrap">
     <h2>미팅 중 관심 사업을 담아<br><em>맞춤형 제안 초안</em>을 만드세요.</h2>
-    <div class="act"><a class="btn brand" href="#explore">월드비전 사업소개 보기 →</a><a class="btn" href="#proposal">맞춤형 제안 보기 (${S.prop.length})</a></div>
+    <div class="act"><a class="btn brand" href="#explore">월드비전 사업소개 보기 →</a><a class="btn" href="#test">맞춤형 제안 보기 (${S.prop.length})</a></div>
   </div></section>`;
 }
 
@@ -1899,7 +2013,7 @@ function vStrengths(){
   <section class="phead2" id="str-intro"><div class="wrap">
     <div class="h-label">WHY WORLD VISION KOREA</div>
     <h1>한국월드비전<br>CSR의 강점</h1>
-    <p>‘좋은 아이디어’보다 중요한 것은, 국내외 현장에서 성과로 증명하는 실행력입니다.</p>
+    <p>변화를 만드는 다양한 생각과 시도가 있습니다.<br>월드비전은 현장에서 변화를 만들고,<br>실질적인 성과로 증명합니다.</p>
   </div></section>
 
   <section class="brandband" aria-label="월드비전 네트워크">
@@ -1910,20 +2024,20 @@ function vStrengths(){
 
   <section class="sec">
     <div class="wrap">
-      <div class="sec-head"><div class="label">Execution assets</div><h2>아이디어가 아니라,<br><em>성과로 증명</em>합니다.</h2><p>월드비전의 실행 자산(R&amp;C) 6가지입니다. 관련 사업을 누르면 상세 화면으로 이동합니다.</p></div>
+      <div class="sec-head asset-head"><div class="label">Expertise &amp; practice</div><h2>아이디어를 현실로,<br>현장에서 변화를 만들고,<br><em>성과로 증명합니다.</em></h2><p>월드비전이 현장에서 쌓아온 전문성과 실행 경험, 실제 사업 사례를 통해 기업과 함께 만들 수 있는 변화와 협력의 가능성을 확인해 보세요.</p></div>
       <ol class="assets">${STR.assets.map(([t,d,rel],i)=>`
         <li><span class="n">${String(i+1).padStart(2,"0")}</span><div><h3>${t}</h3><p>${d}</p>
-          <div class="rlinks">${rel.map(id=>`<a href="#p-${id}">${byId[id].t} →</a>`).join("")}</div></div></li>`).join("")}</ol>
+          <div class="rlinks" aria-label="관련 사업">${rel.map(id=>`<a href="#p-${id}"><span>${byId[id].code}</span>${byId[id].t}<i aria-hidden="true">→</i></a>`).join("")}</div></div></li>`).join("")}</ol>
     </div>
   </section>
 
-  <section class="sec feature">
+  <section class="sec feature wideband">
     <div class="wrap fgrid">
       <div class="ftxt">
         <div class="label">국내 NGO 최초 · 국제 탄소인증</div>
         <h2>에티오피아 산림 복원 사업,<br>‘골드 스탠다드’ 최초 등록</h2>
         <p>한국월드비전이 에티오피아 두구나팡고·다못웨이데 지역에서 ‘농민 주도 천연 갱신(FMNR)’ 방식으로 추진해 온 산림 복원 사업이, 국제 탄소시장 기준 표준인 ‘골드 스탠다드’에 국내 국제개발협력 NGO 최초로 공식 등록되었습니다.</p>
-        <p class="src">2026.8 동아일보 · 잠비아 산림사업으로 확장 중</p>
+        <p class="fhl"><mark>2026.8 동아일보 · 잠비아 산림사업으로 확장 중</mark></p>
       </div>
       <dl class="fnums">
         <div><dd>9,933<small>ha</small></dd><dt>복원 계획 (여의도 34배)</dt></div>
@@ -1958,24 +2072,36 @@ function vStrengths(){
   <section class="consult"`)}`;
 }
 
+/* 파트너십 사례 — 사례 데이터: CASES(협력 사례 원문) + CASE_X(사례 사진·분류·참여 방식, SK 4건 상세: 기간·지역·예산·파트너·성과·추진 경과). 출처: wvcsr.github.io */
+const CASE_X={"c1": {"cat": "기후변화대응사업(국내)", "fund": "기금후원", "photo": "img/cases/ph280.jpg", "detail": {"title": "SK하이닉스 × 월드비전 — 청주 도심 도시숲 조성사업", "period": "2024.7 ~ 2026.12 (준공식 2026.10 예정)", "location": "충북 청주시 흥덕구 SK로 3km 구간(그린로드) + SK하이닉스 청주캠퍼스 0.3km(에메랄드로드)", "budget": "총사업비 58억 5,650만원", "partners": "SK하이닉스(사업비지원) · 월드비전(사업총괄·관리) · 충북공동모금회(배분·모니터링) · 생명의숲(조성기획·성과측정) · 청주시(민관협력·사후관리)", "summary": "2024년 7월, SK하이닉스와 월드비전은 충북공동모금회·생명의숲·청주시와 손잡고 청주 도심 한복판에 도시숲을 조성하는 프로젝트에 착수했습니다. 청주시 시목인 느티나무를 중심으로 교목·관목을 심어 미세먼지와 열섬현상에 시달리는 도심에 숨통을 틔우고, 2025년 11월 착공식을 시작으로 2026년 준공을 향해 가고 있습니다.", "stats": [{"n": "58.6억원", "l": "총사업비"}, {"n": "3,300㎡", "l": "조성면적(SK로 양방)"}, {"n": "3.6톤/년", "l": "미세먼지 흡수 예상효과"}, {"n": "800톤/년", "l": "온실가스 저감 예상효과"}], "note": "환경 성과 수치는 준공 후 실측 전까지의 계획 기준 예상효과입니다.", "timeline": [{"date": "2024.7", "label": "협약 체결", "desc": "SK하이닉스·월드비전·충북공동모금회·생명의숲·청주시 5자 MOU 체결"}, {"date": "2024.7~2025.11", "label": "조성 착수", "desc": "느티나무 중심 교목·관목 약 85,000주 식재 계획 수립 및 1~2차년도 조성"}, {"date": "2025.11.10", "label": "착공식 개최", "desc": "청주시 SK로 일대에서 착공식 진행, 청주시장·SK하이닉스 부사장 등 참석"}, {"date": "2026.10 (예정)", "label": "준공", "desc": "3차년도 준공 및 SKT LoRa망 기반 생육·탄소저감 원격관제 개시"}], "photos": [["img/cases/ph277.jpg", "7차 추진협의회 — 사업 진행상황 점검회의"], ["img/cases/ph278.jpg", "식재 현장 — 굴착기를 활용한 교목 식재 작업"], ["img/cases/ph279.jpg", "SK하이닉스 청주캠퍼스 인근 조성 현장 점검"], ["img/cases/ph280.jpg", "2025.11.10 착공식 시삽 세리머니 — SK하이닉스·월드비전·청주시 관계자 참석"]]}}, "c2": {"cat": "국내-꿈지원사업", "fund": "기금후원", "photo": "img/cases/ph285.jpg", "detail": {"title": "SK이노베이션 × 월드비전 — SK 1% 행복나눔 꿈지원·난치병치료비 지원사업", "period": "2018.6 ~ 현재 (9년째, 분기별 후원)", "location": "울산·경남 지역", "budget": "누적 후원금 약 39.7억원(2018~2026, 순수사업비 기준 약 37.6억원)", "partners": "SK이노베이션(재원, 사회복지공동모금회 경유 배분) · 월드비전 경남울산사업본부(사업운영·사례관리·운영자문위원회) · 사회복지공동모금회(CCK)", "summary": "2018년 6월 시작된 SK이노베이션의 'SK 1% 행복나눔' 후원은 사회복지공동모금회를 통해 월드비전 경남울산사업본부로 배분되어, 울산·경남 지역 난치병·소아암 아동의 치료비와 저소득 청소년의 꿈지원사업을 9년째 이어오고 있습니다. 2018~2026년 누적으로 난치병·소아암 아동 365명(334가구, 27.5억원), 꿈지원 아동·청소년 206명(190가구, 10.2억원)을 지원했으며, 매 분기 정기 후원과 운영자문위원회(교육·의료 전문가 7인) 심의를 거쳐 지속적으로 대상자를 선정·관리합니다.", "stats": [{"n": "39.7억원", "l": "누적 후원금(2018~2026)"}, {"n": "365명", "l": "누적 난치병·소아암 치료비 지원(334가구)"}, {"n": "206명", "l": "누적 꿈지원사업 지원(190가구)"}, {"n": "9년째", "l": "연속 후원(2018~현재)"}], "note": null, "timeline": [{"date": "2018.6", "label": "후원 시작", "desc": "SK이노베이션 'SK 1% 행복나눔', 사회복지공동모금회 경유 아동 난치병지원·꿈지원사업 첫 배분"}, {"date": "2018~2026", "label": "누적 실적(9년차)", "desc": "난치병·소아암 아동 365명(334가구, 순수사업비 27.5억원), 꿈지원 아동·청소년 206명(190가구, 순수사업비 10.2억원) 누적 지원"}, {"date": "2026.5", "label": "꿈나무 지원금 전달식", "desc": "'SK이노베이션 1% 행복나눔 꿈나무 지원금 전달식' 개최, 총 지원금 1억 2천만원 전달"}, {"date": "2026", "label": "지속 지원", "desc": "난치병 아동 50명(지속 39명+신규 11명), 꿈지원 15명 지속 지원, 운영자문위원회(위원장: 월드비전 경남울산사업본부장 등 7인) 운영"}], "photos": [["img/cases/ph285.jpg", "2026.5 SK이노베이션 1% 행복나눔 꿈나무 지원금 전달식 — 총 지원금 1억 2천만원"], ["img/cases/ph286.jpg", "국방부장관기 태권도대회 여자중등부 2위 — 꿈지원 대상 청소년 입상"], ["img/cases/ph287.jpg", "울산광역시교육감배 테니스대회 남고부 복식 1위 — 꿈지원 대상 청소년 입상"], ["img/cases/ph288.jpg", "2025 로봇올림피아드 창원전국지능로봇경진대회 다수 입상 — 꿈지원 대상 청소년 활동"]]}}, "c3": {"cat": "국내-식생활취약아동지원사업", "fund": "임직원참여형", "photo": "img/cases/ph234.jpg", "detail": {"title": "SK하이닉스 × 월드비전 — 행복도시락 AI 영양사", "period": "2025.8 ~ 2027.2 (1~3차)", "location": "경기 광주·안성·여주·용인(어르신) / 경기 이천(아동)", "budget": "총사업비 12억 6,368만원(1~3차)", "partners": "SK하이닉스(후원) · 월드비전(총괄) · 행복투게더 이천점(제조·배송) · ㈜나눔비타민(AI·플랫폼)", "summary": "2025년 8월 시작된 '행복도시락' 사업은 SK하이닉스의 후원으로 경기도 5개 지역의 취약계층 어르신과 아동에게 AI 기반 맞춤 영양 지원을 제공합니다. 어르신께는 매주 밑반찬 도시락과 AI 영양 리포트를, 이천 지역 아동에게는 방학 중 식사권을 지원하며, SK하이닉스 임직원들도 직접 조리 체험 프로그램에 참여해 아이들과 함께합니다.", "stats": [{"n": "16,473건", "l": "1차년도 누적 배송"}, {"n": "420명", "l": "직접 수혜(어르신 360+아동 60)"}, {"n": "227건", "l": "AI 맞춤 영양 리포트 발행"}, {"n": "97.4%", "l": "아동 식사권 이용률"}], "note": null, "timeline": [{"date": "2025.8", "label": "1차년도 시작", "desc": "AI 영양사 연계 행복도시락, 플랫폼 기반 식사권 지원 등 4개 세부사업 개시"}, {"date": "2025.10.21", "label": "여주시청 협약식", "desc": "지역 취약계층 행복도시락 지원 협약 체결, 1차년도 누적 16,473건 배송"}, {"date": "2026.9~2027.3", "label": "2차년도 확대", "desc": "행복도시락 10,140식 제공 및 냉동탑차 2대 추가, 식생활 인증 400건 목표"}, {"date": "2027.1 (예정)", "label": "3차년도 결과보고", "desc": "1~3차 통합 성과 결과보고 예정"}], "photos": [["img/cases/ph281.jpg", "2025.10.21 여주시청 — 지역 취약계층 행복도시락 지원 협약식"], ["img/cases/ph282.jpg", "AI 영양사가 설계한 행복도시락 구성"], ["img/cases/ph283.jpg", "이천 아동 대상 '행복쿡' 식생활 체험교육"], ["img/cases/ph284.jpg", "이천 아동 대상 농촌 현장 체험 '푸드탐험대'"]]}}, "c4": {"cat": "기후변화대응사업(국내)", "fund": "기금후원", "photo": "img/cases/ph257.jpg", "detail": {"title": "SK에코플랜트 × 월드비전 — AI 해양정화로봇 기증 & 해양환경교육", "period": "2026.3 실무협의 → 2026.4.20 다자간 업무협약 체결 → 2026.7.29 기증식", "location": "울산 해양환경공단 울산지사 · 매암부두 해상", "budget": "재원 규모 비공개(SK에코플랜트 기증)", "partners": "SK에코플랜트(기증재원) · 월드비전(기부금 관리·사업운영) · 해양환경공단(로봇 운용·ESG데이터 관리) · ㈜쉐코(AI 해양정화로봇 공급·기술지원)", "summary": "2026년 4월 20일, SK에코플랜트는 해양환경공단·㈜쉐코·월드비전과 4자 다자간 업무협약을 체결하고 AI 해양정화로봇(무인수상선)을 도입했습니다. 협약에 따라 해양환경공단이 로봇을 월 2회 이상 정기 운용하며 수거량·운영 데이터를 ESG 성과지표로 수집·공유하고, 월드비전은 울산 지역 초등학생 대상 해양환경 교육 프로그램을 기획·운영합니다. 2026년 7월 29일 해양환경공단 울산지사에서 기증식과 해상시연 행사를 개최했습니다.", "stats": [{"n": "4개 기관", "l": "다자간 협력 체계"}, {"n": "월 2회+", "l": "AI 로봇 정기 운용(권장기준)"}, {"n": "2026.12", "l": "협약 유효기간(ESG데이터 제공은 이후 지속)"}], "note": null, "timeline": [{"date": "2026.3.18", "label": "실무자회의", "desc": "ESG추진 다자간 업무협약 관련 실무자회의 — SK에코플랜트(재원)·월드비전(중개)·해양환경공단(수탁·운영) 역할분담 논의"}, {"date": "2026.4.20", "label": "다자간 업무협약 체결", "desc": "SK에코플랜트 The Zero회의실에서 4개 기관 업무협약식 개최, AI 로봇 도입·해양환경교육·ESG데이터 공유 등 협약"}, {"date": "2026.7.29", "label": "AI 해양정화로봇 기증식", "desc": "해양환경공단 울산지사에서 기증식 및 매암부두 해상시연 행사 개최"}], "photos": [["img/cases/ph289.jpg", "2026.4.20 다자간 업무협약식 — 해양환경공단·SK에코플랜트·㈜쉐코·월드비전 4자 협약 체결"], ["img/cases/ph290.jpg", "AI 해양정화로봇(무인수상선) 실물"]]}}, "c5": {"cat": "기후변화대응사업(국내)", "fund": "기금후원", "photo": "img/cases/ph295.jpg"}, "c6": {"cat": "소셜임팩트", "fund": "기금후원", "photo": "img/cases/ph267.jpg"}, "c7": {"cat": "국제-소득증대사업", "fund": "기금후원", "photo": "img/cases/ph307.jpg"}, "c8": {"cat": "긴급구호", "fund": "기금후원", "photo": "img/cases/ph273.jpg"}, "c9": {"cat": "국내-꿈지원사업", "fund": "기금후원", "photo": "img/cases/ph216.jpg"}};
+const CASE_AREAS=[["all","전체"],["dom","국내사업"],["intl","국제개발협력"],["cs","기후·소셜임팩트"],["er","긴급구호"]];
 let partnerArea="all";
 function vPartners(){
   const list=CASES.filter(c=>partnerArea==="all"||caseArea(c).includes(partnerArea));
   const cos=new Set(CASES.map(c=>c.co)).size;
   return `
   <section class="phead2"><div class="wrap">
-    <div class="h-label">PARTNERS</div>
-    <h1>함께하는 기업</h1>
-    <p>월드비전은 다양한 기업과 국내·국제·기후&amp;소셜임팩트·긴급구호 영역에서 장기적 파트너십을 만들어 왔습니다. ${cos}개 기업, ${CASES.length}건의 협력 사례입니다.</p>
+    <div class="h-label">PARTNERSHIP CASES</div>
+    <h1>파트너십 사례</h1>
+    <p class="pc-lead">기업의 자원과 월드비전의 현장 전문성이 만나 만들어낸 변화.</p>
+    <p>국내사업, 국제개발협력, 기후·소셜임팩트, 긴급구호까지. 다양한 기업과 함께 만들어 온 실제 파트너십을 소개합니다.</p>
+    <dl class="pc-count"><div><dd>${cos}<small>개 기업</small></dd></div><div><dd>${CASES.length}<small>건의 협력 사례</small></dd></div></dl>
   </div></section>
-  <div class="wrap" style="padding-block:40px 100px">
+  <div class="wrap" style="padding-block:8px 100px">
     <div class="filterbar2" role="group" aria-label="영역 선택">
-      ${[["all","전체"],...Object.entries(AREAS).map(([k,a])=>[k,a.name])].map(([k,t])=>`<button class="chip" id="pa-${k}" data-parea="${k}" aria-pressed="${partnerArea===k}">${t}<em>${k==="all"?CASES.length:CASES.filter(c=>caseArea(c).includes(k)).length}</em></button>`).join("")}
+      ${CASE_AREAS.map(([k,t])=>`<button class="chip" id="pa-${k}" data-parea="${k}" aria-pressed="${partnerArea===k}">${t}<em>${k==="all"?CASES.length:CASES.filter(c=>caseArea(c).includes(k)).length}</em></button>`).join("")}
     </div>
-    <ol class="plog">${list.map(c=>`
-      <li><div class="co">${c.co}</div>
-        <div class="tx"><span class="ar-l">${caseArea(c).map(a=>AREAS[a].name).join(" · ")}</span><h3>${c.t}</h3><p>${c.d}</p></div>
-        <div class="lk">${c.p.map(id=>`<a href="#p-${id}">${byId[id].t} →</a>`).join("")}</div></li>`).join("")}</ol>
+    <div class="pcards">${list.map(c=>{const x=CASE_X[c.id]||{};return `
+      <article class="pcard">
+        <button class="pc-ph" data-case="${c.id}" aria-label="${esc(c.co)} 상세 사례 보기">${x.photo?`<img src="${x.photo}" alt="" loading="lazy">`:""}</button>
+        <div class="pc-b">
+          <div class="pc-co">${c.co}</div>
+          <div class="pc-cat">${CASE_AREAS.filter(([k])=>caseArea(c).includes(k)).map(([,t])=>t).join(" · ")}${x.cat?`<span>${esc(x.cat)}</span>`:""}</div>
+          <h3>${c.t}</h3>
+          <p>${c.d}</p>
+          <div class="pc-f"><span>${x.fund?esc(x.fund):""}</span><button class="btn sm" data-case="${c.id}">상세 사례 보기 →</button></div>
+        </div>
+      </article>`}).join("")}</div>
     <p class="src">출처: 월드비전 파트너십 페이지 협력 사례 (wvcsr.github.io)</p>
 
     <div class="sec-head" style="margin-top:96px"><div class="label">From the proposal</div><h2>제안서에 소개된<br>협력 현장</h2><p>2026 통합제안서에 실린 기업 협력 현장 사진입니다.</p></div>
@@ -1984,9 +2110,30 @@ function vPartners(){
       <figure><img src="img/eshare.jpg" alt="E-share 전기차 전달" loading="lazy"><figcaption><b>E-share 친환경 EV 패키지</b>전국 사회복지기관 친환경 전기차량 지원 및 공용 충전기 설치 <a href="#p-infra">아동친화인프라조성사업 →</a></figcaption></figure>
       <figure><img src="img/infra.jpg" alt="큰마음 어린이 도서관 개관식" loading="lazy"><figcaption><b>큰마음 어린이 도서관 개관식</b>도서관 건립(리모델링) 지원사업 · 개관식 및 임직원 봉사활동 <a href="#p-infra">아동친화인프라조성사업 →</a></figcaption></figure>
     </div>
-    <div class="memo-inline memo-only"><b>INTERNAL · 확인 필요</b>제안서 사진 속 협력 기업명(도서관 개관식 등)은 사진에만 표시되어 있어 캡션에 기업명을 넣지 않았습니다. 공개 가능 여부 확인 후 추가하세요.</div>
+    <div class="memo-inline memo-only"><b>INTERNAL · 확인 필요</b>기업 로고 파일이 없어 기업명으로 표시했습니다. 공개 가능한 로고 파일을 받으면 카드에 추가합니다. 상세 사례(기간·지역·예산·파트너·추진 경과)는 SK 관련 4건만 원문 자료가 있습니다.</div>
   </div>`;
 }
+function openCase(id){
+  const c=CASES.find(x=>x.id===id); if(!c)return; const x=CASE_X[id]||{}, d=x.detail;
+  const rows=d?[["기간",d.period],["지역",d.location],["사업 규모",d.budget],["협력 파트너",d.partners]].filter(r=>r[1]):[];
+  const areas=CASE_AREAS.filter(([k])=>caseArea(c).includes(k)).map(([,t])=>t).join(" · ");
+  $("#modalBody").innerHTML=`<div class="cs">
+    ${x.photo?`<div class="cs-ph"><img src="${x.photo}" alt=""></div>`:""}
+    <div class="eyebrow">파트너십 사례 · ${areas}</div>
+    <h2>${esc(c.co)} × 월드비전</h2>
+    <p class="cs-t">${esc(d&&d.title?d.title.replace(/^.*?—\s*/,""):c.t)}</p>
+    ${rows.length?`<dl class="cs-meta">${rows.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`:""}
+    <section><h3>협력 개요</h3><p>${esc(d&&d.summary?d.summary:c.d)}</p>${d&&d.summary?`<p class="cs-sum">${esc(c.d)}</p>`:""}</section>
+    ${d&&d.stats&&d.stats.length?`<section><h3>주요 성과</h3><div class="cs-stats">${d.stats.map(t=>`<div><b>${esc(t.n)}</b><span>${esc(t.l)}</span></div>`).join("")}</div>${d.note?`<p class="cs-note">${esc(d.note)}</p>`:""}</section>`:""}
+    ${d&&d.timeline&&d.timeline.length?`<section><h3>추진 경과</h3><ol class="cs-tl">${d.timeline.map(t=>`<li><b>${esc(t.date)}</b><div><strong>${esc(t.label)}</strong><span>${esc(t.desc||"")}</span></div></li>`).join("")}</ol></section>`:""}
+    ${d&&d.photos&&d.photos.filter(p=>p[0]).length?`<section><h3>현장 사진</h3><div class="cs-gal">${d.photos.filter(p=>p[0]).map(([f,cap])=>`<figure><img src="${f}" alt="" loading="lazy"><figcaption>${esc(cap)}</figcaption></figure>`).join("")}</div></section>`:""}
+    <section><h3>연결된 월드비전 사업</h3><div class="cs-p">${c.p.map(pid=>`<a href="#p-${pid}" data-close>${byId[pid].code} · ${byId[pid].t} →</a>`).join("")}</div></section>
+    <p class="src">출처: 월드비전 파트너십 페이지 협력 사례 (wvcsr.github.io)</p>
+  </div>`;
+  modalShow(true);
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-case]");if(b){openCase(b.dataset.case);return}
+  if(e.target.closest("#modalBody [data-close]"))modalHide()});
 
 function card(p){
   const hit=k=>S.f.int.includes(k)?" hit":"";
@@ -2059,9 +2206,9 @@ function vDetail(p){
     ${cs.length?`<p class="subh">기업 협력 사례</p><div class="ccases">${cs.map(c=>`<div class="ccase"><span class="co">${c.co}</span><b>${c.t}</b><span>${c.d}</span></div>`).join("")}</div><p class="src">출처: 월드비전 파트너십 페이지 협력 사례</p>`:`<div class="memo-inline memo-only"><b>INTERNAL</b>이 사업과 연결된 기업 협력 사례 자료가 아직 없습니다. 사례 추가가 필요합니다.</div>`}
     ${p.sdg.length?`<div class="sdgs">${p.sdg.map(s=>`<span>${s}</span>`).join("")}</div>`:""}`]);
   // 08
-  if(p.gallery.length)secs.push(["gallery","사진과 시각 자료",`<div class="gal">${p.gallery.map(([f,c])=>`<figure><button data-img="${f}" data-cap="${esc(c)}" aria-label="${esc(c)} 크게 보기"><img src="img/${f}.jpg" alt="${esc(c)}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`).join("")}</div>`]);
+  if(p.gallery.length)secs.push(["gallery","관련 사진",`<div class="gal">${p.gallery.map(([f,c])=>`<figure><button data-img="${f}" data-cap="${esc(c)}" aria-label="${esc(c)} 크게 보기"><img src="img/${f}.jpg" alt="${esc(c)}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`).join("")}</div>`]);
   // 09
-  secs.push(["discuss","기업과 협의할 수 있는 사항",`<ol class="disc">${p.discuss.map((x,i)=>`<li><span class="lat">0${i+1}</span><span>${x}</span></li>`).join("")}</ol>
+  secs.push(["discuss","함께 만드는 우리 기업만의 협력 모델",`<ol class="disc">${p.discuss.map((x,i)=>`<li><span class="lat">0${i+1}</span><span>${x}</span></li>`).join("")}</ol>
     <div class="memo-inline memo-only"><b>INTERNAL · 확인 필요</b>${p.check.map(x=>`· ${x}`).join("<br>")}</div>`]);
   // 10
   secs.push(["related","관련 사업 및 연계 가능한 협력 방식",`<div class="rel">${p.related.map(id=>byId[id]).map(r=>`<a href="#p-${r.id}"><span class="ph">${imgTag(r)}</span><span><small>${r.code} · ${AREAS[r.area].name}</small><b>${r.t}</b></span></a>`).join("")}</div>
@@ -3064,6 +3211,10 @@ function ideasFor(an){
   return out.slice(0,3);
 }
 
+function subnav(cur){return `<nav class="subnav" aria-label="맞춤형 제안 단계"><div class="wrap">
+  <a href="#test" ${cur==="test"?'aria-current="page"':""}><span>STEP 1</span>맞춤형 파트너십 테스트</a>
+  <a href="#proposal" ${cur==="proposal"?'aria-current="page"':""}><span>STEP 2</span>내 제안 구성 <em>${S.prop.length}</em></a>
+  <a href="#sheet"><span>STEP 3</span>제안 요약 · 출력</a></div></nav>`}
 function vTest(){
   if(!T.started)return `
   <section class="phead2 tstart"><div class="wrap">
@@ -3226,6 +3377,10 @@ function processHTML(){return `
       <p>기업의 목표와 상황에 따라 협력 방식은 달라질 수 있습니다. 아직 구체적인 사업 계획이 없어도 괜찮습니다. 월드비전과 함께 가능한 협력의 방향을 찾아보세요.</p></div>
     <div class="cact"><a class="btn brand" href="${WV_INQUIRY}" target="_blank" rel="noopener">기업 파트너십 상담하기 ↗</a>
       <p>월드비전 공식 홈페이지의 ‘기업후원 문의하기’로 연결됩니다.<br>대표전화 <b>02-2078-7000</b> · 상담시간 (월~금) 09:00 - 18:00</p></div>
+  </div></section>
+  <section class="sec closing"><div class="wrap">
+    <h2>우리 기업과 함께할 수 있는<br><em>변화</em>를 찾아보세요</h2>
+    <div class="act"><a class="btn brand" href="#explore">월드비전 사업소개 보기 →</a><a class="btn" href="#partners">베스트 프랙티스 · 파트너십 사례 보기</a></div>
   </div></section>`}
 
 /* ===== 기업 니즈 기반 맞춤형 협력 제안 (규칙 기반 해석 · 플랫폼 실제 데이터에만 연결) ===== */
@@ -3340,8 +3495,8 @@ function render(){
   else if(h==="partners"){v.innerHTML=vPartners();tab="partners"}
   else if(h==="collab"){v.innerHTML=vCollab();initBuilder();tab="collab"}
   else if(h==="library"){v.innerHTML=vLibrary();layoutShelves();tab="library"}
-  else if(h==="test"){v.innerHTML=vTest();tab="test"}
-  else if(h==="proposal"){v.innerHTML=vProposal();tab="proposal"}
+  else if(h==="test"){v.innerHTML=subnav("test")+vTest();tab="proposal"}
+  else if(h==="proposal"){v.innerHTML=subnav("proposal")+vProposal();tab="proposal"}
   else if(h==="sheet"){v.innerHTML=vSheet();tab="proposal"}
   else if(h.startsWith("p-")&&byId[h.slice(2)]){const p=byId[h.slice(2)];current=p;v.innerHTML=vDetail(p);tab="explore";
     $("#memo").innerHTML=memoHTML(p);document.body.classList.add("has-memo");setupToc()}
