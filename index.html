@@ -1959,6 +1959,8 @@ const STR={
 };
 const caseArea=c=>[...new Set(c.p.map(id=>byId[id].area))];
 
+/* HOME 히어로 자동 전환: 화면을 꽉 채우는 현장 사진만 사용 (흰 배경 스튜디오·제품 사진은 박스처럼 보여 제외) */
+const HERO_SLIDES={dom:[["crisis","crisis"],["meal","meal-vol"],["special","special"],["infra","infra"]],intl:[["health","health"],["water","water"],["edu","edu"],["protect","protect"],["income","income"],["food","foodaid"]]};
 function vHome(){
   const feat=[["dream","국내사업"],["water","국제개발협력"],["volunteer","임직원 참여"]].map(([id,tag])=>Object.assign({},byId[id],{ftag:tag}));
   return `
@@ -1972,7 +1974,7 @@ function vHome(){
           <div class="h-cta"><a class="btn brand" href="#strengths">월드비전의 강점 알아보기 <span aria-hidden="true">→</span></a><a class="btn" href="#test">우리 기업에 맞는 사업 찾기</a></div>
         </div>
         <div class="h-figs">
-          ${[["dom","국내"],["intl","국제"]].map(([ar,lb])=>`<figure class="hslide" aria-label="${lb} 사업 사진" aria-live="off">${P.filter(p=>p.area===ar&&p.img).map((p,i)=>`<a href="#p-${p.id}" class="hs${i===0?" on":""}" ${i?'tabindex="-1" aria-hidden="true"':""}><img src="img/${p.img}.jpg" alt="${p.t} 현장 사진" ${i?'loading="lazy"':""}><figcaption><b>${lb}</b>${p.t}</figcaption></a>`).join("")}<span class="hs-dots" aria-hidden="true">${P.filter(p=>p.area===ar&&p.img).map((p,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</span></figure>`).join("")}
+          ${[["dom","국내"],["intl","국제"]].map(([ar,lb])=>{const sl=HERO_SLIDES[ar].map(([id,img])=>[byId[id],img]);return `<figure class="hslide" aria-label="${lb} 사업 사진" aria-live="off">${sl.map(([p,img],i)=>`<a href="#p-${p.id}" class="hs${i===0?" on":""}" ${i?'tabindex="-1" aria-hidden="true"':""}><img src="img/${img}.jpg" alt="${p.t} 현장 사진" ${i?'loading="lazy"':""}><figcaption><b>${lb}</b>${p.t}</figcaption></a>`).join("")}<span class="hs-dots" aria-hidden="true">${sl.map((x,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</span></figure>`}).join("")}
         </div>
       </div>
     </div>
