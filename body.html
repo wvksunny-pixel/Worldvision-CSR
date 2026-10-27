@@ -1453,6 +1453,10 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 .bg-stats figure{aspect-ratio:1/1}
 @media (max-width:1100px){.bg-stats figure{aspect-ratio:1/1}}
 @media (max-width:760px){.bg-stats figure{aspect-ratio:1/1}}
+/* HOME 수치: 숫자는 월드비전 키컬러 오렌지, 단위(명)는 흰색 */
+.bg-stats dd,.bg-stats dd .cnum{color:var(--brand)}
+.bg-stats dd small{color:#fff}
+.bg-stats dd{text-shadow:0 2px 14px rgba(0,0,0,.25)}
 </style>
 
 <header class="top">
@@ -1958,10 +1962,10 @@ function vHome(){
       <h2 class="bg-tit">아동과 가족, 지역사회가 스스로 일어서도록<br>기업과 함께 <em>지속가능한 변화</em>를 만듭니다</h2>
       <p class="bg-txt">2025년 월드비전과 함께 변화를 경험한 수혜자들</p>
       <dl class="bg-stats">
-        <figure><img src="img/foodaid.jpg" alt="식량지원사업 현장" loading="lazy"><dd data-count="1,096,881">1,096,881<small>명</small></dd><dt>식료품 지원과 영양 지원으로<br>식량위기에 대응한 사람 수</dt></figure>
-        <figure><img src="img/emergency.jpg" alt="긴급구호 물품 지원" loading="lazy"><dd data-count="759,302">759,302<small>명</small></dd><dt>분쟁과 자연재난 속에서<br>긴급구호를 받은 사람 수</dt></figure>
-        <figure><img src="img/meal.jpg" alt="사랑의도시락" loading="lazy"><dd data-count="642,567">642,567<small>명</small></dd><dt>아침·저녁·주말 식사를 지원받은<br>국내 식생활취약아동 사업 수혜자 수</dt></figure>
-        <figure><img src="img/water.jpg" alt="식수시설을 이용하는 아이들" loading="lazy"><dd data-count="579,021">579,021<small>명</small></dd><dt>식수·위생 환경 개선으로<br>질병으로부터 보호받은 사람 수</dt></figure>
+        <figure><img src="img/foodaid.jpg" alt="식량지원사업 현장" loading="lazy"><dd data-count="1,096,881"><span class="cnum">1,096,881</span><small>명</small></dd><dt>식료품 지원과 영양 지원으로<br>식량위기에 대응한 사람 수</dt></figure>
+        <figure><img src="img/emergency.jpg" alt="긴급구호 물품 지원" loading="lazy"><dd data-count="759,302"><span class="cnum">759,302</span><small>명</small></dd><dt>분쟁과 자연재난 속에서<br>긴급구호를 받은 사람 수</dt></figure>
+        <figure><img src="img/meal.jpg" alt="사랑의도시락" loading="lazy"><dd data-count="642,567"><span class="cnum">642,567</span><small>명</small></dd><dt>아침·저녁·주말 식사를 지원받은<br>국내 식생활취약아동 사업 수혜자 수</dt></figure>
+        <figure><img src="img/water.jpg" alt="식수시설을 이용하는 아이들" loading="lazy"><dd data-count="579,021"><span class="cnum">579,021</span><small>명</small></dd><dt>식수·위생 환경 개선으로<br>질병으로부터 보호받은 사람 수</dt></figure>
       </dl>
     </div>
   </section>
@@ -3353,14 +3357,20 @@ let cineT;function startCine(){clearInterval(cineT);const imgs=$$("#cineBg img")
   cineT=setInterval(()=>{if(!document.body.contains(imgs[0])){clearInterval(cineT);return}imgs[i].classList.remove("on");i=(i+1)%imgs.length;imgs[i].classList.add("on");$("#cineCap").textContent=imgs[i].dataset.cap+" 현장"},7000)}
 /* 브랜드 블록 숫자: 화면에 들어올 때 0부터 최종값까지 올라가는 효과 (최종값은 HTML에 그대로 있음) */
 function countUp(){
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   $$("dd[data-count]").forEach(el=>{
     const m=el.dataset.count.match(/^([\d,.]+)(.*)$/);if(!m)return;
     const target=parseFloat(m[1].replace(/,/g,"")),dec=(m[1].split(".")[1]||"").length,suf=m[2],unit=el.querySelector("small")?el.querySelector("small").outerHTML:"",final=el.innerHTML;
-    const fmt=v=>v.toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf+unit;
-    const io=new IntersectionObserver(es=>es.forEach(en=>{if(!en.isIntersecting)return;io.disconnect();
-      const t0=performance.now(),D=1800;const step=now=>{if(!document.body.contains(el))return;const p=Math.min(1,(now-t0)/D),e=1-Math.pow(1-p,3);el.innerHTML=p<1?fmt(target*e):final;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.35});
-    io.observe(el)})
+    const fmt=v=>`<span class="cnum">${v.toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec})}${suf}</span>${unit}`;
+    let done=false;
+    const run=()=>{if(done)return;done=true;io&&io.disconnect();removeEventListener("scroll",chk);
+      el.classList.add("counting");const t0=performance.now(),D=2000;
+      const step=now=>{if(!document.body.contains(el))return;const p=Math.min(1,(now-t0)/D),e=1-Math.pow(1-p,3);el.innerHTML=p<1?fmt(target*e):final;if(p<1)requestAnimationFrame(step);else el.classList.remove("counting")};
+      el.innerHTML=fmt(0);requestAnimationFrame(step)};
+    const chk=()=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*0.9&&r.bottom>0)run()};
+    const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)run()}),{threshold:.35}):null;
+    io&&io.observe(el);addEventListener("scroll",chk,{passive:true});
+  })
 }
 
 /* ===== 참여 프로세스 · 참여 방법 — 기준: worldvision.or.kr 기업후원 소개(참여 프로세스·참여 방법) ===== */
