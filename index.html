@@ -1224,6 +1224,89 @@ body.modal-open{overflow:hidden}
   .need-p>li{grid-template-columns:84px 1fr;gap:12px}
 }
 
+
+/* ================= v7 · typography & readability system =================
+   위계: 메인 카피 > 페이지 제목 > 섹션 제목 > 카드 제목 > 본문(16) > 보조(14.5) > 캡션(13) > 라벨(12.5)
+   규칙: 큰 한글 제목은 행간 1.2~1.3, 자간 -0.04em 이내 / 문단 최대 폭 ~40em / 줄바꿈은 의미 단위(keep-all + balance/pretty) */
+body{font-size:16px;line-height:1.7;overflow-wrap:break-word}
+h1,h2,h3,h4,h5{word-break:keep-all;overflow-wrap:break-word;text-wrap:balance}
+p,li,dd,dt,blockquote,figcaption,td,th,cite,.tdesc{text-wrap:pretty}
+
+/* 큰 제목: 행간·자간 완화 (긴 한글 제목이 여러 줄일 때 답답하지 않도록) */
+.h-title{line-height:1.2;letter-spacing:-.042em}
+.cine h1,.phead2 h1,.dhero h1,.xhead h1,.phead h1{line-height:1.2;letter-spacing:-.04em}
+.sec-head h2,.bg-tit,.closing h2,.consult h2,.band h2,.subhead h3,.ftxt h2,.need-l h2{line-height:1.32;letter-spacing:-.035em}
+.tqh{line-height:1.4;letter-spacing:-.03em}
+.dsec>.h h2,.tsh,.cp-doc h1{line-height:1.35;letter-spacing:-.03em}
+.card h3,.fcard h3,.pp h3,.ar h3,.assets h3,.jstep h3,.jcard h3,.trec-h h3,.plog h3,.need-p h4,.bg-area h3,.effects h3,.trust2 b{line-height:1.4;letter-spacing:-.025em}
+
+/* 문단 폭: 한 줄이 너무 길어지지 않게 */
+.lead,.phead2 p,.h-copy p,.need-l p,.cine p,.consult p,.ftxt p,.tnote,.big{max-width:40em}
+.sec-head p{max-width:32em}
+.dhero .lead{max-width:34em}
+
+/* 라벨·코드·캡션 최소 크기 */
+.label,.h-label{font-size:12.5px;letter-spacing:.14em;line-height:1.5}
+.jen{font-size:12px}
+.builder-badge{font-size:12px}
+.card .code,.fcard .code,.rel small,.pitem small,.need-p small,.trel small,.trec-h small,.plog .ar-l,.case .co,.ccase .co,.dnext a small{font-size:12.5px}
+.card .tags span,.sdgs span,.sdg span,.need-i dd span,.tflag{font-size:12.5px}
+.src,.note,.need-n,.bb-src,.formnote{font-size:13px;line-height:1.65}
+.trel-h small,.need-r h3 small{font-size:12px}
+.cine-cap{font-size:12.5px}
+.noimg span{font-size:12.5px}
+
+/* 보조 본문 최소 14.5px */
+.card p,.fcard p,.pp p,.case span,.ccase span,.mode span,.how span,.ar p,.tdesc,.need-p p,.trel em,.awards span,.effects p,.trust2 p,.jstep p,.jcard .jo,.plog p,.scenes figcaption,.story cite,.tideas p,.bg-stats dt,.bg3-g p,.assets p,.roles2 p,.steps6 span,.lines span,.rlinks a,.jl a{font-size:14.5px;line-height:1.7}
+.card .foot .k{font-size:13px}
+.kstats span,.stats-row span,.fact small,.fnums dt,.bb-nums dt{font-size:13.5px;line-height:1.55}
+.fact span{font-size:15px;line-height:1.55}
+.blist li,.blk ul,.blk ol,.disc li,.ttable td,.dlg-cols ul{font-size:15.5px;line-height:1.75}
+.ttable th{font-size:13.5px}
+.result-summary,.result-reasons li,.cp-node ul,.cp-approach,.cp-role ul{font-size:14.5px}
+.result-flow-mini span{font-size:13px}
+.b-card span{font-size:13.5px}
+.book-title{font-size:15px}
+.book-meta{font-size:13px}
+
+/* 간격: 제목 → 설명 → 콘텐츠 */
+.sec-head{margin-bottom:56px;row-gap:18px}
+.dsec>.c>.big+*{margin-top:28px}
+.blist{margin-top:24px}
+
+/* 숫자·단위가 끊기지 않도록 */
+.fact b,.pill,.badge,.card .foot .k b{white-space:nowrap}
+
+/* 사업 상세 '참여 방법' 행 (모바일에서 제목이 좁은 칸에 갇히던 문제) */
+.how>*{min-width:0}
+@media (max-width:760px){
+  body{font-size:15.5px}
+  .how{grid-template-columns:36px minmax(0,1fr);gap:4px 12px}
+  .how .lat{grid-column:1;grid-row:1}.how b{grid-column:2;grid-row:1}.how span:not(.lat),.how .chip{grid-column:2}
+  .how .chip{justify-self:start}
+  /* 고정 줄바꿈 해제: 좁은 화면에서는 의미 단위 자동 줄바꿈 (메인 슬로건 두 줄은 유지) */
+  .sec-head h2 br,.phead2 h1 br,.closing h2 br,.consult h2 br,.bg-tit br,.band h2 br,.subhead h3 br,.ftxt h2 br,.need-l h2 br,.bg-stats dt br,.xhead h1 br,.phead h1 br,.s-cover h1 br{display:none}
+  .h-title{font-size:clamp(32px,8.8vw,44px);line-height:1.25}
+  .cine h1{font-size:clamp(30px,8.4vw,42px);line-height:1.25}
+  .phead2 h1,.xhead h1,.phead h1,.dhero h1{font-size:clamp(32px,9vw,44px)}
+  .sec-head h2,.bg-tit,.closing h2,.consult h2{font-size:clamp(26px,7vw,34px)}
+  .sec-head{margin-bottom:36px}
+  .dsec{padding-bottom:48px;margin-bottom:48px}
+  /* 요약 시트 표: 3열 → 코드 줄을 제목 아래로 */
+  .s-toc tr{display:grid;grid-template-columns:40px minmax(0,1fr);padding:10px 0;border-bottom:1px solid var(--rule)}
+  .s-toc td{border:0;padding:2px 0}
+  .s-toc td:last-child{grid-column:2;text-align:left}
+  .s-stats div{margin-right:14px;padding-right:0}
+  .tmeta dd{font-size:16px}
+  .need-ex button{font-size:13.5px}
+}
+@media (min-width:761px) and (max-width:1100px){
+  .h-title{font-size:clamp(44px,7vw,72px)}
+  .sec-head p{max-width:40em}
+}
+
+.jen,.builder-badge,.proposal-statement span,.fgroup h3,#builderProgress,.trel-h small,.need-r h3 small,.result-status,.result-new,.b-card span{font-size:12.5px}
+.b-card span{font-size:13.5px}
 </style>
 </head>
 <body>
