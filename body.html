@@ -1432,25 +1432,28 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 @keyframes rline{to{width:36px}}
 @media (prefers-reduced-motion:reduce){.roles2.anim-ready>div{opacity:1;transform:none}}
 /* 기업 로고 */
-.logo{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:56px}
-.logo img{display:block;height:44px;width:auto;max-width:180px;object-fit:contain}
-.logo small{font-size:12.5px;font-weight:700;color:var(--mute)}
-.logo.text{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3}
-.logo.sm{min-height:40px}.logo.sm img{height:32px;max-width:140px}.logo.sm.text{font-size:16px}
+.clogo{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:56px}
+.clogo img{display:block;height:44px;width:auto;max-width:180px;object-fit:contain}
+.clogo small{font-size:12.5px;font-weight:700;color:var(--mute)}
+.clogo.text{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3}
+.clogo.sm{min-height:40px}.clogo.sm img{height:32px;max-width:140px}.clogo.sm.text{font-size:16px}
 .pc-co{padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:4px}
-.case .logo{margin-bottom:6px}
-.ccase .logo{margin-bottom:8px}
+.case .clogo{margin-bottom:6px}
+.ccase .clogo{margin-bottom:8px}
 .cs-logo{display:flex;align-items:center;gap:14px;margin-bottom:10px}
 .cs-logo>span:last-child{font-size:14px;font-weight:800;color:var(--mute);letter-spacing:.04em}
 .hl-head h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:.02em}
 .scenes figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .scenes figcaption b{margin:0}
 .scenes figcaption a{margin:0;white-space:nowrap}
+/* 로고 옆 '기업사회공헌'은 모든 화면에서 표시 */
+.logo span{display:inline-block!important;font-size:14px;font-weight:800;color:var(--navy);border-left:1px solid var(--rule);padding-left:12px;letter-spacing:-.01em}
+@media (max-width:760px){.logo span{font-size:13px;padding-left:10px}}
 </style>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#home" aria-label="홈으로"><img src="img/wv-logo.png" alt="World Vision"><span>월드비전 기업파트너십</span></a>
+    <a class="logo" href="#home" aria-label="홈으로"><img src="img/wv-logo.png" alt="World Vision"><span>기업사회공헌</span></a>
     <nav class="tabs" aria-label="주요 화면">
       <a href="#home" data-tab="home">HOME</a>
       <a href="#test" data-tab="proposal">맞춤형 제안 <span class="badge lat" id="pcount" data-n="0">0</span></a>
@@ -1501,7 +1504,7 @@ const MODES=[
 /* 기업 협력 사례 — 출처: 월드비전 파트너십 페이지 협력 사례 */
 /* 기업 로고 — 출처: 월드비전 홈페이지 함께하는 기업 로고(레퍼런스 페이지 수록본). 로고가 없는 기업은 기업명으로 표시 */
 const LOGOS={"SK하이닉스":["skhynix"],"SK이노베이션":["skinnovation",1],"SK에코플랜트":["skecoplant"],"현대자동차그룹":["hyundai"],"영원무역그룹":["youngone"],"기아":["kia"],"JYP엔터테인먼트":["jyp"]};
-const coLogo=(co,cls="")=>{const l=LOGOS[co];return l?`<span class="logo ${cls}"><img src="img/logos/${l[0]}.png" alt="${esc(co)}">${l[1]?`<small>${esc(co)}</small>`:""}</span>`:`<span class="logo text ${cls}">${esc(co)}</span>`};
+const coLogo=(co,cls="")=>{const l=LOGOS[co];return l?`<span class="clogo ${cls}"><img src="img/logos/${l[0]}.png" alt="${esc(co)}">${l[1]?`<small>${esc(co)}</small>`:""}</span>`:`<span class="clogo text ${cls}">${esc(co)}</span>`};
 const CASES=[
  {id:"c1",co:"SK하이닉스",t:"청주 도심 '도시숲' 조성사업 착공",d:"청주시 SK로 일대 도시숲 조성, 총사업비 58.6억원(느티나무 등 교목·관목 약 8.5만주 식재, 미세먼지·열섬현상 저감).",p:["climate"]},
  {id:"c2",co:"SK이노베이션",t:"9년째 'SK 1% 행복나눔' 꿈지원·치료비 지원",d:"울산·경남 지역 누적 후원금 39.7억원(2018~2026), 난치병 아동 365명·꿈지원 청소년 206명 지원.",p:["dream"]},
