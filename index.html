@@ -1436,6 +1436,17 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 .roles2.anim-ready.in>div:nth-child(3) h3:after{animation-delay:.8s}
 @keyframes rline{to{width:36px}}
 @media (prefers-reduced-motion:reduce){.roles2.anim-ready>div{opacity:1;transform:none}}
+/* 기업 로고 */
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-height:56px}
+.logo img{display:block;height:44px;width:auto;max-width:180px;object-fit:contain}
+.logo small{font-size:12.5px;font-weight:700;color:var(--mute)}
+.logo.text{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3}
+.logo.sm{min-height:40px}.logo.sm img{height:32px;max-width:140px}.logo.sm.text{font-size:16px}
+.pc-co{padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+.case .logo{margin-bottom:6px}
+.ccase .logo{margin-bottom:8px}
+.cs-logo{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.cs-logo>span:last-child{font-size:14px;font-weight:800;color:var(--mute);letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -1491,6 +1502,9 @@ const MODES=[
  {k:"long",t:"장기적 사회공헌 파트너십",d:"장기 지원 구조이거나 장기 협력 사례가 있는 사업입니다."}
 ];
 /* 기업 협력 사례 — 출처: 월드비전 파트너십 페이지 협력 사례 */
+/* 기업 로고 — 출처: 월드비전 홈페이지 함께하는 기업 로고(레퍼런스 페이지 수록본). 로고가 없는 기업은 기업명으로 표시 */
+const LOGOS={"SK하이닉스":["skhynix"],"SK이노베이션":["skinnovation",1],"SK에코플랜트":["skecoplant"],"현대자동차그룹":["hyundai"],"영원무역그룹":["youngone"],"기아":["kia"],"JYP엔터테인먼트":["jyp"]};
+const coLogo=(co,cls="")=>{const l=LOGOS[co];return l?`<span class="logo ${cls}"><img src="img/logos/${l[0]}.png" alt="${esc(co)}">${l[1]?`<small>${esc(co)}</small>`:""}</span>`:`<span class="logo text ${cls}">${esc(co)}</span>`};
 const CASES=[
  {id:"c1",co:"SK하이닉스",t:"청주 도심 '도시숲' 조성사업 착공",d:"청주시 SK로 일대 도시숲 조성, 총사업비 58.6억원(느티나무 등 교목·관목 약 8.5만주 식재, 미세먼지·열섬현상 저감).",p:["climate"]},
  {id:"c2",co:"SK이노베이션",t:"9년째 'SK 1% 행복나눔' 꿈지원·치료비 지원",d:"울산·경남 지역 누적 후원금 39.7억원(2018~2026), 난치병 아동 365명·꿈지원 청소년 206명 지원.",p:["dream"]},
@@ -1992,7 +2006,7 @@ function vHome(){
     <div class="wrap">
       <div class="sec-head"><div class="label">Partners</div><h2>이미 검증된 협력</h2><p>월드비전과 기업이 함께 만든 협력 사례 가운데 일부입니다.</p></div>
       <div class="cases">${CASES.slice(0,3).map(c=>`
-        <a class="case" href="#p-${c.p[0]}"><span class="co">${c.co}</span><b>${c.t}</b><span>${c.d}</span><span class="pg">→ ${c.p.map(id=>byId[id].t).join(" · ")}</span></a>`).join("")}</div>
+        <a class="case" href="#p-${c.p[0]}">${coLogo(c.co,"sm")}<b>${c.t}</b><span>${c.d}</span><span class="pg">→ ${c.p.map(id=>byId[id].t).join(" · ")}</span></a>`).join("")}</div>
       <p style="margin-top:28px"><a class="btn" href="#partners">파트너십 사례 전체 보기 (${CASES.length}건) →</a></p>
     </div>
   </section>
@@ -2108,7 +2122,7 @@ function vPartners(){
       <article class="pcard">
         <button class="pc-ph" data-case="${c.id}" aria-label="${esc(c.co)} 상세 사례 보기">${x.photo?`<img src="${x.photo}" alt="" loading="lazy">`:""}</button>
         <div class="pc-b">
-          <div class="pc-co">${c.co}</div>
+          <div class="pc-co">${coLogo(c.co)}</div>
           <div class="pc-cat">${CASE_AREAS.filter(([k])=>caseArea(c).includes(k)).map(([,t])=>t).join(" · ")}${x.cat?`<span>${esc(x.cat)}</span>`:""}</div>
           <h3>${c.t}</h3>
           <p>${c.d}</p>
@@ -2133,6 +2147,7 @@ function openCase(id){
   $("#modalBody").innerHTML=`<div class="cs">
     ${x.photo?`<div class="cs-ph"><img src="${x.photo}" alt=""></div>`:""}
     <div class="eyebrow">파트너십 사례 · ${areas}</div>
+    <div class="cs-logo">${coLogo(c.co)}<span>× World Vision</span></div>
     <h2>${esc(c.co)} × 월드비전</h2>
     <p class="cs-t">${esc(d&&d.title?d.title.replace(/^.*?—\s*/,""):c.t)}</p>
     ${rows.length?`<dl class="cs-meta">${rows.map(([k,v])=>`<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`:""}
@@ -2216,7 +2231,7 @@ function vDetail(p){
   secs.push(["results","실제 운영 사례 및 주요 성과",`
     <div class="stats-row">${st.map(([v,l])=>`<div><b class="lat">${v}</b><span>${l}</span></div>`).join("")}</div>
     <p class="src" style="margin-top:-18px;margin-bottom:24px">* 2025년도 사업기준</p>
-    ${cs.length?`<p class="subh">기업 협력 사례</p><div class="ccases">${cs.map(c=>`<div class="ccase"><span class="co">${c.co}</span><b>${c.t}</b><span>${c.d}</span></div>`).join("")}</div><p class="src">출처: 월드비전 파트너십 페이지 협력 사례</p>`:`<div class="memo-inline memo-only"><b>INTERNAL</b>이 사업과 연결된 기업 협력 사례 자료가 아직 없습니다. 사례 추가가 필요합니다.</div>`}
+    ${cs.length?`<p class="subh">기업 협력 사례</p><div class="ccases">${cs.map(c=>`<div class="ccase">${coLogo(c.co,"sm")}<b>${c.t}</b><span>${c.d}</span></div>`).join("")}</div><p class="src">출처: 월드비전 파트너십 페이지 협력 사례</p>`:`<div class="memo-inline memo-only"><b>INTERNAL</b>이 사업과 연결된 기업 협력 사례 자료가 아직 없습니다. 사례 추가가 필요합니다.</div>`}
     ${p.sdg.length?`<div class="sdgs">${p.sdg.map(s=>`<span>${s}</span>`).join("")}</div>`:""}`]);
   // 08
   if(p.gallery.length)secs.push(["gallery","관련 사진",`<div class="gal">${p.gallery.map(([f,c])=>`<figure><button data-img="${f}" data-cap="${esc(c)}" aria-label="${esc(c)} 크게 보기"><img src="img/${f}.jpg" alt="${esc(c)}" loading="lazy"></button><figcaption>${c}</figcaption></figure>`).join("")}</div>`]);
@@ -3482,7 +3497,7 @@ function needResult(r){
       <div class="need-all"><button class="btn sm solid" id="needAddAll">추천 사업 모두 맞춤형 제안에 담기</button><button class="btn sm" id="needFilter">이 해석으로 사업 목록 필터링</button></div>`
      :r.impact?`<div class="tnone"><b>성과 측정과 임팩트 보고는 특정 사업이 아니라 모든 협력에 적용되는 방식입니다.</b><p>측정하고 싶은 사업 분야(예: 아동·교육, 환경, 해외 식수)를 함께 적어 주시면 관련 사업을 추천합니다. 진행 중인 사회공헌 사업의 성과 체계는 <a href="#strengths" data-scroll="consult">상담</a>을 통해 함께 검토할 수 있습니다.</p></div>`
      :`<div class="tnone"><b>입력하신 내용과 바로 연결되는 사업을 찾지 못했습니다.</b><p>관심 있는 사회문제나 대상을 조금 더 구체적으로 적어 주시거나, <a href="#test">맞춤형 파트너십 테스트</a>를 이용하거나, 상담을 통해 방향을 함께 찾아보세요.</p></div>`}
-    ${r.cs.length?`<h3>유사한 기업 파트너십</h3><div class="ccases">${r.cs.map(c=>`<div class="ccase"><span class="co">${c.co}</span><b>${c.t}</b><span>${c.d}</span></div>`).join("")}</div><p class="src">출처: 월드비전 파트너십 페이지 협력 사례</p>`:""}
+    ${r.cs.length?`<h3>유사한 기업 파트너십</h3><div class="ccases">${r.cs.map(c=>`<div class="ccase">${coLogo(c.co,"sm")}<b>${c.t}</b><span>${c.d}</span></div>`).join("")}</div><p class="src">출처: 월드비전 파트너십 페이지 협력 사례</p>`:""}
     <p class="need-n">이 제안은 입력하신 문장의 키워드를 플랫폼에 수록된 실제 사업·협력 사례와 대조해 만든 초안입니다. 세부 내용은 상담을 통해 구체화합니다.</p>
   </div>`;
 }
