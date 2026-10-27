@@ -1471,6 +1471,13 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 .hslide:hover .hs.on img{transform:scale(1.1)}
 @media (prefers-reduced-motion:reduce){.hs,.hs img{transition:none}.hs.on img{transform:none}}
 .more-row{margin-top:40px;display:flex;justify-content:center}
+/* 대표 사업: 국내 · 국제 · 참여 3개를 같은 크기로 나란히 */
+.feat{grid-template-columns:repeat(3,minmax(0,1fr))}
+.feat .fcard,.feat .fcard:first-child,.feat .fcard:not(:first-child){grid-column:auto}
+.feat .fcard .ph,.feat .fcard:first-child .ph{aspect-ratio:4/3;position:relative}
+.feat .fcard h3,.feat .fcard:first-child h3{font-size:clamp(20px,1.9vw,26px)}
+.ftag{position:absolute;left:14px;top:14px;background:var(--brand);color:#fff;font-size:13px;font-weight:800;padding:5px 11px;letter-spacing:-.01em}
+@media (max-width:760px){.feat{grid-template-columns:1fr}}
 </style>
 
 <header class="top">
@@ -1946,7 +1953,7 @@ const STR={
 const caseArea=c=>[...new Set(c.p.map(id=>byId[id].area))];
 
 function vHome(){
-  const feat=["dream","climate","meal"].map(id=>byId[id]);
+  const feat=[["dream","국내사업"],["water","국제개발협력"],["volunteer","임직원 참여"]].map(([id,tag])=>Object.assign({},byId[id],{ftag:tag}));
   return `
   <section class="h2o">
     <div class="wrap">
@@ -2017,7 +2024,7 @@ function vHome(){
     <div class="wrap">
       <div class="sec-head"><div class="label">Featured programs</div><h2>대표 사업</h2></div>
       <div class="feat">${feat.map(p=>`
-        <article class="fcard"><a class="ph" href="#p-${p.id}">${imgTag(p,p.t)}</a>
+        <article class="fcard"><a class="ph" href="#p-${p.id}">${imgTag(p,p.t)}<span class="ftag">${p.ftag}</span></a>
           <div class="code">${p.code} · ${AREAS[p.area].name}</div><h3><a href="#p-${p.id}">${p.t}</a></h3><p>${p.lead}</p>
           <div>${addBtn(p.id)}</div></article>`).join("")}</div>
       <p class="more-row"><a class="btn" href="#explore">사업 더보기 (${P.length}개) →</a></p>
