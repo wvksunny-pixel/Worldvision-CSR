@@ -1470,6 +1470,7 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 .hslide .hs-dots i.on{background:#fff;width:16px;border-radius:3px}
 .hslide:hover .hs.on img{transform:scale(1.1)}
 @media (prefers-reduced-motion:reduce){.hs,.hs img{transition:none}.hs.on img{transform:none}}
+.more-row{margin-top:40px;display:flex;justify-content:center}
 </style>
 
 <header class="top">
@@ -2019,6 +2020,7 @@ function vHome(){
         <article class="fcard"><a class="ph" href="#p-${p.id}">${imgTag(p,p.t)}</a>
           <div class="code">${p.code} · ${AREAS[p.area].name}</div><h3><a href="#p-${p.id}">${p.t}</a></h3><p>${p.lead}</p>
           <div>${addBtn(p.id)}</div></article>`).join("")}</div>
+      <p class="more-row"><a class="btn" href="#explore">사업 더보기 (${P.length}개) →</a></p>
     </div>
   </section>
 
