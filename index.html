@@ -1423,6 +1423,19 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
   .subnav a{padding:14px 0;margin-right:20px;font-size:14px}
 }
 
+/* 협력주체별 역할: 스크롤로 들어올 때 차례로 떠오르는 효과 + 호버 (기본 상태는 항상 보임, 동작 줄이기 시 미적용) */
+.roles2>div{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.roles2>div:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(17,26,38,.10);border-color:var(--brand)}
+.roles2.anim-ready>div{opacity:0;transform:translateY(28px)}
+.roles2.anim-ready.in>div{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.roles2.anim-ready.in>div:nth-child(2){transition-delay:.15s}
+.roles2.anim-ready.in>div:nth-child(3){transition-delay:.3s}
+.roles2>div h3{position:relative}
+.roles2.anim-ready.in>div h3:after{content:"";display:block;height:2px;background:var(--brand);margin-top:10px;width:0;animation:rline .8s .5s ease forwards}
+.roles2.anim-ready.in>div:nth-child(2) h3:after{animation-delay:.65s}
+.roles2.anim-ready.in>div:nth-child(3) h3:after{animation-delay:.8s}
+@keyframes rline{to{width:36px}}
+@media (prefers-reduced-motion:reduce){.roles2.anim-ready>div{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -3484,6 +3497,14 @@ document.addEventListener("submit",e=>{if(e.target.id==="needForm"){e.preventDef
 document.addEventListener("input",e=>{if(e.target.id==="needText"){NEED.text=e.target.value;save("wvp-need",NEED)}});
 document.addEventListener("click",e=>{const b=e.target.closest(".jmore");if(!b)return;const l=$("#"+b.getAttribute("aria-controls"));const o=l.hidden;l.hidden=!o;b.setAttribute("aria-expanded",String(o));b.querySelector("span").textContent=o?"−":"+"});
 
+function revealRoles(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches||!("IntersectionObserver" in window))return;
+  $$(".roles2").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight*0.9)return;el.classList.add("anim-ready");
+    const show=()=>{el.classList.add("in");io.disconnect();removeEventListener("scroll",chk)};
+    const chk=()=>{if(el.getBoundingClientRect().top<innerHeight*0.85)show()};
+    const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)show()}),{threshold:.25});io.observe(el);
+    addEventListener("scroll",chk,{passive:true});setTimeout(show,6000)})
+}
 /* ---------- router ---------- */
 let current=null;
 function render(){
@@ -3491,7 +3512,7 @@ function render(){
   const v=$("#view"); let tab="home"; current=null;
   document.body.classList.remove("has-memo");
   if(h==="explore"){v.innerHTML=vExplore();renderExplore();tab="explore"}
-  else if(h==="strengths"){v.innerHTML=vStrengths();tab="strengths";startCine()}
+  else if(h==="strengths"){v.innerHTML=vStrengths();tab="strengths";startCine();revealRoles()}
   else if(h==="partners"){v.innerHTML=vPartners();tab="partners"}
   else if(h==="collab"){v.innerHTML=vCollab();initBuilder();tab="collab"}
   else if(h==="library"){v.innerHTML=vLibrary();layoutShelves();tab="library"}
