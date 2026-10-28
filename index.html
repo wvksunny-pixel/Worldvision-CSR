@@ -1924,6 +1924,7 @@ body{font-size:17px;color:var(--ink);background:#fff}
 .h-copy p.h-lead{max-width:none}
 @media (min-width:901px){.h-title{font-size:clamp(36px,4.5vw,64px)!important}.h-title .hl{white-space:nowrap}}
 @media (max-width:900px){.h-lead .d-br{display:none}}
+@media (min-width:901px){.lay-left .ar-ph,.lay-right .ar-ph{position:sticky;top:96px}}
 </style>
 </head>
 <body>
@@ -2408,7 +2409,7 @@ const HERO_SLIDES={dom:[["crisis","crisis"],["meal","meal-vol"],["special","spec
 /* ===================== v9 · HOME 허브 (사용자 여정: 관심 → 협력 범위 → 사례 → 전문성 → 분야 → 진행 방식 → 다음 단계) ===================== */
 const secLabel=(n,en)=>`<div class="slabel"><span class="sidx">${n}</span><span class="sen">${en}</span></div>`;
 const FEATURED_CASE="c1";
-const AREA_VIS={dom:{img:"meal-vol",lay:"left"},intl:{img:"water",lay:"right"},cs:{img:"greenroad",lay:"wide"},er:{img:"emergency",lay:"compact"}};
+const AREA_VIS={dom:{img:"meal-vol",lay:"left"},intl:{img:"water",lay:"right"},cs:{img:"greenroad",lay:"left"},er:{img:"emergency",lay:"compact"}};
 function vHome(){
   const sl=HERO_SLIDES;
   const fc=CASES.find(c=>c.id===FEATURED_CASE), fx=CASE_X[fc.id]||{}, fd=fx.detail||{};
