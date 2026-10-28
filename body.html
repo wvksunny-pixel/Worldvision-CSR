@@ -1793,10 +1793,10 @@ body{font-size:17px;color:var(--ink);background:#fff}
 @keyframes emline{to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.h-title em.flow-em{animation:none;-webkit-text-fill-color:var(--brand);background:none}.h-title em.flow-em:after{animation:none;transform:scaleX(1)}}
 /* 영역별 사업 안내: 국내 · 국제 · 기후&소셜임팩트 3개 링크 */
-.guide3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(72px,9vw,112px);background:var(--stone)}
+.guide3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 clamp(56px,7vw,88px);background:#fff;border:1px solid var(--rule)}
 .guide3 a{display:flex;flex-direction:column;gap:10px;padding:36px 32px 32px;color:var(--ink);transition:background .2s}
 .guide3 a+a{border-left:1px solid var(--rule)}
-.guide3 a:hover{background:#efebe3}
+.guide3 a:hover{background:#fbf9f5}
 .guide3 h3{font-size:21px;font-weight:700;letter-spacing:-.02em}
 .guide3 p{font-size:15px;color:var(--mute);line-height:1.7;flex:1}
 .guide3 .tlink{align-self:flex-start;font-size:14.5px}
@@ -2472,8 +2472,8 @@ function vHome(){
   <section class="hs-sec ivory" id="areas" aria-labelledby="areasH">
     <div class="wrap">
       <div class="sec-head">${secLabel("05","Areas of Collaboration")}<h2 id="areasH">관심 있는 분야부터<br>살펴보세요</h2><p>영역별 사업과 실제 협력 사례를 함께 확인하고, 사업을 누르면 상세 내용으로 이동합니다.</p></div>
-      <div class="areas3">${Object.entries(AREAS).map(areaBlock).join("")}</div>
       <div class="guide3" aria-label="영역별 사업 안내">${[["dom","국내사업 안내"],["intl","국제사업 안내"],["cs","기후&amp;소셜임팩트 사업 안내"]].map(([k,t])=>`<a href="#explore" data-go-area="${k}"><span class="sidx">${AREAS[k].rn}</span><h3>${t}</h3><p>${AREAS[k].desc}</p><span class="tlink">${P.filter(p=>p.area===k).length}개 사업 보기 →</span></a>`).join("")}</div>
+      <div class="areas3">${Object.entries(AREAS).map(areaBlock).join("")}</div>
     </div>
   </section>
 
