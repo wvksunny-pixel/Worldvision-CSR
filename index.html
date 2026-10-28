@@ -1925,7 +1925,6 @@ body{font-size:17px;color:var(--ink);background:#fff}
 .h-copy p.h-lead{max-width:none}
 @media (min-width:901px){.h-title{font-size:clamp(36px,4.5vw,64px)!important}.h-title .hl{white-space:nowrap}}
 @media (max-width:900px){.h-lead .d-br{display:none}}
-@media (min-width:901px){.lay-left .ar-ph,.lay-right .ar-ph{position:sticky;top:96px}}
 .why-pts li,.why-pts li:first-child{border-top:0;border-bottom:1px solid var(--rule)}
 .why-l .ev-h{margin:0}
 .ev-h{margin:0}
@@ -1944,6 +1943,17 @@ body{font-size:17px;color:var(--ink);background:#fff}
 .hslide,.st-ph,.ar-ph,.gal button,.cp-photo-frame,.ph{border-radius:14px;overflow:hidden}
 .st-ph img,.ar-ph img,.hslide img,.cs-gal img,.lightbox img{border-radius:14px}
 .ph{border-radius:10px}
+.ar-rn{display:inline-block;font-size:40px;margin-right:14px;vertical-align:baseline}
+.ar-tx h3{display:inline-block;vertical-align:baseline;margin:0 0 14px}
+.ar-tx .ar-d{display:block}
+@media (min-width:901px){
+  .lay-left{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+  .lay-right{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}
+  .area-b{align-items:stretch}
+  .area-b .ar-ph{aspect-ratio:auto;min-height:420px;position:relative}
+  .area-b .ar-ph img{position:absolute;inset:0}
+}
+@media (min-width:1200px){.ar-tx .ar-d{white-space:nowrap;max-width:none;font-size:16px}}
 </style>
 </head>
 <body>
@@ -2428,7 +2438,7 @@ const HERO_SLIDES={dom:[["crisis","crisis"],["meal","meal-vol"],["special","spec
 /* ===================== v9 · HOME 허브 (사용자 여정: 관심 → 협력 범위 → 사례 → 전문성 → 분야 → 진행 방식 → 다음 단계) ===================== */
 const secLabel=(n,en)=>`<div class="slabel"><span class="sidx">${n}</span><span class="sen">${en}</span></div>`;
 const FEATURED_CASE="c1";
-const AREA_VIS={dom:{img:"meal-vol",lay:"left"},intl:{img:"water",lay:"right"},cs:{img:"greenroad",lay:"left"},er:{img:"emergency",lay:"compact"}};
+const AREA_VIS={dom:{img:"meal",lay:"left"},intl:{img:"edu",lay:"right"},cs:{img:"social",lay:"left"},er:{img:"emergency",lay:"compact"}};
 function vHome(){
   const sl=HERO_SLIDES;
   const fc=CASES.find(c=>c.id===FEATURED_CASE), fx=CASE_X[fc.id]||{}, fd=fx.detail||{};
