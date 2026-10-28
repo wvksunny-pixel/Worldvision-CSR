@@ -1926,6 +1926,20 @@ body{font-size:17px;color:var(--ink);background:#fff}
 @media (min-width:901px){.h-title{font-size:clamp(36px,4.5vw,64px)!important}.h-title .hl{white-space:nowrap}}
 @media (max-width:900px){.h-lead .d-br{display:none}}
 @media (min-width:901px){.lay-left .ar-ph,.lay-right .ar-ph{position:sticky;top:96px}}
+.why-pts li,.why-pts li:first-child{border-top:0;border-bottom:1px solid var(--rule)}
+.why-l .ev-h{margin:0}
+.ev-h{margin:0}
+@media (min-width:901px){
+  .why2{grid-template-rows:auto repeat(4,auto) auto;row-gap:0}
+  .why-l,.why-ev{display:grid;grid-row:1/span 6;grid-template-rows:subgrid}
+  .why-l .ev-h,.why-ev .ev-h{grid-row:1}
+  .why-pts,.ev-nums{grid-row:2/span 4;display:grid;grid-template-rows:subgrid}
+  .why-pts li{align-content:start}
+  .ev-nums{grid-template-columns:1fr}
+  .ev-nums div,.ev-nums div:nth-child(even){padding:26px 0;border-left:0;display:flex;align-items:baseline;gap:20px;justify-content:space-between}
+  .ev-nums dt{margin-top:0;order:-1}
+  .why-ev .sec-more{grid-row:6}
+}
 </style>
 </head>
 <body>
@@ -2474,7 +2488,7 @@ function vHome(){
     <div class="wrap">
       <div class="sec-head">${secLabel("03","Why World Vision")}<h2 id="whyH">사례 뒤에 있는<br>75년의 현장 실행력</h2><p>앞의 협력은 월드비전이 국내외 현장에서 쌓아온 네트워크와 사업 전문성 위에서 실행되었습니다.</p></div>
       <div class="why2">
-        <ol class="why-pts">${STR.assets.slice(0,4).map(([t,d],i)=>`<li><span class="sidx">${String(i+1).padStart(2,"0")}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join("")}</ol>
+        <div class="why-l"><p class="ev-h">기업 파트너십을 위한 월드비전의 역량</p><ol class="why-pts">${STR.assets.slice(0,4).map(([t,d],i)=>`<li><span class="sidx">${String(i+1).padStart(2,"0")}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join("")}</ol></div>
         <div class="why-ev">
           <p class="ev-h">2025년 월드비전과 함께 변화를 경험한 수혜자들</p>
           <dl class="ev-nums">
