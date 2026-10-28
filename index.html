@@ -1792,11 +1792,12 @@ body{font-size:17px;color:var(--ink);background:#fff}
 
 .cs-next{margin-top:24px}
 /* HOME 메인 카피 '지속가능한 변화': 빛이 흐르며 강조 + 밑줄이 그어지는 효과 (끝나면 선명한 오렌지로 고정) */
-.h-title em.flow-em{position:relative;display:inline-block;color:var(--brand);background-image:linear-gradient(100deg,var(--brand) 0%,var(--brand) 38%,#ffc49a 50%,var(--brand) 62%,var(--brand) 100%);background-size:260% 100%;background-position:100% 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:emflow 8s cubic-bezier(.45,.05,.25,1) .5s 1 both}
-.h-title em.flow-em:after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.09em;background:var(--brand);transform:scaleX(0);transform-origin:left;animation:emline 1.2s cubic-bezier(.6,.1,.2,1) 1.1s forwards;opacity:.85}
-@keyframes emflow{0%{background-position:100% 0}32%{background-position:0% 0}62%{background-position:0% 0}62.01%{background-position:100% 0}94%,100%{background-position:0% 0}}
+.h-title em.flow-em{display:inline-block;color:var(--brand);font-style:normal}
+.h-title em.flow-em>span{display:inline-block;animation:emspark 4.8s ease-in-out calc(.6s + var(--i)*.085s) infinite}
+@keyframes emspark{0%,16%,100%{color:var(--brand);text-shadow:none;transform:none}7%{color:#ffc79c;text-shadow:0 0 .32em rgba(245,100,0,.55),0 0 .08em #fff;transform:translateY(-.045em)}}
+
 @keyframes emline{to{transform:scaleX(1)}}
-@media (prefers-reduced-motion:reduce){.h-title em.flow-em{animation:none;-webkit-text-fill-color:var(--brand);background:none}.h-title em.flow-em:after{animation:none;transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.h-title em.flow-em>span{animation:none}}
 /* 영역별 사업 안내: 국내 · 국제 · 기후&소셜임팩트 3개 링크 */
 .guide3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 clamp(56px,7vw,88px);background:#fff;border:1px solid var(--rule)}
 .guide3 a{display:flex;flex-direction:column;gap:10px;padding:36px 32px 32px;color:var(--ink);transition:background .2s}
@@ -2413,7 +2414,7 @@ function vHome(){
     <div class="wrap h-grid">
       <div class="h-copy">
         <div class="h-label">WORLD VISION KOREA · CORPORATE PARTNERSHIP</div>
-        <h1 class="h-title">기업의 사회적 가치가<br><em class="flow-em">지속가능한 변화</em>로 이어지도록.</h1>
+        <h1 class="h-title">기업의 사회적 가치가<br><em class="flow-em" aria-label="지속가능한 변화">${[..."지속가능한 변화"].map((c,i)=>`<span aria-hidden="true" style="--i:${i}">${c===" "?"&nbsp;":c}</span>`).join("")}</em>로 이어지도록.</h1>
         <p>기업이 가진 자원과 전문성, 임직원의 참여를 아동과 지역사회의 필요에 연결합니다. 국내외 현장에 대한 이해와 사업 실행 경험을 바탕으로, 기업의 사회공헌이 일회성 지원을 넘어 지속가능한 변화로 이어지도록 함께합니다.</p>
         <div class="h-cta"><a class="btn brand" href="#explore">협력 분야 살펴보기 <span aria-hidden="true">→</span></a><a class="tlink" href="#test">맞춤형 협력 방향 찾기</a></div>
       </div>
