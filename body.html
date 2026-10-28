@@ -2429,7 +2429,7 @@ function vHome(){
 
   <section class="hs-sec ivory" id="glance" aria-labelledby="glanceH">
     <div class="wrap">
-      <div class="sec-head">${secLabel("01","Partnership at a Glance")}<h2 id="glanceH">기업과 함께할 수 있는<br>협력의 범위</h2><p>아동과 지역사회의 필요에 맞춘 4개 영역의 사업에, 기업은 기금·공익 연계 마케팅·임직원 참여·물품 후원의 방식으로 함께할 수 있습니다.</p></div>
+      <div class="sec-head">${secLabel("01","Partnership at a Glance")}<h2 id="glanceH">기업과 함께할 수 있는<br>협력</h2><p>아동과 지역사회의 필요에 맞춘 4개 영역의 사업에, 기업은 기금·공익 연계 마케팅·임직원 참여·물품 후원의 방식으로 함께할 수 있습니다.</p></div>
       <div class="glance">
         <div class="gl-col"><h3 class="gl-h">협력 분야</h3>
           <ol class="gl-areas">${Object.entries(AREAS).map(([k,a])=>`<li><a href="#area-${k}" data-scroll="area-${k}"><span class="gl-rn">${a.rn}</span><span class="gl-n">${a.name}</span><span class="gl-c">${P.filter(p=>p.area===k).length}개 사업</span><span class="gl-d">${a.desc}</span></a></li>`).join("")}</ol></div>
