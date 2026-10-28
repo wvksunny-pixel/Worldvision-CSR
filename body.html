@@ -1907,6 +1907,14 @@ body{font-size:17px;color:var(--ink);background:#fff}
   .wm-tabs button{padding:12px 14px 11px;font-size:15px}
   .wm-list{max-height:none;padding:16px 18px}
 }
+.wm-net{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:8px 0 0;border-top:1px solid var(--ink)}
+.wm-net>div{padding:22px 20px 20px 0}
+.wm-net>div+div{padding-left:20px;border-left:1px solid var(--rule)}
+.wm-net dd{margin:0;font-size:clamp(26px,3vw,36px);font-weight:800;color:var(--brand);letter-spacing:-.02em;line-height:1.1}
+.wm-net dt{font-weight:700;font-size:15px;margin-top:8px}
+.wm-net p{margin:4px 0 0;font-size:13.5px;color:var(--mute);line-height:1.55}
+.wm-net-src{margin:4px 0 36px}
+@media (max-width:900px){.wm-net{grid-template-columns:1fr 1fr}.wm-net>div:nth-child(3){padding-left:0;border-left:0}.wm-net>div:nth-child(n+3){border-top:1px solid var(--rule)}}
 </style>
 
 <header class="top">
@@ -2549,7 +2557,7 @@ function vStrengths(){
     <p>변화를 만드는 다양한 생각과 시도가 있습니다.<br>월드비전은 현장에서 변화를 만들고,<br>실질적인 성과로 증명합니다.</p>
   </div></section>
   <nav class="anav" aria-label="월드비전 기업파트너십 바로가기"><div class="wrap">
-    <a href="#s-assets" data-scroll="s-assets">핵심 역량</a><a href="#s-trust" data-scroll="s-trust">신뢰도</a><a href="#s-effects" data-scroll="s-effects">기대 효과</a><a href="#process" data-scroll="process">참여 프로세스</a><a href="#s-join" data-scroll="s-join">참여 방법</a><a href="#consult" data-scroll="consult">상담</a>
+    <a href="#s-assets" data-scroll="s-assets">핵심 역량</a><a href="#s-where" data-scroll="s-where">사업 현장</a><a href="#s-trust" data-scroll="s-trust">신뢰도</a><a href="#s-effects" data-scroll="s-effects">기대 효과</a><a href="#process" data-scroll="process">참여 프로세스</a><a href="#s-join" data-scroll="s-join">참여 방법</a><a href="#consult" data-scroll="consult">상담</a>
   </div></nav>
 
   <section class="brandband" aria-label="월드비전 네트워크">
@@ -2567,6 +2575,8 @@ function vStrengths(){
       <div class="rel-cases"><h3>이 역량으로 실행한 파트너십</h3>${["c1","c3","c7"].map(id=>{const c=CASES.find(x=>x.id===id);return `<button data-case="${c.id}">${coLogo(c.co,"sm")}<b>${c.t}</b></button>`}).join("")}</div>
     </div>
   </section>
+
+  ${mapSection({str:1})}
 
   <section class="sec feature wideband" id="s-climate">
     <div class="wrap fgrid">
@@ -4062,10 +4072,15 @@ function sweepHL(){
 const WM={tab:"world",cont:null,region:null,sel:null,pick:null,list:false,vb:null};
 const wmOK=()=>!!(window.WV_SITES&&window.WV_GEO);
 const GEO_PREC={building:"건물 단위",street:"도로 단위",district:"시·군·구 단위"};
-function mapSection(){
-  return `<section class="hs-sec" id="where" aria-labelledby="whereH">
+const WM_NET=[["100여개국","국제월드비전 활동 국가","전 세계 4만여 명이 함께 일하는 글로벌 네트워크"],["46개국 421개","글로벌 파트너십 사업장","한국월드비전이 기업과 함께 사업을 진행할 수 있는 해외 현장"],["73개소","전국 단위 네트워크","자립지원전담기관·범죄피해자지원센터 등"],["21곳","국내 사업본부·복지관","공식 국내사업장 안내 게시 기준"]];
+function mapSection(o={}){
+  const head=o.str?`<div class="sec-head"><div class="label">Where We Work</div><h2 id="whereH">전 세계와 전국을 잇는<br><em>월드비전의 네트워크</em></h2><p>월드비전은 국내외 다양한 지역에서 아동과 지역사회의 필요에 맞는 변화를 만들어 갑니다. 지도를 통해 사업 현장을 살펴보세요.</p></div>
+      <dl class="wm-net">${WM_NET.map(([n,l,d])=>`<div><dd>${n}</dd><dt>${l}</dt><p>${d}</p></div>`).join("")}</dl>
+      <p class="src wm-net-src">출처: 2026 통합제안서 · 월드비전 기업파트너십 페이지 · 월드비전 국내사업장 안내</p>`
+    :`<div class="sec-head">${secLabel("04","Where We Work")}<h2 id="whereH">전국과 세계를 잇는<br>월드비전의 현장</h2><p>월드비전은 국내외 다양한 지역에서 아동과 지역사회의 필요에 맞는 변화를 만들어 갑니다. 지도를 통해 사업 현장을 살펴보세요.</p></div>`;
+  return `<section class="${o.str?"sec ivory":"hs-sec"}" id="${o.str?"s-where":"where"}" aria-labelledby="whereH">
     <div class="wrap">
-      <div class="sec-head">${secLabel("04","Where We Work")}<h2 id="whereH">전국과 세계를 잇는<br>월드비전의 현장</h2><p>월드비전은 국내외 다양한 지역에서 아동과 지역사회의 필요에 맞는 변화를 만들어 갑니다. 지도를 통해 사업 현장을 살펴보세요.</p></div>
+      ${head}
       ${wmOK()?`<div class="wm" id="wm">
         <div class="wm-tabs" role="tablist" aria-label="지도 선택">
           <button role="tab" id="wmt-world" aria-controls="wm-panel" data-wm-tab="world">전 세계 사업장 보기</button>
@@ -4253,7 +4268,7 @@ function render(){
   const v=$("#view"); let tab="home"; current=null;
   document.body.classList.remove("has-memo");
   if(h==="explore"){v.innerHTML=vExplore();renderExplore();tab="explore"}
-  else if(h==="strengths"){v.innerHTML=vStrengths();tab="strengths";startCine();revealRoles()}
+  else if(h==="strengths"){v.innerHTML=vStrengths();tab="strengths";startCine();revealRoles();initMap()}
   else if(h==="partners"){v.innerHTML=vPartners();tab="partners"}
   else if(h==="collab"){v.innerHTML=flowNav("collab")+vCollab();initBuilder();tab="contact"}
   else if(h==="contact"){v.innerHTML=flowNav("contact")+vContact();tab="contact"}
