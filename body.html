@@ -1915,6 +1915,9 @@ body{font-size:17px;color:var(--ink);background:#fff}
 .wm-net p{margin:4px 0 0;font-size:13.5px;color:var(--mute);line-height:1.55}
 .wm-net-src{margin:4px 0 36px}
 @media (max-width:900px){.wm-net{grid-template-columns:1fr 1fr}.wm-net>div:nth-child(3){padding-left:0;border-left:0}.wm-net>div:nth-child(n+3){border-top:1px solid var(--rule)}}
+.h-copy p.h-lead{max-width:none}
+@media (min-width:901px){.h-title{font-size:clamp(36px,4.5vw,64px)!important}.h-title .hl{white-space:nowrap}}
+@media (max-width:900px){.h-lead .d-br{display:none}}
 </style>
 
 <header class="top">
@@ -2415,8 +2418,8 @@ function vHome(){
     <div class="wrap h-grid">
       <div class="h-copy">
         <div class="h-label">WORLD VISION KOREA · CORPORATE PARTNERSHIP</div>
-        <h1 class="h-title">기업의 사회적 가치가<br><em class="flow-em" aria-label="지속가능한 변화">${[..."지속가능한 변화"].map((c,i)=>`<span aria-hidden="true" style="--i:${i}">${c===" "?"&nbsp;":c}</span>`).join("")}</em>로 이어지도록.</h1>
-        <p>기업이 가진 자원과 전문성, 임직원의 참여를 아동과 지역사회의 필요에 연결합니다. 국내외 현장에 대한 이해와 사업 실행 경험을 바탕으로, 기업의 사회공헌이 일회성 지원을 넘어 지속가능한 변화로 이어지도록 함께합니다.</p>
+        <h1 class="h-title"><span class="hl">기업의 사회적 가치가</span><br><em class="flow-em" aria-label="지속가능한 변화">${[..."지속가능한 변화"].map((c,i)=>`<span aria-hidden="true" style="--i:${i}">${c===" "?"&nbsp;":c}</span>`).join("")}</em>로<br>이어지도록.</h1>
+        <p class="h-lead">기업이 가진 자원과 전문성, 임직원의 참여를 아동과 지역사회의 필요에 연결합니다.<br class="d-br"> 국내외 현장에 대한 이해와 사업 실행 경험을 바탕으로,<br class="d-br"> 기업의 사회공헌이 일회성 지원을 넘어 지속가능한 변화로 이어지도록 함께합니다.</p>
         <div class="h-cta"><a class="btn brand" href="#explore">협력 분야 살펴보기 <span aria-hidden="true">→</span></a><a class="tlink" href="#test">맞춤형 협력 방향 찾기</a></div>
       </div>
       <div class="h-figs">${[["dom","국내"],["intl","국제"]].map(([ar,lb])=>{const s=sl[ar].map(([id,img])=>[byId[id],img]);return `<figure class="hslide" aria-label="${lb} 사업 사진">${s.map(([p,img],i)=>`<a href="#p-${p.id}" class="hs${i===0?" on":""}" ${i?'tabindex="-1" aria-hidden="true"':""}><img src="img/${img}.jpg" alt="${p.t} 현장 사진" ${i?'loading="lazy"':""}><figcaption><b>${lb}</b>${p.t}</figcaption></a>`).join("")}<span class="hs-dots" aria-hidden="true">${s.map((x,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</span></figure>`}).join("")}</div>
