@@ -1802,12 +1802,117 @@ body{font-size:17px;color:var(--ink);background:#fff}
 .guide3 .tlink{align-self:flex-start;font-size:14.5px}
 .guide3 a:hover h3{color:var(--orange-ink)}
 @media (max-width:900px){.guide3{grid-template-columns:1fr}.guide3 a+a{border-left:0;border-top:1px solid var(--rule)}}
+/* ===== 사업장 지도 ===== */
+.wm{margin-top:8px}
+.wm-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);overflow-x:auto;scrollbar-width:none}
+.wm-tabs button{appearance:none;background:none;border:0;padding:14px 22px 13px;font:700 16px/1.3 var(--kr);color:var(--mute);cursor:pointer;white-space:nowrap;box-shadow:inset 0 -3px 0 transparent}
+.wm-tabs button[aria-selected="true"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--brand)}
+.wm-tabs button:hover{color:var(--ink)}
+.wm-bar{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:18px 0 14px}
+.wm-chips{display:flex;gap:6px;flex-wrap:wrap;min-width:0}
+.wm-chips button{appearance:none;border:1px solid var(--rule);background:#fff;border-radius:999px;padding:7px 13px;font:600 13.5px/1.2 var(--kr);color:var(--ink);cursor:pointer;white-space:nowrap}
+.wm-chips button small{font-weight:500;color:var(--mute);margin-left:2px}
+.wm-chips button:hover{border-color:var(--ink)}
+.wm-chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.wm-chips button[aria-pressed="true"] small{color:rgba(255,255,255,.7)}
+.wm-tools{display:flex;gap:6px;flex-shrink:0}
+.wm-tool{appearance:none;border:1px solid var(--ink);background:#fff;border-radius:4px;padding:7px 12px;font:600 13px/1.2 var(--kr);color:var(--ink);cursor:pointer;white-space:nowrap}
+.wm-tool:hover,.wm-tool[aria-pressed="true"]{background:var(--ink);color:#fff}
+.wm-body{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0;border:1px solid var(--rule);background:#fff;min-height:460px}
+.wm-map{position:relative;background:var(--stone);display:flex;flex-direction:column;justify-content:center;min-width:0}
+.wm-svg{display:block;width:100%;height:auto;max-height:620px}
+.wm-svg path{vector-effect:non-scaling-stroke;transition:fill .2s,opacity .2s}
+.wm-land path{fill:#e2dcd1;stroke:#f7f5f0;stroke-width:.6}
+.wm-act path{fill:#f6c9a2;stroke:#fff;stroke-width:.8;cursor:pointer;outline:none}
+.wm-act path:hover,.wm-act path:focus-visible{fill:#f39a55}
+.wm-act path.on{fill:var(--brand)}
+.wm-act path.dim,.wm-dots circle.dim{opacity:.32}
+.wm-act path:focus-visible{stroke:var(--ink);stroke-width:2}
+.wm-dots circle{fill:var(--brand);stroke:#fff;stroke-width:1;vector-effect:non-scaling-stroke;cursor:pointer}
+.wm-dots circle.on{fill:var(--ink)}
+.wm-prov path{fill:#e8e2d7;stroke:#fff;stroke-width:1;cursor:pointer}
+.wm-prov path:hover{fill:#ddd5c7}
+.wm-prov path.on{fill:#fbe0c8}
+.wm-prov path.dim{opacity:.55}
+.pin{cursor:pointer;outline:none}
+.pin path{fill:var(--brand);stroke:#fff;stroke-width:1.2;vector-effect:non-scaling-stroke}
+.pin .pin-c{fill:#fff}
+.pin.cl circle{fill:var(--brand);stroke:#fff;stroke-width:2;vector-effect:non-scaling-stroke}
+.pin.cl text{fill:#fff;font:800 11px/1 var(--kr);text-anchor:middle;pointer-events:none}
+.pin:hover path,.pin:hover circle:not(.pin-c),.pin:focus-visible path,.pin:focus-visible circle:not(.pin-c){fill:var(--orange-ink)}
+.pin.on path,.pin.on circle:not(.pin-c){fill:var(--ink)}
+.pin.dim{opacity:.35}
+.pin:focus-visible{filter:drop-shadow(0 0 0 #000) drop-shadow(0 0 2px var(--ink))}
+.wm-tip{position:absolute;transform:translate(-50%,calc(-100% - 10px));background:var(--ink);color:#fff;font:600 12.5px/1.3 var(--kr);padding:6px 10px;border-radius:4px;pointer-events:none;white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis;z-index:2}
+.wm-help{position:absolute;left:14px;bottom:10px;margin:0;font-size:12.5px;color:var(--mute)}
+.wm-side{border-left:1px solid var(--rule);padding:26px 26px 28px;overflow:auto;max-height:620px}
+.wm-k{display:block;font-size:12.5px;font-weight:700;color:var(--orange-ink);letter-spacing:.02em;margin-bottom:6px}
+.wm-big{margin:0 0 12px;font-size:15px;color:var(--mute)}
+.wm-big b{font-family:var(--serif);font-size:52px;line-height:1;color:var(--ink);margin-right:4px;font-weight:600}
+.wm-sum>p{font-size:14.5px;line-height:1.7;color:#3b3935;margin:0 0 10px}
+.wm-hint{color:var(--mute)!important;font-size:13.5px!important}
+.wm-mini{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--rule)}
+.wm-mini button{appearance:none;background:none;border:0;border-bottom:1px solid var(--rule);width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 2px;font:600 14.5px/1.35 var(--kr);color:var(--ink);cursor:pointer;text-align:left}
+.wm-mini button small{font-weight:500;color:var(--mute);font-size:12.5px;white-space:nowrap}
+.wm-mini button:hover{color:var(--orange-ink)}
+.wm-card h3{font-size:26px;line-height:1.25;margin:0 0 14px;letter-spacing:-.02em}
+.wm-back{appearance:none;background:none;border:0;padding:0;margin:0 0 14px;font:600 13px var(--kr);color:var(--mute);cursor:pointer}
+.wm-back:hover{color:var(--ink)}
+.wm-dl{margin:0 0 16px;display:grid;gap:8px}
+.wm-dl>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:10px;font-size:14px;line-height:1.55}
+.wm-dl dt{color:var(--mute);font-weight:600}
+.wm-dl dd{margin:0;color:var(--ink)}
+.wm-dl a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.wm-stat{border-top:1px solid var(--ink);padding-top:14px;margin-bottom:16px}
+.wm-y{margin:0 0 10px;font-size:13px;color:var(--mute);font-weight:600}
+.wm-nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wm-nums b{display:block;font-size:24px;line-height:1.15;color:var(--brand);font-weight:800;letter-spacing:-.02em}
+.wm-nums span{font-size:12.5px;color:var(--mute)}
+.wm-areas{margin:12px 0 0;font-size:13.5px;line-height:1.6;color:#3b3935}
+.wm-areas span,.wm-sh{display:block;font-size:12.5px;font-weight:700;color:var(--mute);margin-bottom:4px}
+.wm-sh small{font-weight:500;margin-left:4px}
+.wm-sec{margin-bottom:18px}
+.wm-bar-r{display:grid;grid-template-columns:112px minmax(0,1fr) 44px;align-items:center;gap:8px;font-size:12.5px;margin:5px 0}
+.wm-bar-r i{display:block;height:6px;background:var(--stone);border-radius:3px;overflow:hidden}
+.wm-bar-r em{display:block;height:100%;background:var(--brand)}
+.wm-bar-r b{text-align:right;font-weight:700}
+.wm-rel{margin-bottom:16px}
+.wm-rel a{display:block;padding:9px 0;border-bottom:1px solid var(--rule);font-weight:600;font-size:14.5px;color:var(--ink)}
+.wm-rel a:hover{color:var(--orange-ink)}
+.wm-case{appearance:none;display:flex;align-items:center;gap:10px;width:100%;background:none;border:0;border-bottom:1px solid var(--rule);padding:9px 0;text-align:left;cursor:pointer;font:600 14px/1.4 var(--kr);color:var(--ink)}
+.wm-case:hover span{color:var(--orange-ink)}
+.wm-case .clogo{flex-shrink:0}
+.wm-geo{font-size:12.5px;color:var(--mute);margin:0 0 16px}
+.wm-na{font-size:13.5px;color:var(--mute);background:var(--stone);padding:10px 12px;margin:0 0 16px}
+.wm-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.wm-list{padding:20px 24px;overflow:auto;max-height:620px;columns:2 260px;column-gap:28px}
+.wm-list section{break-inside:avoid;margin-bottom:18px}
+.wm-list h4{margin:0 0 4px;font-size:14px;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.wm-list h4 small{font-weight:500;color:var(--mute)}
+.wm-list ul{list-style:none;margin:0;padding:0}
+.wm-list button{appearance:none;background:none;border:0;border-bottom:1px solid var(--rule);width:100%;text-align:left;padding:8px 0;cursor:pointer;font-family:var(--kr);display:flex;flex-direction:column;gap:2px}
+.wm-list button b{font-size:14.5px;color:var(--ink)}
+.wm-list button span{font-size:12.5px;color:var(--mute)}
+.wm-list button:hover b,.wm-list button[aria-pressed="true"] b{color:var(--orange-ink)}
+.wm-src{font-size:12.5px;color:var(--mute);margin:12px 0 0;line-height:1.6}
+.wm-src a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+@media (max-width:900px){
+  .wm-body{grid-template-columns:minmax(0,1fr)}
+  .wm-side{border-left:0;border-top:1px solid var(--rule);max-height:none;padding:22px 18px}
+  .wm-bar{flex-direction:column;align-items:stretch}
+  .wm-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+  .wm-tools{justify-content:flex-end}
+  .wm-help{position:static;padding:8px 12px 10px}
+  .wm-tabs button{padding:12px 14px 11px;font-size:15px}
+  .wm-list{max-height:none;padding:16px 18px}
+}
 </style>
 
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#home" aria-label="월드비전 기업파트너십 홈"><img src="img/wv-logo.png" alt="World Vision"><span>기업사회공헌</span></a>
     <nav class="tabs" id="tabs" aria-label="주요 메뉴">
+      <a href="#home" data-tab="home">HOME</a>
       <a href="#explore" data-tab="explore">협력 분야</a>
       <a href="#partners" data-tab="partners">파트너십 사례</a>
       <a href="#strengths" data-tab="strengths">월드비전 소개</a>
@@ -1828,6 +1933,8 @@ body{font-size:17px;color:var(--ink);background:#fff}
 <dialog id="dlgSum"></dialog>
 <dialog id="dlgImg" class="lightbox"></dialog>
 
+<script src="data/wv-sites.js"></script>
+<script src="data/map-geo.js"></script>
 <script>
 /* =====================================================================
    CONTENT — 2026 월드비전 통합제안서(260907) 기준. 수치는 2025년도 사업기준.
@@ -2360,17 +2467,19 @@ function vHome(){
     </div>
   </section>
 
-  <section class="hs-sec" id="areas" aria-labelledby="areasH">
+  ${mapSection()}
+
+  <section class="hs-sec ivory" id="areas" aria-labelledby="areasH">
     <div class="wrap">
-      <div class="sec-head">${secLabel("04","Areas of Collaboration")}<h2 id="areasH">관심 있는 분야부터<br>살펴보세요</h2><p>영역별 사업과 실제 협력 사례를 함께 확인하고, 사업을 누르면 상세 내용으로 이동합니다.</p></div>
+      <div class="sec-head">${secLabel("05","Areas of Collaboration")}<h2 id="areasH">관심 있는 분야부터<br>살펴보세요</h2><p>영역별 사업과 실제 협력 사례를 함께 확인하고, 사업을 누르면 상세 내용으로 이동합니다.</p></div>
       <div class="areas3">${Object.entries(AREAS).map(areaBlock).join("")}</div>
       <div class="guide3" aria-label="영역별 사업 안내">${[["dom","국내사업 안내"],["intl","국제사업 안내"],["cs","기후&amp;소셜임팩트 사업 안내"]].map(([k,t])=>`<a href="#explore" data-go-area="${k}"><span class="sidx">${AREAS[k].rn}</span><h3>${t}</h3><p>${AREAS[k].desc}</p><span class="tlink">${P.filter(p=>p.area===k).length}개 사업 보기 →</span></a>`).join("")}</div>
     </div>
   </section>
 
-  <section class="hs-sec ivory" id="how" aria-labelledby="howH">
+  <section class="hs-sec" id="how" aria-labelledby="howH">
     <div class="wrap">
-      <div class="sec-head">${secLabel("05","How We Partner")}<h2 id="howH">상담부터 성과 공유까지<br>하나의 흐름으로</h2><p>구체적인 계획이 없어도 첫 상담에서 함께 방향을 찾습니다.</p></div>
+      <div class="sec-head">${secLabel("06","How We Partner")}<h2 id="howH">상담부터 성과 공유까지<br>하나의 흐름으로</h2><p>구체적인 계획이 없어도 첫 상담에서 함께 방향을 찾습니다.</p></div>
       <ol class="how6">${PROCESS.map((s,i)=>`<li><span class="sidx">${String(i+1).padStart(2,"0")}</span><b>${s.t}</b><span>${s.d}</span></li>`).join("")}</ol>
       <p class="src">기준: 월드비전 기업후원 소개 ‘참여 프로세스’ · <a class="tlink" href="#strengths" data-jump="process">단계별 주요 활동 보기 →</a></p>
     </div>
@@ -3947,6 +4056,195 @@ function sweepHL(){
     io&&io.observe(el);addEventListener("scroll",chk,{passive:true});setTimeout(show,8000)})
 }
 /* ---------- router ---------- */
+/* ===================== 사업장 지도 — 데이터: data/wv-sites.js · 도형: data/map-geo.js (외부 지도 API 없음) ===================== */
+const WM={tab:"world",cont:null,region:null,sel:null,pick:null,list:false,vb:null};
+const wmOK=()=>!!(window.WV_SITES&&window.WV_GEO);
+const GEO_PREC={building:"건물 단위",street:"도로 단위",district:"시·군·구 단위"};
+function mapSection(){
+  return `<section class="hs-sec" id="where" aria-labelledby="whereH">
+    <div class="wrap">
+      <div class="sec-head">${secLabel("04","Where We Work")}<h2 id="whereH">전국과 세계를 잇는<br>월드비전의 현장</h2><p>월드비전은 국내외 다양한 지역에서 아동과 지역사회의 필요에 맞는 변화를 만들어 갑니다. 지도를 통해 사업 현장을 살펴보세요.</p></div>
+      ${wmOK()?`<div class="wm" id="wm">
+        <div class="wm-tabs" role="tablist" aria-label="지도 선택">
+          <button role="tab" id="wmt-world" aria-controls="wm-panel" data-wm-tab="world">전 세계 사업장 보기</button>
+          <button role="tab" id="wmt-kr" aria-controls="wm-panel" data-wm-tab="kr">전국 월드비전 사업장 보기</button>
+        </div>
+        <div id="wm-panel" role="tabpanel"></div>
+      </div>`:`<p class="wm-na">지도 데이터를 불러오지 못했습니다. <a class="tlink" href="https://www.worldvision.or.kr/businessGuide/overseaBusinessMap" target="_blank" rel="noopener">공식 사업장 안내 보기 ↗</a></p>`}
+    </div>
+  </section>`;
+}
+const wmItem=id=>WV_SITES.countries.find(x=>x.id===id)||WV_SITES.sites.find(x=>x.id===id);
+function wmRender(){
+  const box=$("#wm-panel");if(!box)return;
+  const D=WV_SITES,w=WM.tab==="world",cur=w?WM.cont:WM.region,src=D.meta[w?"worldSource":"krSource"];
+  $$("[data-wm-tab]").forEach(b=>{const on=b.dataset.wmTab===WM.tab;b.setAttribute("aria-selected",String(on));b.tabIndex=on?0:-1});
+  box.setAttribute("aria-labelledby",w?"wmt-world":"wmt-kr");
+  const groups=w?D.continents.map(c=>[c.id,c.name,D.countries.filter(x=>x.region===c.id).length]):D.krRegions.map(r=>[r.id,r.name,D.sites.filter(s=>s.region===r.id).length]);
+  box.innerHTML=`<div class="wm-bar">
+      <div class="wm-chips" role="group" aria-label="${w?"대륙":"지역"} 선택">
+        <button data-wm-grp="" aria-pressed="${!cur}">전체 <small>${w?D.countries.length+"개국":D.sites.length+"곳"}</small></button>
+        ${groups.map(([id,n,c])=>`<button data-wm-grp="${esc(id)}" aria-pressed="${cur===id}">${esc(n)} <small>${c}</small></button>`).join("")}
+      </div>
+      <div class="wm-tools"><button class="wm-tool" data-wm-reset>전체 보기</button><button class="wm-tool" data-wm-list aria-pressed="${WM.list}">${WM.list?"지도로 보기":"목록으로 보기"}</button></div>
+    </div>
+    <div class="wm-body">
+      ${WM.list?`<div class="wm-list">${wmList()}</div>`:`<div class="wm-map">${w?wmWorldSVG():wmKrSVG()}<div class="wm-tip" role="tooltip" hidden></div><p class="wm-help">${w?"국가를 누르면 사업 정보를 볼 수 있습니다":"마커를 누르면 사업장 정보를 볼 수 있습니다 · 숫자 마커는 가까운 사업장 묶음"}</p></div>`}
+      <aside class="wm-side" aria-live="polite">${wmSide()}</aside>
+    </div>
+    <p class="wm-src">출처: <a href="${src.u}" target="_blank" rel="noopener">${esc(src.t)}</a> (확인일 ${D.meta.checked}) · ${esc(w?D.meta.notes[0]:D.meta.notes[1]+" "+D.meta.notes[2])}</p>`;
+  WM.vb=null; wmZoom(false);
+}
+function wmWorldSVG(){
+  const G=WV_GEO.world,D=WV_SITES,act={};D.countries.forEach(c=>act[c.iso]=1);
+  return `<svg class="wm-svg" viewBox="${G.vb}" data-vb="${G.vb}" role="group" aria-label="세계 지도 · 월드비전 해외사업 국가 ${D.countries.length}곳">
+    <g class="wm-land" aria-hidden="true">${G.shapes.map(([id,d])=>act[id]?"":`<path d="${d}"/>`).join("")}</g>
+    <g class="wm-act">${D.countries.map(c=>{const s=G.shapes.find(x=>x[0]===c.iso);return s?`<path d="${s[1]}" data-wm-id="${c.id}" data-grp="${esc(c.region)}" tabindex="0" role="button" aria-label="${esc(c.name)} · ${esc(c.region)}"/>`:""}).join("")}</g>
+    <g class="wm-dots" aria-hidden="true">${D.countries.map(c=>{const p=G.centroid[c.iso];return p?`<circle cx="${p[0]}" cy="${p[1]}" r="3" data-wm-id="${c.id}" data-grp="${esc(c.region)}"/>`:""}).join("")}</g>
+  </svg>`;
+}
+function wmKrSVG(){
+  const G=WV_GEO.korea,pr={};WV_SITES.krRegions.forEach(r=>r.provinces.forEach(p=>pr[p]=r.id));
+  return `<svg class="wm-svg kr" viewBox="${G.vb}" data-vb="${G.vb}" role="group" aria-label="대한민국 지도 · 월드비전 국내사업장 ${WV_SITES.sites.length}곳">
+    <g class="wm-prov">${G.shapes.map(([n,d])=>`<path d="${d}" data-grp="${esc(pr[n]||"")}" data-wm-prov="${esc(pr[n]||"")}"><title>${esc(n)}</title></path>`).join("")}</g>
+    <g class="wm-pins"></g>
+  </svg>`;
+}
+function wmPins(k){
+  const g=$("#wm .wm-pins");if(!g)return;
+  const xy=WV_GEO.korea.xy,th=24*k,cl=[];
+  WV_SITES.sites.forEach(s=>{const p=xy[s.id.slice(3)];if(!p)return;const c=cl.find(c=>Math.hypot(c.x-p[0],c.y-p[1])<th);c?c.items.push(s):cl.push({x:p[0],y:p[1],items:[s]})});
+  g.innerHTML=cl.map(c=>{const one=c.items.length===1,ids=c.items.map(i=>i.id),on=ids.includes(WM.sel)||(WM.pick&&ids.some(i=>WM.pick.includes(i))),dim=WM.region&&!c.items.some(i=>i.region===WM.region),nm=c.items.map(i=>i.name).join(", ");
+    return `<g class="pin${one?"":" cl"}${on?" on":""}${dim?" dim":""}" transform="translate(${c.x} ${c.y}) scale(${k})" tabindex="0" role="button" data-wm-pin="${ids.join(",")}" data-tip="${esc(one?nm:c.items.length+"곳 · "+nm)}" aria-label="${esc(one?nm:"사업장 "+c.items.length+"곳: "+nm)}">${one?`<path d="M0 0c-1.6-4.6-7-7.7-7-12.6a7 7 0 0 1 14 0c0 4.9-5.4 8-7 12.6z"/><circle cy="-12.6" r="2.6" class="pin-c"/>`:`<circle r="10"/><text dy="4">${c.items.length}</text>`}</g>`}).join("");
+}
+function wmClasses(){
+  const svg=$("#wm .wm-svg");if(!svg)return;
+  if(WM.tab==="world")$$("[data-wm-id]",svg).forEach(e=>{e.classList.toggle("on",e.dataset.wmId===WM.sel);e.classList.toggle("dim",!!WM.cont&&e.dataset.grp!==WM.cont)});
+  else $$("[data-wm-prov]",svg).forEach(e=>{e.classList.toggle("on",!!WM.region&&e.dataset.grp===WM.region);e.classList.toggle("dim",!!WM.region&&e.dataset.grp!==WM.region)});
+  const cur=WM.tab==="world"?WM.cont:WM.region;
+  $$("#wm [data-wm-grp]").forEach(b=>b.setAttribute("aria-pressed",String((b.dataset.wmGrp||null)===cur)));
+}
+function wmTarget(svg){
+  const base=svg.dataset.vb.split(" ").map(Number),grp=WM.tab==="world"?WM.cont:WM.region;
+  if(!grp)return base;
+  const els=$$("path[data-grp]",svg).filter(e=>e.dataset.grp===grp);
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  els.forEach(e=>{let b;try{b=e.getBBox()}catch(_){return}if(!b.width)return;x0=Math.min(x0,b.x);y0=Math.min(y0,b.y);x1=Math.max(x1,b.x+b.width);y1=Math.max(y1,b.y+b.height)});
+  if(x1<=x0)return base;
+  const ar=base[2]/base[3],min=WM.tab==="world"?150:110,pad=WM.tab==="world"?24:18;
+  let w=Math.max(x1-x0+pad*2,min),h=Math.max(y1-y0+pad*2,min/ar);
+  if(w/h>ar)h=w/ar;else w=h*ar;
+  return [(x0+x1)/2-w/2,(y0+y1)/2-h/2,w,h];
+}
+function wmZoom(anim){
+  wmClasses();
+  const svg=$("#wm .wm-svg");if(!svg)return;
+  const base=svg.dataset.vb.split(" ").map(Number),to=wmTarget(svg),from=WM.vb||base;
+  const done=()=>{WM.vb=to;svg.setAttribute("viewBox",to.join(" "));const k=to[2]/base[2];
+    if(WM.tab==="world")$$(".wm-dots circle",svg).forEach(c=>c.setAttribute("r",(3*Math.max(k,.35)).toFixed(2)));else wmPins(k)};
+  if(!anim||document.hidden||matchMedia("(prefers-reduced-motion: reduce)").matches||from.join()===to.join()){done();return}
+  const t0=performance.now(),D=480;let fin=false;
+  const step=t=>{if(fin)return;const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);
+    svg.setAttribute("viewBox",from.map((v,i)=>v+(to[i]-v)*e).join(" "));if(p<1)requestAnimationFrame(step);else{fin=true;done()}};
+  requestAnimationFrame(step);setTimeout(()=>{if(!fin){fin=true;done()}},D+200);
+}
+function wmUpdate(){const s=$("#wm .wm-side");if(s)s.innerHTML=wmSide();if(WM.list){const l=$("#wm .wm-list");if(l)l.innerHTML=wmList()}wmZoom(true)}
+const wmCase=c=>`<button class="wm-case" data-case="${c.id}">${coLogo(c.co,"sm")}<span>${esc(c.t)}</span></button>`;
+function wmSide(){
+  const D=WV_SITES;
+  if(WM.tab==="world"){
+    const c=D.countries.find(x=>x.id===WM.sel);if(c)return wmCountry(c);
+    const L=WM.cont?D.countries.filter(x=>x.region===WM.cont):null;
+    return `<div class="wm-sum"><span class="wm-k">${WM.cont?esc(WM.cont):"해외사업"}</span>
+      <p class="wm-big"><b>${(L||D.countries).length}</b>개국</p>
+      ${L?`<ul class="wm-mini">${L.map(x=>`<li><button data-wm-sel="${x.id}"><span>${esc(x.name)}</span>${x.beneficiaries?`<small>${x.beneficiaries}명 혜택</small>`:""}</button></li>`).join("")}</ul>`
+        :`<p>공식 홈페이지 기준 월드비전 해외사업은 <b>${esc(D.meta.worldTotal)}</b>에서 진행됩니다. 이 지도에는 국가별 정보가 공개된 ${D.countries.length}개국을 표시했습니다.</p><p class="wm-hint">지도에서 국가를 누르거나 대륙을 선택하세요.</p>`}</div>`;
+  }
+  const s=D.sites.find(x=>x.id===WM.sel);if(s)return wmSite(s);
+  const L=WM.pick?D.sites.filter(x=>WM.pick.includes(x.id)):WM.region?D.sites.filter(x=>x.region===WM.region):null;
+  const reg=WM.region&&D.krRegions.find(r=>r.id===WM.region),rc=reg?reg.relatedCases.map(id=>CASES.find(c=>c.id===id)).filter(Boolean):[];
+  return `<div class="wm-sum"><span class="wm-k">${WM.pick?"선택한 위치의 사업장":reg?esc(reg.name):"국내사업"}</span>
+    <p class="wm-big"><b>${(L||D.sites).length}</b>곳</p>
+    ${L?`<ul class="wm-mini">${L.map(x=>`<li><button data-wm-sel="${x.id}"><span>${esc(x.name)}</span><small>${esc(x.type)}</small></button></li>`).join("")}</ul>`
+      :`<p>공식 홈페이지 국내사업장 안내에 게시된 사업본부·복지관 ${D.sites.length}곳을 표시했습니다.</p><p class="wm-hint">마커를 누르거나 지역을 선택하세요.</p>`}
+    ${rc.length?`<div class="wm-rel"><p class="wm-sh">이 지역의 파트너십 사례</p>${rc.map(wmCase).join("")}</div>`:""}</div>`;
+}
+function wmCountry(c){
+  const ps=c.relatedProjects.map(id=>byId[id]).filter(Boolean),cs=c.relatedCases.map(id=>CASES.find(x=>x.id===id)).filter(Boolean);
+  return `<article class="wm-card">
+    <button class="wm-back" data-wm-back>← ${esc(c.region)}</button>
+    <span class="wm-k">${esc(c.region)} · ${esc(c.type)}</span>
+    <h3>${esc(c.name)}</h3>
+    <dl class="wm-dl">${c.capital?`<div><dt>수도</dt><dd>${esc(c.capital)}</dd></div>`:""}${c.population?`<div><dt>인구</dt><dd>${esc(c.population)}</dd></div>`:""}</dl>
+    ${c.beneficiaries?`<div class="wm-stat"><p class="wm-y">${c.year}년 한 해 동안${c.areaCount?` · ${c.areaCount}개 지역`:""}</p>
+      <div class="wm-nums"><div><b>${esc(c.beneficiaries)}</b><span>명 아동·주민 혜택</span></div>${c.budget?`<div><b>${esc(c.budget)}</b><span>${c.year}년 사업비</span></div>`:""}</div>
+      ${c.areas?`<p class="wm-areas"><span>사업 지역</span>${c.areas.map(esc).join(" · ")}</p>`:""}</div>`
+      :`<p class="wm-na">사업 통계가 공식 페이지에 공개되어 있지 않습니다 · 확인 필요</p>`}
+    ${c.sectors.length?`<div class="wm-sec"><p class="wm-sh">분야별 사업비 비중</p>${[...c.sectors].sort((a,b)=>b[1]-a[1]).map(([n,v])=>`<div class="wm-bar-r"><span>${esc(n)}</span><i><em style="width:${v}%"></em></i><b>${v}%</b></div>`).join("")}</div>`:""}
+    ${ps.length?`<div class="wm-rel"><p class="wm-sh">관련 국제사업 <small>사업비 비중이 높은 분야</small></p>${ps.map(p=>`<a href="#p-${p.id}">${esc(p.t)} →</a>`).join("")}</div>`:""}
+    ${cs.length?`<div class="wm-rel"><p class="wm-sh">이 국가의 파트너십 사례</p>${cs.map(wmCase).join("")}</div>`:""}
+    <a class="tlink" href="${c.website}" target="_blank" rel="noopener">공식 홈페이지에서 자세히 보기 ↗</a>
+  </article>`;
+}
+function wmSite(s){
+  const reg=WV_SITES.krRegions.find(r=>r.id===s.region),cs=s.relatedCases.map(id=>CASES.find(x=>x.id===id)).filter(Boolean),rc=(reg?reg.relatedCases:[]).filter(id=>!s.relatedCases.includes(id)).map(id=>CASES.find(x=>x.id===id)).filter(Boolean);
+  return `<article class="wm-card">
+    <button class="wm-back" data-wm-back>← ${esc(s.region)}</button>
+    <span class="wm-k">${esc(s.region)} · ${esc(s.type)}</span>
+    <h3>${esc(s.name)}</h3>
+    <dl class="wm-dl">
+      <div><dt>주소</dt><dd>${s.address?esc(s.address):"확인 필요"}</dd></div>
+      <div><dt>연락처</dt><dd>${s.phone?`<a href="tel:${s.phone.replace(/[^\d]/g,"")}">${esc(s.phone)}</a>`:"확인 필요"}</dd></div>
+      ${s.children?`<div><dt>지원아동</dt><dd>${s.children.toLocaleString()}명</dd></div>`:""}
+      ${s.opened?`<div><dt>개소일</dt><dd>${esc(s.opened)}</dd></div>`:""}
+      <div class="memo-only"><dt>주요 활동</dt><dd>공식 페이지 미기재 · 확인 필요</dd></div>
+    </dl>
+    ${s.geoPrecision?`<p class="wm-geo">지도 위치는 공식 주소를 변환한 ${GEO_PREC[s.geoPrecision]} 근사 위치입니다.</p>`:`<p class="wm-geo">좌표 확인 필요 · 지도에 표시되지 않습니다.</p>`}
+    ${cs.length?`<div class="wm-rel"><p class="wm-sh">이 사업장의 파트너십 사례</p>${cs.map(wmCase).join("")}</div>`:""}
+    ${rc.length?`<div class="wm-rel"><p class="wm-sh">이 지역의 파트너십 사례</p>${rc.map(wmCase).join("")}</div>`:""}
+    <div class="wm-links">${s.website.map(l=>`<a class="tlink" href="${l.u}" target="_blank" rel="noopener">${esc(l.t)} ↗</a>`).join("")}<a class="tlink" href="${s.officialUrl}" target="_blank" rel="noopener">월드비전 사업장 안내 ↗</a><button class="tlink" data-go-area="dom">국내사업 살펴보기 →</button></div>
+  </article>`;
+}
+function wmList(){
+  const D=WV_SITES;
+  if(WM.tab==="world")return D.continents.map(ct=>{const L=D.countries.filter(x=>x.region===ct.id);return `<section><h4>${esc(ct.name)} <small>${L.length}개국</small></h4><ul>${L.map(x=>`<li><button data-wm-sel="${x.id}" aria-pressed="${WM.sel===x.id}"><b>${esc(x.name)}</b><span>${x.beneficiaries?`${x.year}년 ${x.beneficiaries}명 혜택`:"통계 확인 필요"}</span></button></li>`).join("")}</ul></section>`}).join("");
+  return D.krRegions.map(r=>{const L=D.sites.filter(x=>x.region===r.id);return `<section><h4>${esc(r.name)} <small>${L.length}곳</small></h4><ul>${L.map(x=>`<li><button data-wm-sel="${x.id}" aria-pressed="${WM.sel===x.id}"><b>${esc(x.name)}</b><span>${esc(x.type)} · ${esc(x.phone||"")}</span></button></li>`).join("")}</ul></section>`}).join("");
+}
+function wmSelect(id){
+  const it=wmItem(id);if(!it)return;WM.sel=id;WM.pick=null;
+  if(WM.tab==="world")WM.cont=it.region;else WM.region=it.region;wmUpdate();
+  if(matchMedia("(max-width:900px)").matches){const sd=$("#wm .wm-side");sd&&setTimeout(()=>sd.scrollIntoView({block:"nearest"}),60)}
+}
+function wmTip(el,ev){
+  const tip=$("#wm .wm-tip"),map=$("#wm .wm-map");if(!tip||!map)return;
+  if(!el){tip.hidden=true;return}
+  const it=el.dataset.wmId?wmItem(el.dataset.wmId):null,txt=it?it.name:el.dataset.tip;if(!txt){tip.hidden=true;return}
+  const r=map.getBoundingClientRect(),b=el.getBoundingClientRect(),x=ev&&ev.clientX?ev.clientX:b.left+b.width/2,y=ev&&ev.clientY?ev.clientY:b.top;
+  tip.textContent=txt;tip.hidden=false;tip.style.left=Math.max(8,Math.min(r.width-8,x-r.left))+"px";tip.style.top=(y-r.top)+"px";
+}
+function initMap(){if(!wmOK()||!$("#wm"))return;WM.vb=null;wmRender()}
+if(wmOK()){
+  document.addEventListener("click",e=>{
+    const t=e.target;if(!t.closest||!t.closest("#wm"))return;
+    const tb=t.closest("[data-wm-tab]");if(tb){if(WM.tab!==tb.dataset.wmTab){WM.tab=tb.dataset.wmTab;WM.sel=null;WM.pick=null;wmRender()}return}
+    const gp=t.closest("[data-wm-grp]");if(gp){const v=gp.dataset.wmGrp||null;if(WM.tab==="world")WM.cont=v;else WM.region=v;WM.sel=null;WM.pick=null;wmUpdate();return}
+    if(t.closest("[data-wm-reset]")){WM.cont=WM.region=WM.sel=WM.pick=null;wmUpdate();return}
+    if(t.closest("[data-wm-list]")){WM.list=!WM.list;wmRender();return}
+    if(t.closest("[data-wm-back]")){WM.sel=null;wmUpdate();return}
+    const sl=t.closest("[data-wm-sel],[data-wm-id]");if(sl){wmSelect(sl.dataset.wmSel||sl.dataset.wmId);return}
+    const pn=t.closest("[data-wm-pin]");if(pn){const ids=pn.dataset.wmPin.split(",");if(ids.length===1)wmSelect(ids[0]);else{WM.sel=null;WM.pick=ids;WM.region=wmItem(ids[0]).region;wmUpdate()}return}
+    const pv=t.closest("[data-wm-prov]");if(pv&&pv.dataset.wmProv){WM.region=pv.dataset.wmProv;WM.sel=null;WM.pick=null;wmUpdate()}
+  });
+  document.addEventListener("keydown",e=>{
+    const t=e.target;if(!t.closest||!t.closest("#wm"))return;
+    if((e.key==="Enter"||e.key===" ")&&t.matches("[data-wm-id],[data-wm-pin]")){e.preventDefault();t.dispatchEvent(new MouseEvent("click",{bubbles:true}));return}
+    if((e.key==="ArrowRight"||e.key==="ArrowLeft")&&t.matches("[data-wm-tab]")){e.preventDefault();e.stopPropagation();const o=$(`#wm [data-wm-tab="${t.dataset.wmTab==="world"?"kr":"world"}"]`);o.focus();o.click();return}
+    if(e.key==="Escape"&&(WM.sel||WM.pick||WM.cont||WM.region)){WM.cont=WM.region=WM.sel=WM.pick=null;wmUpdate()}
+  });
+  ["mouseover","focusin"].forEach(n=>document.addEventListener(n,e=>{const el=e.target.closest&&e.target.closest("#wm [data-wm-id],#wm [data-wm-pin]");if(el)wmTip(el,n==="mouseover"?e:null)}));
+  ["mouseout","focusout"].forEach(n=>document.addEventListener(n,e=>{if(e.target.closest&&e.target.closest("#wm [data-wm-id],#wm [data-wm-pin]"))wmTip(null)}));
+}
+
 let current=null;
 function render(){
   const h=(location.hash||"#home").slice(1);
@@ -3963,7 +4261,7 @@ function render(){
   else if(h==="sheet"){v.innerHTML=vSheet();tab="contact"}
   else if(h.startsWith("p-")&&byId[h.slice(2)]){const p=byId[h.slice(2)];current=p;v.innerHTML=vDetail(p);tab="explore";
     $("#memo").innerHTML=memoHTML(p);document.body.classList.add("has-memo");setupToc()}
-  else{v.innerHTML=vHome();startHero();sweepHL()}
+  else{v.innerHTML=vHome();startHero();sweepHL();initMap()}
   $$("header [data-tab]").forEach(a=>a.toggleAttribute("aria-current",a.dataset.tab===tab));
   $$("header [data-tab]").forEach(a=>{if(a.dataset.tab===tab)a.setAttribute("aria-current","page")});
   $("#tabs").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
