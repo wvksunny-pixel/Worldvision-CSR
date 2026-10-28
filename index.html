@@ -7,7 +7,7 @@
 <meta name="description" content="월드비전 기업파트너십 인터랙티브 제안 플랫폼: 사업 탐색, 사업 상세, 맞춤형 제안 구성">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+KR:wght@300;400;500;700;800;900&display=swap">
 <style>
 /* Layout concept: white Swiss 12-column editorial grid. Brand colour #F56400 (worldvision.or.kr) only for key
    messages, figures and interactions; one brand block per page. Noto Sans KR throughout.
@@ -1490,27 +1490,328 @@ mark{background:linear-gradient(180deg,transparent 58%,var(--peach) 58%);color:i
 .hl-sweep.hl-ready.in{animation:hlpop .5s ease 1.2s 1}
 @keyframes hlpop{50%{color:var(--orange-ink)}}
 @media (prefers-reduced-motion:reduce){.hl-sweep.hl-ready{background-size:100% 100%}}
+
+/* ===================== v9 · Editorial Luxury × Global Impact × Cinematic Storytelling =====================
+   Colour: WV Orange #F56400 (worldvision.or.kr 공식 사이트 값) = 신호색 / Warm Ivory #F7F5F0 · White = 배경 리듬
+           Charcoal #252525 = 제목·본문 / Warm Gray = 보조
+   Type:   Noto Sans KR (본문·제목) + Cormorant Garamond (영문 라벨·인덱스·주요 숫자) */
+:root{
+  --brand:#f56400; --orange:#f56400; --orange-ink:#b84a00; --peach:#f8d9c2; --peach-bg:#fbf0e7;
+  --ink:#252525; --navy:#252525; --char:#2b2b2b; --mute:#6c6862; --rule:#e6e1d8; --stone:#f7f5f0; --paper:#ffffff;
+  --serif:"Cormorant Garamond","Noto Serif KR",Georgia,serif;
+}
+body{font-size:17px;color:var(--ink);background:#fff}
+::selection{background:var(--peach)}
+
+/* ---------- header ---------- */
+.top{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule)}
+.top .wrap{flex-wrap:nowrap;height:76px;padding-block:0;gap:0}
+.logo img{height:26px}
+.logo span{font-size:13.5px!important;color:var(--mute)!important;font-weight:600!important}
+.tabs{order:0;width:auto;margin-left:auto;overflow:visible;gap:30px;align-items:stretch;height:76px}
+.tabs a{padding:0!important;margin:0!important;height:76px;display:flex;align-items:center;font-size:15px;font-weight:600;color:#5a5650;box-shadow:none!important;position:relative;letter-spacing:-.01em}
+.tabs a:hover{color:var(--ink)}
+.tabs a[aria-current="page"]{color:var(--ink)}
+.tabs a[aria-current="page"]:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--brand)}
+.pswitch{margin-left:28px;border:0;padding:6px;gap:6px;font-size:12.5px}
+.pswitch .t{font-weight:600}
+.top-cta{margin-left:18px;padding:11px 18px!important;font-size:14.5px!important;gap:8px}
+.top-cta .badge{background:rgba(255,255,255,.28);color:#fff;font-family:var(--kr)}
+.top-cta .badge[data-n="0"]{display:none}
+.top-cta[aria-current="page"]{background:var(--ink);border-color:var(--ink)}
+.menu-btn{display:none;margin-left:12px;font-size:14px;font-weight:700;border:1px solid var(--rule);padding:9px 12px;background:#fff}
+.memo{top:76px}
+.filters,.toc,.pside{top:100px}
+.dsec{scroll-margin-top:100px}
+
+/* ---------- shared ---------- */
+.hs-sec{padding-block:clamp(84px,10vw,144px)}
+.ivory{background:var(--stone)}
+.slabel{grid-column:1/-1;display:flex;align-items:baseline;gap:14px;color:var(--brand);margin-bottom:6px}
+.sidx{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--brand);font-variant-numeric:lining-nums}
+.sen{font-family:var(--serif);font-style:italic;font-weight:500;font-size:21px;letter-spacing:.01em}
+.label{font-family:var(--serif)!important;font-style:italic;font-weight:500;font-size:20px!important;letter-spacing:.01em!important;text-transform:none!important;color:var(--brand)!important}
+.sec-head h2,.bg-tit,.closing h2{font-weight:700!important;color:var(--ink)!important;font-size:clamp(30px,3.6vw,48px)!important;line-height:1.3!important;letter-spacing:-.035em!important}
+.sec-head h2 em,.closing h2 em{color:var(--brand)}
+.sec-head p{color:var(--mute);font-size:17px;line-height:1.75}
+.sec-head{margin-bottom:clamp(48px,6vw,80px)}
+.btn{border-width:1px;font-weight:700}
+.btn.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.brand:hover{background:#d85600;border-color:#d85600}
+.tlink{display:inline-flex;align-items:center;gap:6px;font-size:15.5px;font-weight:700;color:var(--ink);background:none;border:0;padding:2px 0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;text-decoration-color:rgba(37,37,37,.35);cursor:pointer;transition:color .15s,text-decoration-color .15s}
+.tlink:hover{color:var(--orange-ink);text-decoration-color:var(--brand)}
+.tlink.sub{font-weight:600;color:#5a5650}
+.sec-more{margin-top:48px}
+.src a.tlink{font-size:13px}
+
+/* ---------- hero ---------- */
+.h2o{padding:0!important;background:#fff}
+.h-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(40px,6vw,96px);align-items:center;padding-block:clamp(56px,8vw,120px) clamp(64px,9vw,136px)}
+.h-copy{min-width:0}
+.h-label{color:var(--mute)!important}
+.h-title{font-size:clamp(40px,5.4vw,76px)!important;font-weight:700!important;line-height:1.2!important;letter-spacing:-.04em!important;margin:26px 0 30px!important;color:var(--ink)}
+.h-copy p{font-size:18px!important;color:#55514b!important;line-height:1.8!important;max-width:31em}
+.h-cta{display:flex;align-items:center;flex-wrap:wrap;gap:16px 32px;margin-top:44px}
+.h-figs{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0}
+.h-figs .hslide{aspect-ratio:3/4}
+.h-figs figure:nth-child(2){margin-top:88px}
+
+/* ---------- 01 glance ---------- */
+.glance{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(40px,6vw,96px)}
+.gl-h{font-size:15px;font-weight:700;color:var(--mute);padding-bottom:16px;border-bottom:1.5px solid var(--ink);letter-spacing:0}
+.gl-areas,.gl-ways{list-style:none;margin:0;padding:0}
+.gl-areas a{display:grid;grid-template-columns:60px minmax(0,1fr) auto;column-gap:8px;row-gap:6px;padding:26px 0;border-bottom:1px solid var(--rule)}
+.gl-rn{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--brand);line-height:1;grid-row:span 2}
+.gl-n{font-size:23px;font-weight:700;letter-spacing:-.025em}
+.gl-c{font-size:14px;color:var(--mute);align-self:center}
+.gl-d{grid-column:2/-1;font-size:15.5px;color:var(--mute);line-height:1.7}
+.gl-areas a:hover .gl-n{color:var(--orange-ink)}
+.gl-ways li{padding:24px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:6px}
+.gl-ways b{font-size:19px;letter-spacing:-.02em}
+.gl-ways span{font-size:15.5px;color:var(--mute)}
+.gl-ways .tlink{align-self:flex-start;font-size:14px;margin-top:6px}
+
+/* ---------- 02 stories ---------- */
+.st-feat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:center;margin-bottom:clamp(64px,8vw,104px)}
+.st-ph{display:block;width:100%;padding:0;border:0;background:var(--stone);overflow:hidden;aspect-ratio:4/3;max-width:100%}
+.st-ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.st-ph:hover img{transform:scale(1.03)}
+.st-tx{display:flex;flex-direction:column;gap:14px;min-width:0}
+.st-cat{font-size:13.5px;font-weight:700;color:var(--orange-ink)}
+.st-tx h3{font-size:clamp(24px,2.4vw,32px);font-weight:700;line-height:1.35;letter-spacing:-.03em}
+.st-tx p{font-size:16px;color:#4d4943;line-height:1.8}
+.st-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:6px 0 0;border-top:1px solid var(--ink)}
+.st-stats div{padding:16px 12px 0 0}
+.st-stats dd{margin:0;font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);line-height:1.1}
+.st-stats dt{font-size:13px;color:var(--mute);margin-top:4px}
+.st-note{font-size:13px!important;color:var(--mute)!important}
+.st-tx .tlink{align-self:flex-start;margin-top:6px}
+.st-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,5vw,72px)}
+.st-item.tall{grid-row:span 3}
+.st-item.tall .st-ph{aspect-ratio:4/5}
+.st-item.tall .st-b{padding-top:22px}
+.st-item:not(.tall){display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:0 0 28px;margin-bottom:28px;border-bottom:1px solid var(--rule);align-items:start}
+.st-item:not(.tall):last-child{margin-bottom:0}
+.st-b{display:flex;flex-direction:column;gap:8px;min-width:0}
+.st-b h3{font-size:19px;font-weight:700;line-height:1.45;letter-spacing:-.02em}
+.st-b p{font-size:15px;color:var(--mute);line-height:1.7}
+
+/* ---------- 03 why ---------- */
+.why2{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(40px,6vw,96px)}
+.why-pts{list-style:none;margin:0;padding:0}
+.why-pts li{display:grid;grid-template-columns:56px minmax(0,1fr);padding:26px 0;border-top:1px solid var(--rule)}
+.why-pts li:first-child{border-top:1.5px solid var(--ink)}
+.why-pts h3{font-size:21px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.why-pts p{font-size:15.5px;color:#4d4943;line-height:1.75}
+.ev-h{font-size:15px;font-weight:700;color:var(--mute);padding-bottom:16px;border-bottom:1.5px solid var(--ink)}
+.ev-nums{display:grid;grid-template-columns:1fr 1fr;margin:0}
+.ev-nums div{padding:28px 16px 28px 0;border-bottom:1px solid var(--rule)}
+.ev-nums div:nth-child(even){padding-left:24px;border-left:1px solid var(--rule)}
+.ev-nums dd{margin:0;font-family:var(--serif);font-weight:600;font-size:clamp(40px,4.2vw,58px);line-height:1;color:var(--brand);letter-spacing:-.01em;white-space:nowrap;font-variant-numeric:lining-nums}
+.ev-nums dd .cnum{color:var(--brand)}
+.ev-nums dd small{font-family:var(--kr);font-size:16px;font-weight:700;color:var(--ink);margin-left:4px}
+.ev-nums dt{font-size:14.5px;color:var(--mute);margin-top:10px}
+
+/* ---------- 04 areas ---------- */
+.areas3{display:flex;flex-direction:column;gap:clamp(72px,9vw,120px)}
+.area-b{display:grid;gap:clamp(32px,5vw,72px);align-items:start;scroll-margin-top:110px}
+.lay-left{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+.lay-right{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.lay-right .ar-ph{order:2}
+.lay-wide{grid-template-columns:1fr}
+.lay-wide .ar-ph{aspect-ratio:21/8}
+.lay-wide .ar-tx{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,5vw,72px)}
+.lay-wide .ar-tx>.ar-rn,.lay-wide .ar-tx>h3,.lay-wide .ar-tx>.ar-d{grid-column:1}
+.lay-wide .ar-list{grid-column:2;grid-row:1/span 3;margin-top:0}
+.lay-wide .ar-meta{grid-column:1}
+.lay-compact{grid-template-columns:1fr;border-top:1.5px solid var(--ink);padding-top:40px}
+.lay-compact .ar-tx{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,5vw,72px)}
+.lay-compact .ar-tx>.ar-rn,.lay-compact .ar-tx>h3,.lay-compact .ar-tx>.ar-d,.lay-compact .ar-meta{grid-column:1}
+.lay-compact .ar-list{grid-column:2;grid-row:1/span 4;margin-top:0}
+.ar-ph{margin:0;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:var(--stone)}
+.ar-ph img{width:100%;height:100%;object-fit:cover}
+.ar-tx{min-width:0}
+.ar-rn{display:block;font-family:var(--serif);font-size:44px;font-weight:600;color:var(--brand);line-height:1}
+.ar-tx h3{font-size:clamp(26px,2.6vw,36px);font-weight:700;letter-spacing:-.03em;margin:14px 0 12px}
+.ar-d{font-size:16.5px;color:#4d4943;line-height:1.75;max-width:30em}
+.ar-list{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--ink)}
+.ar-list a{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule)}
+.ar-code{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--mute)}
+.ar-t{font-size:17px;font-weight:600;letter-spacing:-.015em}
+.ar-k{font-size:13.5px;color:var(--mute);text-align:right}
+.ar-list a:hover .ar-t{color:var(--orange-ink)}
+.ar-meta{margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.ar-cases{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;font-size:14.5px}
+.ar-cases span{font-size:13px;font-weight:700;color:var(--mute);margin-right:2px}
+.ar-cases button{background:none;border:0;padding:0;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--rule);cursor:pointer}
+.ar-cases button:hover{color:var(--orange-ink);text-decoration-color:var(--brand)}
+.ar-links{display:flex;flex-wrap:wrap;gap:10px 28px}
+
+/* ---------- 05 how ---------- */
+.how6{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-top:1.5px solid var(--ink);position:relative}
+.how6 li{padding:26px 22px 0 0;display:flex;flex-direction:column;gap:8px;position:relative}
+.how6 li:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+.how6 li:first-child:before{background:var(--brand)}
+.how6 b{font-size:17.5px;font-weight:700;letter-spacing:-.02em;line-height:1.4}
+.how6 li>span:last-child{font-size:14.5px;color:var(--mute);line-height:1.7}
+.how6 .sidx{font-size:24px}
+#how .src{margin-top:40px}
+
+/* ---------- final + footer ---------- */
+.final{background:var(--ink);color:#fff;padding-block:clamp(88px,10vw,140px)}
+.final .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end}
+.final h2{font-size:clamp(32px,4vw,56px);font-weight:700;line-height:1.25;letter-spacing:-.04em}
+.final h2 em{font-style:normal;color:var(--brand)}
+.fin-act{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.fin-act .btn{font-size:16px;padding:17px 26px}
+.final .tlink{color:#fff;text-decoration-color:rgba(255,255,255,.4)}
+.final .tlink:hover{color:#ffb27a;text-decoration-color:#ffb27a}
+.site-foot{background:var(--stone);padding-block:72px 40px;border-top:1px solid var(--rule)}
+.site-foot .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.ft-brand img{height:26px;width:auto;margin-bottom:16px}
+.ft-brand p{font-size:14.5px;color:var(--mute);margin-bottom:6px}
+.ft-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ft-nav b{display:block;font-size:13px;font-weight:700;color:var(--mute);margin-bottom:12px}
+.ft-nav a{display:block;font-size:15px;padding:5px 0;color:var(--ink)}
+.ft-nav a:hover{color:var(--orange-ink)}
+.ft-src{grid-column:1/-1;font-size:12.5px;color:var(--mute);border-top:1px solid var(--rule);padding-top:24px}
+
+/* ---------- 협업 제안 허브 ---------- */
+.ct-wrap{padding-block:16px clamp(96px,10vw,140px)}
+.ct-steps{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.ct-steps li{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:32px;align-items:center;padding:40px 0;border-bottom:1px solid var(--rule)}
+.ct-steps .sidx{font-size:40px;line-height:1}
+.ct-steps h2{font-size:clamp(22px,2.2vw,28px);font-weight:700;letter-spacing:-.025em;margin-bottom:8px}
+.ct-steps p{font-size:16px;color:#4d4943;line-height:1.75;max-width:40em}
+.ct-inq{background:var(--stone);padding-inline:32px!important;margin-top:40px;border-bottom:0!important}
+.ct-tel{margin-top:10px;font-size:14.5px!important;color:var(--mute)!important}
+.subnav{background:var(--stone);border-bottom:1px solid var(--rule)}
+.subnav a{font-size:15px}
+.subnav a span{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:0;color:#a8a39b}
+.subnav a[aria-current="page"] span{color:var(--brand)}
+
+/* ---------- de-boxing & calmer components across pages ---------- */
+.builder{background:var(--stone)!important;border:0!important;padding:clamp(28px,4vw,56px)!important}
+.b-card{border:1px solid var(--rule)!important}
+.b-card.selected{border-color:var(--brand)!important;background:#fff!important}
+.proposal-statement>div:not(.statement-arrow){border:0;background:var(--stone)}
+.result-card{border:1px solid var(--rule)}
+.card .tags span{background:var(--stone)}
+.pp:hover,.fcard:hover{box-shadow:none}
+.xhead,.phead,.phead2{background:#fff}
+.xhead h1,.phead h1,.phead2 h1{font-weight:700!important;font-size:clamp(38px,5vw,68px)!important}
+.need{background:var(--stone);border-bottom:0}
+.wideband{background:var(--stone)}
+.consult{background:var(--ink)}
+.dhero .copy{background:#fff}
+.roles2 div{border-width:1px}
+.anav{position:sticky;top:76px;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.anav .wrap{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none}
+.anav .wrap::-webkit-scrollbar{display:none}
+.anav a{flex-shrink:0;padding:16px 0;font-size:14.5px;font-weight:600;color:#5a5650;white-space:nowrap}
+.anav a:hover{color:var(--orange-ink)}
+.rel-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:56px;padding-top:40px;border-top:1px solid var(--rule)}
+.rel-cases h3{grid-column:1/-1;font-size:15px;font-weight:700;color:var(--mute)}
+.rel-cases button{display:flex;flex-direction:column;gap:10px;text-align:left;background:none;border:0;padding:0;cursor:pointer;color:var(--ink)}
+.rel-cases button b{font-size:17px;line-height:1.45;font-weight:700}
+.rel-cases button:hover b{color:var(--orange-ink)}
+.next-step{background:var(--stone);padding-block:56px}
+.next-step .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:32px;align-items:center}
+.next-step h2{font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:-.03em}
+.next-step p{color:var(--mute);margin-top:8px}
+.ns-act{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:flex-end}
+.pcards .pcard:first-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,64px);align-items:center;padding-bottom:48px;border-bottom:1px solid var(--rule)}
+.pcards .pcard:first-child .pc-ph{aspect-ratio:4/3}
+.pcards .pcard:first-child h3{font-size:clamp(22px,2.2vw,30px)}
+.pcards .pcard:first-child .pc-b{padding-top:0}
+.reader-toolbar .tlink{font-size:14px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .tabs{gap:22px}
+  .pswitch .t{display:none}
+  .how6{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:32px}
+  .ft-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .st-grid{grid-template-columns:1fr}
+  .st-item.tall{grid-row:auto;margin-bottom:40px}
+  .st-item.tall .st-ph{aspect-ratio:16/10}
+}
+@media (max-width:900px){
+  .top .wrap{height:64px}
+  .tabs{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;height:auto;background:#fff;border-bottom:1px solid var(--rule);padding:8px var(--g) 16px;gap:0;box-shadow:0 18px 30px rgba(0,0,0,.08)}
+  .tabs.open{display:flex}
+  .tabs a{height:52px;border-bottom:1px solid var(--rule);font-size:16px}
+  .tabs a[aria-current="page"]:after{display:none}
+  .tabs a[aria-current="page"]{color:var(--orange-ink)}
+  .top-cta{margin-left:auto;padding:9px 14px!important;font-size:13.5px!important}
+  .pswitch{margin-left:10px}
+  .menu-btn{display:block}
+  .memo{top:64px}
+  .anav{top:64px}
+  .filters,.toc,.pside{top:84px}
+  .h-grid,.glance,.st-feat,.why2,.lay-left,.lay-right,.final .wrap,.site-foot .wrap,.next-step .wrap{grid-template-columns:1fr}
+  .lay-right .ar-ph{order:0}
+  .ar-ph{aspect-ratio:16/10}
+  .lay-wide .ar-tx,.lay-compact .ar-tx{grid-template-columns:1fr}
+  .lay-wide .ar-list,.lay-compact .ar-list{grid-column:1;grid-row:auto;margin-top:24px}
+  .h-figs figure:nth-child(2){margin-top:40px}
+  .ns-act{justify-content:flex-start}
+  .pcards .pcard:first-child{grid-template-columns:1fr}
+  .rel-cases{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .logo span{display:none!important}
+  .pswitch{display:none}
+  .hs-sec{padding-block:72px}
+  .h-title{font-size:clamp(32px,9vw,44px)!important}
+  .h-copy p{font-size:16.5px!important}
+  .h-figs{gap:10px}
+  .gl-areas a{grid-template-columns:44px minmax(0,1fr);}
+  .gl-c{grid-column:2}
+  .gl-d{grid-column:2}
+  .gl-rn{font-size:24px}
+  .gl-n{font-size:20px}
+  .st-item:not(.tall){grid-template-columns:110px minmax(0,1fr);gap:16px}
+  .st-b p{display:none}
+  .st-stats{grid-template-columns:1fr 1fr 1fr}
+  .st-stats dd{font-size:22px}
+  .ev-nums div,.ev-nums div:nth-child(even){padding:22px 0;padding-left:0;border-left:0}
+  .ev-nums{grid-template-columns:1fr}
+  .ar-list a{grid-template-columns:48px minmax(0,1fr)}
+  .ar-k{display:none}
+  .how6{grid-template-columns:1fr;border-top:0;border-left:1.5px solid var(--ink);row-gap:0;margin-left:4px}
+  .how6 li{padding:0 0 28px 26px}
+  .how6 li:before{top:6px;left:-5.5px}
+  .ct-steps li{grid-template-columns:1fr;gap:12px;padding:32px 0}
+  .ct-steps li .btn{justify-self:start}
+  .ct-inq{padding-inline:20px!important}
+  .ft-nav{grid-template-columns:1fr 1fr}
+}
+@media print{.site-foot,.menu-btn,.top-cta{display:none!important}}
+
+.cs-next{margin-top:24px}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#home" aria-label="홈으로"><img src="img/wv-logo.png" alt="World Vision"><span>기업사회공헌</span></a>
-    <nav class="tabs" aria-label="주요 화면">
-      <a href="#home" data-tab="home">HOME</a>
-      <a href="#test" data-tab="proposal">맞춤형 제안 <span class="badge lat" id="pcount" data-n="0">0</span></a>
-      <a href="#strengths" data-tab="strengths">WHY WV CSR</a>
-      <a href="#explore" data-tab="explore">월드비전 사업소개</a>
-      <a href="#collab" data-tab="collab">협업제안</a>
+    <a class="logo" href="#home" aria-label="월드비전 기업파트너십 홈"><img src="img/wv-logo.png" alt="World Vision"><span>기업사회공헌</span></a>
+    <nav class="tabs" id="tabs" aria-label="주요 메뉴">
+      <a href="#explore" data-tab="explore">협력 분야</a>
       <a href="#partners" data-tab="partners">파트너십 사례</a>
-      <a href="#library" data-tab="library">참고자료</a>
+      <a href="#strengths" data-tab="strengths">월드비전 소개</a>
+      <a href="#library" data-tab="library">자료실</a>
     </nav>
-    <button class="pswitch" id="pswitch" aria-pressed="false" title="발표자 모드 (단축키 P)"><i></i><span class="t">발표자 모드</span></button>
+    <button class="pswitch" id="pswitch" aria-pressed="false" title="발표자 모드 (단축키 P)"><i></i><span class="t">발표자</span></button>
+    <a class="btn brand top-cta" href="#contact" data-tab="contact">협업 제안 <span class="badge lat" id="pcount" data-n="0">0</span></a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="tabs">메뉴</button>
   </div>
 </header>
 
 <main id="view" tabindex="-1"></main>
+<div id="footMount"></div>
 
 <aside class="memo" id="memo" aria-label="발표자용 메모" aria-hidden="true"></aside>
 <div class="modal-bg" id="modalBg"><div class="modal" role="dialog" aria-modal="true" aria-label="자료 보기"><button class="close" id="close" aria-label="닫기">×</button><div id="modalBody"></div></div></div>
@@ -1968,107 +2269,147 @@ const caseArea=c=>[...new Set(c.p.map(id=>byId[id].area))];
 
 /* HOME 히어로 자동 전환: 화면을 꽉 채우는 현장 사진만 사용 (흰 배경 스튜디오·제품 사진은 박스처럼 보여 제외) */
 const HERO_SLIDES={dom:[["crisis","crisis"],["meal","meal-vol"],["special","special"],["infra","infra"]],intl:[["health","health"],["water","water"],["edu","edu"],["protect","protect"],["income","income"],["food","foodaid"]]};
+/* ===================== v9 · HOME 허브 (사용자 여정: 관심 → 협력 범위 → 사례 → 전문성 → 분야 → 진행 방식 → 다음 단계) ===================== */
+const secLabel=(n,en)=>`<div class="slabel"><span class="sidx">${n}</span><span class="sen">${en}</span></div>`;
+const FEATURED_CASE="c1";
+const AREA_VIS={dom:{img:"meal-vol",lay:"left"},intl:{img:"water",lay:"right"},cs:{img:"greenroad",lay:"wide"},er:{img:"emergency",lay:"compact"}};
 function vHome(){
-  const feat=[["dream","국내사업"],["water","국제개발협력"],["volunteer","임직원 참여"]].map(([id,tag])=>Object.assign({},byId[id],{ftag:tag}));
+  const sl=HERO_SLIDES;
+  const fc=CASES.find(c=>c.id===FEATURED_CASE), fx=CASE_X[fc.id]||{}, fd=fx.detail||{};
+  const others=CASES.filter(c=>c.id!==FEATURED_CASE).slice(0,4);
+  const areaBlock=([k,a])=>{const v=AREA_VIS[k],ps=P.filter(p=>p.area===k),cs=CASES.filter(c=>caseArea(c).includes(k)).slice(0,2);
+    const list=`<ol class="ar-list">${ps.map(p=>`<li><a href="#p-${p.id}"><span class="ar-code">${p.code}</span><span class="ar-t">${p.t}</span><span class="ar-k">${p.key[0][1]} ${p.key[0][0]}</span></a></li>`).join("")}</ol>`;
+    const meta=`<div class="ar-meta">${cs.length?`<p class="ar-cases"><span>관련 파트너십</span>${cs.map(c=>`<button data-case="${c.id}">${esc(c.co)}</button>`).join("")}</p>`:""}
+      <p class="ar-links"><button class="tlink" data-go-area="${k}">이 분야 사업 모두 보기 →</button><a class="tlink sub" href="#test">맞춤형 협력 방향 찾기</a></p></div>`;
+    return `<article class="area-b lay-${v.lay}" id="area-${k}">
+      ${v.lay!=="compact"?`<figure class="ar-ph"><img src="img/${v.img}.jpg" alt="${a.name} 사업 현장" loading="lazy"></figure>`:""}
+      <div class="ar-tx"><span class="ar-rn">${a.rn}</span><h3>${a.name}</h3><p class="ar-d">${a.desc}</p>${list}${meta}</div>
+    </article>`};
   return `
   <section class="h2o">
+    <div class="wrap h-grid">
+      <div class="h-copy">
+        <div class="h-label">WORLD VISION KOREA · CORPORATE PARTNERSHIP</div>
+        <h1 class="h-title">기업의 사회적 가치가<br><em>지속가능한 변화</em>로 이어지도록.</h1>
+        <p>기업이 가진 자원과 전문성, 임직원의 참여를 아동과 지역사회의 필요에 연결합니다. 국내외 현장에 대한 이해와 사업 실행 경험을 바탕으로, 기업의 사회공헌이 일회성 지원을 넘어 지속가능한 변화로 이어지도록 함께합니다.</p>
+        <div class="h-cta"><a class="btn brand" href="#explore">협력 분야 살펴보기 <span aria-hidden="true">→</span></a><a class="tlink" href="#test">맞춤형 협력 방향 찾기</a></div>
+      </div>
+      <div class="h-figs">${[["dom","국내"],["intl","국제"]].map(([ar,lb])=>{const s=sl[ar].map(([id,img])=>[byId[id],img]);return `<figure class="hslide" aria-label="${lb} 사업 사진">${s.map(([p,img],i)=>`<a href="#p-${p.id}" class="hs${i===0?" on":""}" ${i?'tabindex="-1" aria-hidden="true"':""}><img src="img/${img}.jpg" alt="${p.t} 현장 사진" ${i?'loading="lazy"':""}><figcaption><b>${lb}</b>${p.t}</figcaption></a>`).join("")}<span class="hs-dots" aria-hidden="true">${s.map((x,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</span></figure>`}).join("")}</div>
+    </div>
+  </section>
+
+  <section class="hs-sec ivory" id="glance" aria-labelledby="glanceH">
     <div class="wrap">
-      <div class="h-label">WORLD VISION KOREA · CORPORATE PARTNERSHIP</div>
-      <h1 class="h-title">기업의 사회적 가치가<br><em>지속가능한 변화</em>로 이어지도록.</h1>
-      <div class="h-row">
-        <div class="h-copy">
-          <p>기업이 가진 자원과 전문성, 임직원의 참여를 아동과 지역사회의 필요에 연결합니다. 국내외 현장에 대한 이해와 사업 실행 경험을 바탕으로, 기업의 사회공헌이 일회성 지원을 넘어 지속가능한 변화로 이어지도록 함께합니다.</p>
-          <div class="h-cta"><a class="btn brand" href="#strengths">월드비전의 강점 알아보기 <span aria-hidden="true">→</span></a><a class="btn" href="#test">우리 기업에 맞는 사업 찾기</a></div>
+      <div class="sec-head">${secLabel("01","Partnership at a Glance")}<h2 id="glanceH">기업과 함께할 수 있는<br>협력의 범위</h2><p>아동과 지역사회의 필요에 맞춘 4개 영역의 사업에, 기업은 기금·공익 연계 마케팅·임직원 참여·물품 후원의 방식으로 함께할 수 있습니다.</p></div>
+      <div class="glance">
+        <div class="gl-col"><h3 class="gl-h">협력 분야</h3>
+          <ol class="gl-areas">${Object.entries(AREAS).map(([k,a])=>`<li><a href="#area-${k}" data-scroll="area-${k}"><span class="gl-rn">${a.rn}</span><span class="gl-n">${a.name}</span><span class="gl-c">${P.filter(p=>p.area===k).length}개 사업</span><span class="gl-d">${a.desc}</span></a></li>`).join("")}</ol></div>
+        <div class="gl-col"><h3 class="gl-h">참여 방식</h3>
+          <ul class="gl-ways">${JOIN.map(j=>`<li><b>${j.t}</b><span>${j.d}</span><button class="tlink" data-go-mode="${j.mode}">해당 사업 보기 →</button></li>`).join("")}</ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hs-sec" id="stories" aria-labelledby="storiesH">
+    <div class="wrap">
+      <div class="sec-head">${secLabel("02","Partnership Stories")}<h2 id="storiesH">이미 현장에서<br>함께 만든 변화</h2><p>기업의 자원과 월드비전의 현장 전문성이 만나 실제로 실행된 협력입니다.</p></div>
+      <article class="st-feat">
+        <button class="st-ph" data-case="${fc.id}" aria-label="${esc(fc.co)} 사례 자세히 보기"><img src="${fx.photo}" alt="" loading="lazy"></button>
+        <div class="st-tx">
+          ${coLogo(fc.co)}
+          <span class="st-cat">${CASE_AREAS.filter(([k])=>caseArea(fc).includes(k)).map(([,t])=>t).join(" · ")}</span>
+          <h3>${esc(fd.title?fd.title.replace(/^.*?—\s*/,""):fc.t)}</h3>
+          <p>${esc(fd.summary||fc.d)}</p>
+          ${fd.stats?`<dl class="st-stats">${fd.stats.slice(0,3).map(s=>`<div><dd>${esc(s.n)}</dd><dt>${esc(s.l)}</dt></div>`).join("")}</dl>`:""}
+          ${fd.note?`<p class="st-note">${esc(fd.note)}</p>`:""}
+          <button class="tlink" data-case="${fc.id}">사례 자세히 보기 →</button>
         </div>
-        <div class="h-figs">
-          ${[["dom","국내"],["intl","국제"]].map(([ar,lb])=>{const sl=HERO_SLIDES[ar].map(([id,img])=>[byId[id],img]);return `<figure class="hslide" aria-label="${lb} 사업 사진" aria-live="off">${sl.map(([p,img],i)=>`<a href="#p-${p.id}" class="hs${i===0?" on":""}" ${i?'tabindex="-1" aria-hidden="true"':""}><img src="img/${img}.jpg" alt="${p.t} 현장 사진" ${i?'loading="lazy"':""}><figcaption><b>${lb}</b>${p.t}</figcaption></a>`).join("")}<span class="hs-dots" aria-hidden="true">${sl.map((x,i)=>`<i class="${i===0?"on":""}"></i>`).join("")}</span></figure>`}).join("")}
+      </article>
+      <div class="st-grid">${others.map((c,i)=>{const x=CASE_X[c.id]||{};return `<article class="st-item ${i===0?"tall":""}">
+        <button class="st-ph" data-case="${c.id}" aria-label="${esc(c.co)} 사례 자세히 보기">${x.photo?`<img src="${x.photo}" alt="" loading="lazy">`:""}</button>
+        <div class="st-b">${coLogo(c.co,"sm")}<h3>${c.t}</h3><p>${c.d}</p></div></article>`}).join("")}</div>
+      <p class="sec-more"><a class="tlink" href="#partners">파트너십 사례 ${CASES.length}건 모두 보기 →</a></p>
+    </div>
+  </section>
+
+  <section class="hs-sec ivory" id="why" aria-labelledby="whyH">
+    <div class="wrap">
+      <div class="sec-head">${secLabel("03","Why World Vision")}<h2 id="whyH">사례 뒤에는<br>75년의 현장 실행력이 있습니다</h2><p>앞의 협력은 월드비전이 국내외 현장에서 쌓아온 네트워크와 사업 전문성 위에서 실행되었습니다.</p></div>
+      <div class="why2">
+        <ol class="why-pts">${STR.assets.slice(0,4).map(([t,d],i)=>`<li><span class="sidx">${String(i+1).padStart(2,"0")}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join("")}</ol>
+        <div class="why-ev">
+          <p class="ev-h">2025년 월드비전과 함께 변화를 경험한 수혜자들</p>
+          <dl class="ev-nums">
+            <div><dd data-count="1,096,881"><span class="cnum">1,096,881</span><small>명</small></dd><dt>식량위기대응</dt></div>
+            <div><dd data-count="759,302"><span class="cnum">759,302</span><small>명</small></dd><dt>긴급구호</dt></div>
+            <div><dd data-count="642,567"><span class="cnum">642,567</span><small>명</small></dd><dt>국내 식생활취약아동 지원</dt></div>
+            <div><dd data-count="579,021"><span class="cnum">579,021</span><small>명</small></dd><dt>식수위생 사업</dt></div>
+          </dl>
+          <p class="sec-more"><a class="tlink" href="#strengths">월드비전 소개 자세히 보기 →</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <nav class="wrap paths2" aria-label="탐색 경로">
-    <a href="#explore"><span class="n">01</span><b>월드비전 사업소개</b><span>관심 분야·협력 방식으로 16개 사업 찾기</span></a>
-    <a href="#partners"><span class="n">02</span><b>파트너십 사례</b><span>월드비전과 기업이 만든 협력 사례</span></a>
-    <a href="#test"><span class="n">03</span><b>맞춤형 제안</b><span>파트너십 테스트부터 제안 초안 구성·출력까지</span></a>
-  </nav>
-
-  <section class="bg1" aria-label="2025 주요 성과">
+  <section class="hs-sec" id="areas" aria-labelledby="areasH">
     <div class="wrap">
-      <h2 class="bg-tit">아동과 가족, 지역사회가 스스로 일어서도록<br>기업과 함께 <em class="hl-sweep">지속가능한 변화</em>를 만듭니다</h2>
-      <p class="bg-txt">2025년 월드비전과 함께 변화를 경험한 수혜자들</p>
-      <dl class="bg-stats">
-        <figure><img src="img/foodaid.jpg" alt="식량지원사업 현장" loading="lazy"><dd data-count="1,096,881"><span class="cnum">1,096,881</span><small>명</small></dd><dt>식료품 지원과 영양 지원으로<br>식량위기에 대응한 사람 수</dt></figure>
-        <figure><img src="img/emergency.jpg" alt="긴급구호 물품 지원" loading="lazy"><dd data-count="759,302"><span class="cnum">759,302</span><small>명</small></dd><dt>분쟁과 자연재난 속에서<br>긴급구호를 받은 사람 수</dt></figure>
-        <figure><img src="img/meal.jpg" alt="사랑의도시락" loading="lazy"><dd data-count="642,567"><span class="cnum">642,567</span><small>명</small></dd><dt>아침·저녁·주말 식사를 지원받은<br>국내 식생활취약아동 사업 수혜자 수</dt></figure>
-        <figure><img src="img/water.jpg" alt="식수시설을 이용하는 아이들" loading="lazy"><dd data-count="579,021"><span class="cnum">579,021</span><small>명</small></dd><dt>식수·위생 환경 개선으로<br>질병으로부터 보호받은 사람 수</dt></figure>
-      </dl>
+      <div class="sec-head">${secLabel("04","Areas of Collaboration")}<h2 id="areasH">관심 있는 분야부터<br>살펴보세요</h2><p>영역별 사업과 실제 협력 사례를 함께 확인하고, 사업을 누르면 상세 내용으로 이동합니다.</p></div>
+      <div class="areas3">${Object.entries(AREAS).map(areaBlock).join("")}</div>
     </div>
   </section>
 
-  <section class="bg2" id="areas">
+  <section class="hs-sec ivory" id="how" aria-labelledby="howH">
     <div class="wrap">
-      <h2 class="bg-tit">아동과 지역사회의 필요에 맞춘<br>맞춤형 사업을 제공합니다</h2>
-      <p class="bg-txt">사업을 클릭하시면 상세 정보를 확인하실 수 있습니다.</p>
-      <div class="bg-areas">${Object.entries(AREAS).map(([k,a])=>`
-        <div class="bg-area">
-          <div><h3><span>${a.rn}</span>${a.name}</h3><button class="go" data-go-area="${k}">${P.filter(p=>p.area===k).length}개 사업 모아보기 →</button></div>
-          <ul class="bg-links">${P.filter(p=>p.area===k).map(p=>`<li><a href="#p-${p.id}"><span class="ic">${imgTag(p)}</span>${p.t}</a></li>`).join("")}</ul>
-        </div>`).join("")}</div>
+      <div class="sec-head">${secLabel("05","How We Partner")}<h2 id="howH">상담부터 성과 공유까지<br>하나의 흐름으로</h2><p>구체적인 계획이 없어도 첫 상담에서 함께 방향을 찾습니다.</p></div>
+      <ol class="how6">${PROCESS.map((s,i)=>`<li><span class="sidx">${String(i+1).padStart(2,"0")}</span><b>${s.t}</b><span>${s.d}</span></li>`).join("")}</ol>
+      <p class="src">기준: 월드비전 기업후원 소개 ‘참여 프로세스’ · <a class="tlink" href="#strengths" data-jump="process">단계별 주요 활동 보기 →</a></p>
     </div>
   </section>
 
-  <section class="bg3">
-    <div class="wrap bg3-g">
-      <a href="#explore" data-go-area="dom"><h3>국내사업 안내</h3><p>${AREAS.dom.desc}</p></a>
-      <a href="#explore" data-go-area="intl"><h3>국제사업 안내</h3><p>${AREAS.intl.desc}</p></a>
-      <a href="#partners" class="wide"><h3>월드비전과 함께한 <em>기업의 협력 사례</em>를 확인하세요.</h3><span class="go_btn">보러가기</span></a>
-    </div>
-  </section>
-
-  <section class="sec" id="kw">
+  <section class="final" aria-labelledby="finalH">
     <div class="wrap">
-      <div class="sec-head"><div class="label">Keyword explore</div><h2>키워드를 통해<br>다양한 사업을 알아보세요</h2><p>하나의 사업은 여러 키워드에 연결되어 있습니다. 키워드를 누르면 관련 사업만 표시됩니다.</p></div>
-      <div class="kw">
-        <div><h3>관심 분야</h3><div class="chips">${INTERESTS.map(i=>`<button class="chip" data-go-int="${i.k}">${i.t}<em>${cnt("int",i.k)}</em></button>`).join("")}</div></div>
-        <div><h3>협력 방식</h3><div class="chips">${MODES.map(m=>`<button class="chip" data-go-mode="${m.k}">${m.t}<em>${cnt("mode",m.k)}</em></button>`).join("")}</div></div>
+      <h2 id="finalH">우리 기업과 함께할 수 있는<br><em>변화</em>를 찾아보세요</h2>
+      <div class="fin-act">
+        <a class="btn brand" href="#contact">협업 제안하기 →</a>
+        <a class="tlink" href="#test">맞춤형 협력 방향 먼저 찾기</a>
+        <a class="tlink" href="#library">참고자료 보기</a>
       </div>
     </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head"><div class="label">Featured programs</div><h2>대표 사업</h2></div>
-      <div class="feat">${feat.map(p=>`
-        <article class="fcard"><a class="ph" href="#p-${p.id}">${imgTag(p,p.t)}<span class="ftag">${p.ftag}</span></a>
-          <div class="code">${p.code} · ${AREAS[p.area].name}</div><h3><a href="#p-${p.id}">${p.t}</a></h3><p>${p.lead}</p>
-          <div>${addBtn(p.id)}</div></article>`).join("")}</div>
-      <p class="more-row"><a class="btn" href="#explore">사업 더보기 (${P.length}개) →</a></p>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head"><div class="label">Partners</div><h2>이미 검증된 협력</h2><p>월드비전과 기업이 함께 만든 협력 사례 가운데 일부입니다.</p></div>
-      <div class="cases">${CASES.slice(0,3).map(c=>`
-        <a class="case" href="#p-${c.p[0]}">${coLogo(c.co,"sm")}<b>${c.t}</b><span>${c.d}</span><span class="pg">→ ${c.p.map(id=>byId[id].t).join(" · ")}</span></a>`).join("")}</div>
-      <p style="margin-top:28px"><a class="btn" href="#partners">파트너십 사례 전체 보기 (${CASES.length}건) →</a></p>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head"><div class="label">Ways to partner</div><h2>협력 방식 바로가기</h2><p>협력 방식은 제안서에 명시된 근거를 기준으로 사업에 연결했습니다.</p></div>
-      <div class="modes">${MODES.map((m,i)=>`
-        <button class="mode" data-go-mode="${m.k}"><span class="lat">0${i+1}</span><b>${m.t}</b><span>${m.d}</span><span class="ct">${cnt("mode",m.k)}개 사업 →</span></button>`).join("")}</div>
-    </div>
-  </section>
-
-  <section class="sec closing memo-only" aria-label="발표자용 안내"><div class="wrap">
-    <h2>미팅 중 관심 사업을 담아<br><em>맞춤형 제안 초안</em>을 만드세요.</h2>
-    <div class="act"><a class="btn brand" href="#explore">월드비전 사업소개 보기 →</a><a class="btn" href="#test">맞춤형 제안 보기 (${S.prop.length})</a></div>
-  </div></section>`;
+  </section>`;
 }
+
+/* ===================== 협업 제안 허브 — 탐색(테스트·모델 설계·제안서)과 실제 문의(공식 창구)를 구분 ===================== */
+function flowNav(cur){const L=[["test","맞춤형 방향 찾기"],["collab","협력 모델 설계"],["proposal",`내 제안서 <em>${S.prop.length}</em>`],["contact","문의하기"]];
+  return `<nav class="subnav" aria-label="협업 제안 단계"><div class="wrap">${L.map(([k,t],i)=>`<a href="#${k}" ${cur===k?'aria-current="page"':""}><span>${String(i+1).padStart(2,"0")}</span>${t}</a>`).join("")}</div></nav>`}
+function vContact(){
+  return `
+  <section class="phead2"><div class="wrap">
+    ${secLabel("","Partnership Inquiry")}
+    <h1>협업 제안</h1>
+    <p>아직 구체적인 계획이 없어도 괜찮습니다. 이 사이트에서 협력 방향을 먼저 정리해 보고, 준비가 되면 월드비전 기업파트너십 담당자에게 문의하세요.</p>
+  </div></section>
+  <section class="wrap ct-wrap">
+    <ol class="ct-steps">
+      <li><span class="sidx">01</span><div><h2>맞춤형 협력 방향 찾기</h2><p>관심 분야, 업종, 활용 가능한 자원, 임직원 참여 방식 등 7개 질문에 답하면 적합한 파트너십 유형과 관련 사업을 추천합니다. 약 2분 소요.</p></div><a class="btn" href="#test">테스트 시작 →</a></li>
+      <li><span class="sidx">02</span><div><h2>협력 모델 설계</h2><p>기업명, 사업 지역, 사회문제, 선호하는 협업구조를 고르면 추천 협력사업과 Concept Paper 초안을 만들어 줍니다.</p></div><a class="btn" href="#collab">모델 설계하기 →</a></li>
+      <li><span class="sidx">03</span><div><h2>내 제안서 정리</h2><p>관심 사업을 담아 순서를 정하고, 요약 화면으로 확인한 뒤 인쇄하거나 PDF로 저장합니다. 지금 담긴 사업 ${S.prop.length}개.</p></div><a class="btn" href="#proposal">제안서 보기 →</a></li>
+      <li class="ct-inq"><span class="sidx">04</span><div><h2>담당자에게 문의하기</h2><p>협력 문의는 월드비전 공식 홈페이지의 ‘기업후원 문의하기’로 접수됩니다. 이 사이트에서 문의가 자동 접수되지는 않으니, 정리한 제안서를 함께 전달해 주세요.</p>
+        <p class="ct-tel">대표전화 <b>02-2078-7000</b> · 상담시간 (월~금) 09:00 - 18:00</p></div><a class="btn brand" href="${WV_INQUIRY}" target="_blank" rel="noopener">기업후원 문의하기 ↗</a></li>
+    </ol>
+  </section>`;
+}
+
+/* ===================== Footer ===================== */
+function footerHTML(){return `
+  <footer class="site-foot"><div class="wrap">
+    <div class="ft-brand"><img src="img/wv-logo.png" alt="World Vision"><p>월드비전 기업파트너십 · 기업사회공헌</p><p class="ft-tel">대표전화 02-2078-7000 · 상담시간 (월~금) 09:00 - 18:00</p></div>
+    <nav class="ft-nav" aria-label="바닥글 메뉴">
+      <div><b>둘러보기</b><a href="#explore">협력 분야</a><a href="#partners">파트너십 사례</a><a href="#strengths">월드비전 소개</a><a href="#library">자료실</a></div>
+      <div><b>협업 제안</b><a href="#test">맞춤형 방향 찾기</a><a href="#collab">협력 모델 설계</a><a href="#proposal">내 제안서</a><a href="#contact">문의하기</a></div>
+      <div><b>월드비전 공식</b><a href="https://www.worldvision.or.kr" target="_blank" rel="noopener">월드비전 홈페이지 ↗</a><a href="${WV_INQUIRY}" target="_blank" rel="noopener">기업후원 소개 ↗</a></div>
+    </nav>
+    <p class="ft-src">사업 수치는 2025년도 사업기준(2026 통합제안서) · 기업 협력 사례 및 참고자료 출처: 월드비전 기업파트너십 페이지</p>
+  </div></footer>`}
 
 function vStrengths(){
   return `
@@ -2087,6 +2428,9 @@ function vStrengths(){
     <h1>한국월드비전<br>CSR의 강점</h1>
     <p>변화를 만드는 다양한 생각과 시도가 있습니다.<br>월드비전은 현장에서 변화를 만들고,<br>실질적인 성과로 증명합니다.</p>
   </div></section>
+  <nav class="anav" aria-label="월드비전 소개 바로가기"><div class="wrap">
+    <a href="#s-assets" data-scroll="s-assets">핵심 역량</a><a href="#s-climate" data-scroll="s-climate">기후 성과</a><a href="#s-trust" data-scroll="s-trust">신뢰도</a><a href="#s-effects" data-scroll="s-effects">기대 효과</a><a href="#process" data-scroll="process">참여 프로세스</a><a href="#s-join" data-scroll="s-join">참여 방법</a><a href="#consult" data-scroll="consult">상담</a>
+  </div></nav>
 
   <section class="brandband" aria-label="월드비전 네트워크">
     <div class="wrap">
@@ -2094,16 +2438,17 @@ function vStrengths(){
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="s-assets">
     <div class="wrap">
       <div class="sec-head asset-head"><div class="label">Expertise &amp; practice</div><h2>아이디어를 현실로,<br>현장에서 변화를 만들고,<br><em>성과로 증명합니다.</em></h2><p>월드비전이 현장에서 쌓아온 전문성과 실행 경험, 실제 사업 사례를 통해 기업과 함께 만들 수 있는 변화와 협력의 가능성을 확인해 보세요.</p></div>
       <ol class="assets">${STR.assets.map(([t,d,rel],i)=>`
         <li><span class="n">${String(i+1).padStart(2,"0")}</span><div><h3>${t}</h3><p>${d}</p>
           <div class="rlinks" aria-label="관련 사업">${rel.map(id=>`<a href="#p-${id}"><span>${byId[id].code}</span>${byId[id].t}<i aria-hidden="true">→</i></a>`).join("")}</div></div></li>`).join("")}</ol>
+      <div class="rel-cases"><h3>이 역량으로 실행한 파트너십</h3>${["c1","c3","c7"].map(id=>{const c=CASES.find(x=>x.id===id);return `<button data-case="${c.id}">${coLogo(c.co,"sm")}<b>${c.t}</b></button>`}).join("")}</div>
     </div>
   </section>
 
-  <section class="sec feature wideband">
+  <section class="sec feature wideband" id="s-climate">
     <div class="wrap fgrid">
       <div class="ftxt">
         <div class="label">국내 NGO 최초 · 국제 탄소인증</div>
@@ -2119,7 +2464,7 @@ function vStrengths(){
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec" id="s-trust">
     <div class="wrap">
       <div class="sec-head"><div class="label">Trust</div><h2>후원자와 파트너가<br>인정하는 신뢰도</h2><p>국제 네트워크, 사업 전문성, 역사, 투명성으로 검증받았습니다.</p></div>
       <div class="trust2">${STR.trust.map(([t,d])=>`<div><b>${t}</b><p>${d}</p></div>`).join("")}</div>
@@ -2127,7 +2472,7 @@ function vStrengths(){
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec ivory" id="s-effects">
     <div class="wrap">
       <div class="sec-head"><div class="label">Partnership value</div><h2>파트너십을 통해<br>기대할 수 있는 효과</h2><p>기업의 사회적 영향력부터 ESG 경영 성과까지 함께 만듭니다.</p></div>
       <div class="effects">${STR.effects.map(([t,d],i)=>`<div><span class="n">${String(i+1).padStart(2,"0")}</span><h3>${t}</h3><p>${d}</p></div>`).join("")}</div>
@@ -2199,6 +2544,7 @@ function openCase(id){
     ${d&&d.stats&&d.stats.length?`<section><h3>주요 성과</h3><div class="cs-stats">${d.stats.map(t=>`<div><b>${esc(t.n)}</b><span>${esc(t.l)}</span></div>`).join("")}</div>${d.note?`<p class="cs-note">${esc(d.note)}</p>`:""}</section>`:""}
     ${d&&d.timeline&&d.timeline.length?`<section><h3>추진 경과</h3><ol class="cs-tl">${d.timeline.map(t=>`<li><b>${esc(t.date)}</b><div><strong>${esc(t.label)}</strong><span>${esc(t.desc||"")}</span></div></li>`).join("")}</ol></section>`:""}
     ${d&&d.photos&&d.photos.filter(p=>p[0]).length?`<section><h3>현장 사진</h3><div class="cs-gal">${d.photos.filter(p=>p[0]).map(([f,cap])=>`<figure><img src="${f}" alt="" loading="lazy"><figcaption>${esc(cap)}</figcaption></figure>`).join("")}</div></section>`:""}
+    <p class="cs-next"><a class="btn brand" href="#contact" data-close>비슷한 협력 제안하기 →</a></p>
     <section><h3>연결된 월드비전 사업</h3><div class="cs-p">${c.p.map(pid=>`<a href="#p-${pid}" data-close>${byId[pid].code} · ${byId[pid].t} →</a>`).join("")}</div></section>
     <p class="src">출처: 월드비전 파트너십 페이지 협력 사례 (wvcsr.github.io)</p>
   </div>`;
@@ -2222,7 +2568,7 @@ function card(p){
 function vExplore(){
   return `
   <section class="xhead"><div class="wrap">
-    <h1>월드비전 사업소개</h1>
+    <h1>협력 분야</h1>
     <form class="search" id="sform" role="search"><label class="sr" for="q">사업명·설명 검색</label>
       <input id="q" type="search" placeholder="사업명이나 내용으로 검색 (예: 도시락, 갯벌, 자립)" value="${esc(S.f.q)}" autocomplete="off"><button type="submit">검색</button></form>
   </div></section>
@@ -2305,6 +2651,10 @@ function vDetail(p){
     <nav class="toc" aria-label="상세 목차"><ol>${secs.map(([id,t],i)=>`<li><a href="#p-${p.id}" data-sec="${id}"><span class="lat">${String(i+1).padStart(2,"0")}</span>${t}</a></li>`).join("")}</ol></nav>
     <div>${secs.map(([id,t,c],i)=>`<section class="dsec" id="s-${id}"><div class="h"><span class="lat">${String(i+1).padStart(2,"0")}</span><h2>${t}</h2></div><div class="c">${c}</div></section>`).join("")}</div>
   </div>
+  <section class="next-step" aria-label="다음 단계"><div class="wrap">
+    <div><h2>이 사업으로 협업을 준비하고 있나요?</h2><p>제안서에 담아 두고, 협력 모델을 설계하거나 담당자에게 문의할 수 있습니다.</p></div>
+    <div class="ns-act">${addBtn(p.id)}<a class="btn brand" href="#contact">협업 제안하기 →</a>${casesOf(p.id).length?`<a class="tlink" href="#partners">관련 파트너십 사례 보기</a>`:""}</div>
+  </div></section>
   <nav class="dnext" aria-label="다른 사업"><div class="wrap">
     <a href="#p-${prev.id}"><small>PREV · ${prev.code}</small>← ${prev.t}</a>
     <a href="#p-${next.id}"><small>NEXT · ${next.code}</small>${next.t} →</a>
@@ -2934,9 +3284,10 @@ function openDocPicker(){
   $("#modalBody").innerHTML=`<div class="eyebrow">자료실</div><h2>자료실</h2><div class="sub">협력 검토를 위한 원본 자료를 확인하세요.</div>
    <div class="doc-pick">${docs.map(d=>`<button data-doc="${esc(d.id)}"><h4>${esc(d.title)}</h4><p>${esc(d.sub||"")} · 총 ${d.n}p</p></button>`).join("")}</div>`;
   modalShow(false)}
+const LIB_REL={"dom-33":"dream","dom-34":"crisis","dom-35":"meal","dom-36":"special","dom-37":"infra","dom-38":"climate","fy26-02":"water","fy26-22":"water","fy26-12":"protect","mangroveIndonesia":"climate"};
 function renderReader(d,backFn){
   $("#modalBody").innerHTML=`<div class="eyebrow">자료실</div><h2>${esc(d.title)}</h2><div class="sub">${esc(d.subtitle||"")}</div>
-   <div class="reader-toolbar"><span>전체 ${d.n}p · 위아래로 스크롤해서 보세요</span><button id="backPick">${backFn?"← 돌아가기":"자료실 목록"}</button></div>
+   <div class="reader-toolbar"><span>전체 ${d.n}p · 위아래로 스크롤해서 보세요</span>${LIB_REL[d.id]?`<a class="tlink" href="#p-${LIB_REL[d.id]}" data-close>관련 사업 · ${byId[LIB_REL[d.id]].t} →</a>`:""}<button id="backPick">${backFn?"← 돌아가기":"자료실 목록"}</button></div>
    <div class="reader-scroll">${d.chunks.map((c,i)=>`<div class="reader-page"><img src="${c}" loading="lazy" alt="${esc(d.title)} ${i*5+1}–${Math.min(d.n,i*5+5)}페이지"></div>`).join("")}</div>`;
   $("#backPick").onclick=backFn||openDocPicker; modalShow(true)}
 function openDoc(id,backFn){const d=refDocById(id);if(!d)return;renderReader(d,backFn||(d.src==="data"?openDocPicker:modalHide))}
@@ -3441,7 +3792,7 @@ function processHTML(){return `
       <p class="src">기준: 월드비전 기업후원 소개 ‘참여 프로세스’ (안내 및 상담 → 기업 맞춤형 분석·제안 → 세부 사항 협의 → 참여 결정·협약서 작성 → 사업 수행·모니터링 → 꼼꼼한 평가 및 보고)</p>
     </div>
   </section>
-  <section class="sec join" aria-labelledby="joinH">
+  <section class="sec join ivory" id="s-join" aria-labelledby="joinH">
     <div class="wrap">
       <div class="sec-head"><div class="label">Ways to join</div><h2 id="joinH">우리 회사는<br>이렇게 참여할 수 있습니다</h2><p>참여 방법은 프로세스와 별개로 고를 수 있습니다. 어떤 방식이든 첫 단계인 상담에서 함께 정합니다.</p></div>
       <div class="joins">${JOIN.map((j,i)=>`
@@ -3594,19 +3945,22 @@ function render(){
   if(h==="explore"){v.innerHTML=vExplore();renderExplore();tab="explore"}
   else if(h==="strengths"){v.innerHTML=vStrengths();tab="strengths";startCine();revealRoles()}
   else if(h==="partners"){v.innerHTML=vPartners();tab="partners"}
-  else if(h==="collab"){v.innerHTML=vCollab();initBuilder();tab="collab"}
+  else if(h==="collab"){v.innerHTML=flowNav("collab")+vCollab();initBuilder();tab="contact"}
+  else if(h==="contact"){v.innerHTML=flowNav("contact")+vContact();tab="contact"}
   else if(h==="library"){v.innerHTML=vLibrary();layoutShelves();tab="library"}
-  else if(h==="test"){v.innerHTML=subnav("test")+vTest();tab="proposal"}
-  else if(h==="proposal"){v.innerHTML=subnav("proposal")+vProposal();tab="proposal"}
-  else if(h==="sheet"){v.innerHTML=vSheet();tab="proposal"}
+  else if(h==="test"){v.innerHTML=flowNav("test")+vTest();tab="contact"}
+  else if(h==="proposal"){v.innerHTML=flowNav("proposal")+vProposal();tab="contact"}
+  else if(h==="sheet"){v.innerHTML=vSheet();tab="contact"}
   else if(h.startsWith("p-")&&byId[h.slice(2)]){const p=byId[h.slice(2)];current=p;v.innerHTML=vDetail(p);tab="explore";
     $("#memo").innerHTML=memoHTML(p);document.body.classList.add("has-memo");setupToc()}
   else{v.innerHTML=vHome();startHero();sweepHL()}
-  $$(".tabs a").forEach(a=>a.toggleAttribute("aria-current",false));
-  const t=$(`.tabs a[data-tab="${tab}"]`); if(t)t.setAttribute("aria-current","page");
+  $$("header [data-tab]").forEach(a=>a.toggleAttribute("aria-current",a.dataset.tab===tab));
+  $$("header [data-tab]").forEach(a=>{if(a.dataset.tab===tab)a.setAttribute("aria-current","page")});
+  $("#tabs").classList.remove("open");$("#menuBtn").setAttribute("aria-expanded","false");
   $("#memo").setAttribute("aria-hidden",String(!(S.presenter&&current)));
   document.title=(current?current.t+" · ":"")+"월드비전 기업파트너십";
   countUp(); syncAdd(); if(!render.keep)window.scrollTo(0,0); render.keep=false;
+  if(S.jump){const id=S.jump;S.jump=null;setTimeout(()=>{const el=document.getElementById(id);el&&el.scrollIntoView({block:"start"})},60)}
 }
 let lastRoute=null;
 window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);
@@ -3630,6 +3984,8 @@ document.addEventListener("click",e=>{
   const t=e.target;
   if(location.hash==="#test"&&testClick(e))return;
   if(location.hash==="#explore"&&needClick(e))return;
+  const jp=t.closest("[data-jump]"); if(jp){S.jump=jp.dataset.jump; if(location.hash===jp.getAttribute("href")){render.keep=false;render()} }
+  if(t.closest("#menuBtn")){const o=$("#tabs").classList.toggle("open");$("#menuBtn").setAttribute("aria-expanded",String(o));return}
   const sc=t.closest("[data-scroll]"); if(sc){e.preventDefault();const el=document.getElementById(sc.dataset.scroll);el&&el.scrollIntoView({behavior:"smooth"});return}
   const ad=t.closest("[data-add]"); if(ad){e.preventDefault();addProp(ad.dataset.add);return}
   const pa=t.closest("[data-parea]"); if(pa){partnerArea=pa.dataset.parea;render.keep=true;render();$("#pa-"+partnerArea)?.focus();return}
@@ -3671,6 +4027,7 @@ document.addEventListener("keydown",e=>{
 ["dlgSum","dlgImg"].forEach(id=>$("#"+id).addEventListener("click",e=>{if(e.target.id===id)e.target.close()}));
 
 document.body.classList.toggle("presenter",S.presenter);$("#pswitch").setAttribute("aria-pressed",String(S.presenter));
+const fm=$("#footMount"); if(fm) fm.outerHTML=footerHTML();
 lastRoute=(location.hash||"#home").slice(1);
 render();
 </script>
